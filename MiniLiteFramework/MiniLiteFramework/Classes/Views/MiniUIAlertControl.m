@@ -3,7 +3,7 @@
 //  TestArc
 //
 //  Created by Wuquancheng on 12-12-1.
-//  Copyright (c) 2012年 youlu. All rights reserved.
+//  Copyright (c) 2012年 Mini. All rights reserved.
 //
 
 #import "MiniUIAlertControl.h"

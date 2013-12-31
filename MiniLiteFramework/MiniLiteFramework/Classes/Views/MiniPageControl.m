@@ -1,9 +1,9 @@
 //
 //  YLPageControl.m
-//  Youlu
+//  Mini
 //
 //  Created by lipeiqiang on 11-3-14.
-//  Copyright 2011 Youlu . All rights reserved.
+//  Copyright 2011 Mini . All rights reserved.
 //
 
 #import "MiniPageControl.h"

@@ -3,7 +3,7 @@
 //  LS
 //
 //  Created by wu quancheng on 12-6-10.
-//  Copyright (c) 2012年 YouLu. All rights reserved.
+//  Copyright (c) 2012年 Mini. All rights reserved.
 //
 
 #define UINavigationBarHeight 44

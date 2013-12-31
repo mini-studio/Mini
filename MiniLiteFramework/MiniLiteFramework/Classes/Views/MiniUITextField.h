@@ -3,7 +3,7 @@
 //  YContact
 //
 //  Created by wu quancheng on 11-10-1.
-//  Copyright 2011年 Youlu. All rights reserved.
+//  Copyright 2011年 Mini. All rights reserved.
 //
 @class MiniUITextFieldDelegate;
 

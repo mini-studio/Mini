@@ -1,9 +1,9 @@
 //
 //  MiniUITabBarItem.h
-//  Youlu
+//  Mini
 //
 //  Created by William on 11-4-26.
-//  Copyright 2011年 Youlu . All rights reserved.
+//  Copyright 2011年 Mini . All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

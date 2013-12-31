@@ -1,9 +1,9 @@
 //
 //  MiniUIAlertControl.m
-//  Youlu
+//  Mini
 //
 //  Created by wu quancheng on 12-3-14.
-//  Copyright (c) 2012年 YouLu. All rights reserved.
+//  Copyright (c) 2012年 Mini. All rights reserved.
 //
 #define KMiniMainBundle [NSBundle mainBundle]
 #define KALERT_BG_IMAGE_TAG 0xAB43001
