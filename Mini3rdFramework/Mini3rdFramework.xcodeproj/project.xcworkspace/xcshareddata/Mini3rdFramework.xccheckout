@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B256AC71-A7A3-489F-A14F-7D662690CCC5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Mini3rdFramework</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>99EF1778-C012-4903-90F8-FF3D40484E2B</key>
+		<string>http://src.mini.org/svn/wolf/ios/Mini3rdFramework/trunk</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Mini3rdFramework.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>99EF1778-C012-4903-90F8-FF3D40484E2B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>99EF1778-C012-4903-90F8-FF3D40484E2B</key>
+		<string>http://src.mini.org/svn/wolf</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://src.mini.org/svn/wolf/ios/Mini3rdFramework/trunk/Mini3rdFramework.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>99EF1778-C012-4903-90F8-FF3D40484E2B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>ios/Mini3rdFramework/trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>99EF1778-C012-4903-90F8-FF3D40484E2B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Mini3rdFramework</string>
+		</dict>
+	</array>
+</dict>
+</plist>

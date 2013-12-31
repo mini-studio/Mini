@@ -1,0 +1,627 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C12E4974180A335C00482A10 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C12E4973180A335C00482A10 /* Security.framework */; };
+		C12E497B180A436400482A10 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C12E497A180A436400482A10 /* KeychainItemWrapper.m */; };
+		C1369B75170F0B1C0020DF98 /* MiniUISegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1369B74170F0B150020DF98 /* MiniUISegmentView.m */; };
+		C161380A16CAC1D20082FDA9 /* UIDevice+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = C161380816CAC1BC0082FDA9 /* UIDevice+Ext.m */; };
+		C17385A71704A29000AFE72A /* MiniUIAlertControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C17385A61704A28200AFE72A /* MiniUIAlertControl.m */; };
+		C198B49B15DEA60A00F2A0D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C198B49A15DEA60A00F2A0D6 /* Foundation.framework */; };
+		C198B4A015DEA60A00F2A0D6 /* MiniLiteFramework.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C198B49F15DEA60A00F2A0D6 /* MiniLiteFramework.h */; };
+		C198B4FF15DEA6A400F2A0D6 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4AB15DEA66D00F2A0D6 /* NSData+Base64.m */; };
+		C198B50015DEA6A400F2A0D6 /* NSDate+Mini.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4AD15DEA66D00F2A0D6 /* NSDate+Mini.m */; };
+		C198B50115DEA6A400F2A0D6 /* NSIndexPath+Mini.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4AF15DEA66D00F2A0D6 /* NSIndexPath+Mini.m */; };
+		C198B50215DEA6A400F2A0D6 /* NSString+Mini.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4B115DEA66D00F2A0D6 /* NSString+Mini.m */; };
+		C198B50315DEA6A400F2A0D6 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4B315DEA66D00F2A0D6 /* NSString+URLEncoding.m */; };
+		C198B50415DEA6A400F2A0D6 /* UIColor+Mini.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4B515DEA66D00F2A0D6 /* UIColor+Mini.m */; };
+		C198B50515DEA6A400F2A0D6 /* UIImage+Mini.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4B715DEA66D00F2A0D6 /* UIImage+Mini.m */; };
+		C198B50615DEA6A400F2A0D6 /* UINavigationBar+Mini.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4B915DEA66D00F2A0D6 /* UINavigationBar+Mini.m */; };
+		C198B50715DEA6A400F2A0D6 /* UIView+Mini.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4BB15DEA66D00F2A0D6 /* UIView+Mini.m */; };
+		C198B50815DEA6A400F2A0D6 /* MiniUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4BE15DEA66D00F2A0D6 /* MiniUINavigationController.m */; };
+		C198B50915DEA6A400F2A0D6 /* MiniViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4C015DEA66D00F2A0D6 /* MiniViewController.m */; };
+		C198B50A15DEA6A400F2A0D6 /* MiniUIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4C315DEA66D00F2A0D6 /* MiniUIBadgeView.m */; };
+		C198B50B15DEA6A400F2A0D6 /* MiniUITabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4C515DEA66D00F2A0D6 /* MiniUITabBar.m */; };
+		C198B50C15DEA6A400F2A0D6 /* MiniUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4C715DEA66D00F2A0D6 /* MiniUITabBarController.m */; };
+		C198B50D15DEA6A400F2A0D6 /* MiniUITabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4C915DEA66D00F2A0D6 /* MiniUITabBarItem.m */; };
+		C198B50E15DEA6A400F2A0D6 /* MiniFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4CF15DEA66D00F2A0D6 /* MiniFileUtil.m */; };
+		C198B50F15DEA6A400F2A0D6 /* MiniImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4D115DEA66D00F2A0D6 /* MiniImageCache.m */; };
+		C198B51015DEA6A400F2A0D6 /* MiniImagePickerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4D315DEA66D00F2A0D6 /* MiniImagePickerUtil.m */; };
+		C198B51115DEA6A400F2A0D6 /* MiniLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4D515DEA66D00F2A0D6 /* MiniLocationManager.m */; };
+		C198B51215DEA6A400F2A0D6 /* MiniSingletonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4D715DEA66D00F2A0D6 /* MiniSingletonFactory.m */; };
+		C198B51315DEA6A400F2A0D6 /* MiniSysUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4D915DEA66D00F2A0D6 /* MiniSysUtil.m */; };
+		C198B51415DEA6A400F2A0D6 /* MiniUIAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4DB15DEA66D00F2A0D6 /* MiniUIAccelerometer.m */; };
+		C198B51515DEA6A400F2A0D6 /* MiniUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4DD15DEA66D00F2A0D6 /* MiniUIImage.m */; };
+		C198B51615DEA6A400F2A0D6 /* MiniUIEmojiLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4E215DEA66D00F2A0D6 /* MiniUIEmojiLabel.m */; };
+		C198B51715DEA6A400F2A0D6 /* MiniUIEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4E415DEA66D00F2A0D6 /* MiniUIEmojiView.m */; };
+		C198B51815DEA6A400F2A0D6 /* MiniPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4E615DEA66D00F2A0D6 /* MiniPageControl.m */; };
+		C198B51915DEA6A400F2A0D6 /* MiniToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4E815DEA66D00F2A0D6 /* MiniToolBar.m */; };
+		C198B51A15DEA6A400F2A0D6 /* MiniUIActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4EA15DEA66D00F2A0D6 /* MiniUIActionSheet.m */; };
+		C198B51B15DEA6A400F2A0D6 /* MiniUIActionSheetPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4EC15DEA66D00F2A0D6 /* MiniUIActionSheetPickerView.m */; };
+		C198B51C15DEA6A400F2A0D6 /* MiniUIAlertTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4EE15DEA66D00F2A0D6 /* MiniUIAlertTableView.m */; };
+		C198B51D15DEA6A400F2A0D6 /* MiniUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4F015DEA66D00F2A0D6 /* MiniUIAlertView.m */; };
+		C198B51E15DEA6A400F2A0D6 /* MiniUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4F215DEA66D00F2A0D6 /* MiniUIButton.m */; };
+		C198B51F15DEA6A400F2A0D6 /* MiniUIGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4F415DEA66D00F2A0D6 /* MiniUIGalleryView.m */; };
+		C198B52015DEA6A400F2A0D6 /* MiniUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4F615DEA66D00F2A0D6 /* MiniUIImageView.m */; };
+		C198B52115DEA6A400F2A0D6 /* MiniUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4F815DEA66D00F2A0D6 /* MiniUITextField.m */; };
+		C198B52215DEA6A400F2A0D6 /* MiniUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4FA15DEA66D00F2A0D6 /* MiniUITextView.m */; };
+		C198B52315DEA6A400F2A0D6 /* MiniUIToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4FC15DEA66D00F2A0D6 /* MiniUIToolBar.m */; };
+		C198B52415DEA6A400F2A0D6 /* MiniUITouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4FE15DEA66D00F2A0D6 /* MiniUITouchView.m */; };
+		C198B52515DEA6A400F2A0D6 /* MiniLiteFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B4A115DEA60A00F2A0D6 /* MiniLiteFramework.m */; };
+		C198B52715DEA6D400F2A0D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C198B52615DEA6D400F2A0D6 /* UIKit.framework */; };
+		C198B56F15DEB29E00F2A0D6 /* MiniEmojiCodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C198B56E15DEB29E00F2A0D6 /* MiniEmojiCodeUtil.m */; };
+		C19991CE1792E4A800BAD44C /* NSUserDefaults+Mini.m in Sources */ = {isa = PBXBuildFile; fileRef = C19991CD1792E4A800BAD44C /* NSUserDefaults+Mini.m */; };
+		C19992081792E68300BAD44C /* MiniObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C19991CB1792E48E00BAD44C /* MiniObject.m */; };
+		C19DE52B17912B360084047A /* UILabel+Mini.m in Sources */ = {isa = PBXBuildFile; fileRef = C19DE52A17912B310084047A /* UILabel+Mini.m */; };
+		C1F397731791B437002E2C7E /* MiniUINaviTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C19DE5271791274C0084047A /* MiniUINaviTitleView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C198B49515DEA60A00F2A0D6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				C198B4A015DEA60A00F2A0D6 /* MiniLiteFramework.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C12E4973180A335C00482A10 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C12E4979180A436400482A10 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		C12E497A180A436400482A10 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		C1369B73170F0B150020DF98 /* MiniUISegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUISegmentView.h; sourceTree = "<group>"; };
+		C1369B74170F0B150020DF98 /* MiniUISegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUISegmentView.m; sourceTree = "<group>"; };
+		C161380716CAC1BC0082FDA9 /* UIDevice+Ext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Ext.h"; sourceTree = "<group>"; };
+		C161380816CAC1BC0082FDA9 /* UIDevice+Ext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Ext.m"; sourceTree = "<group>"; };
+		C17385A51704A28200AFE72A /* MiniUIAlertControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIAlertControl.h; sourceTree = "<group>"; };
+		C17385A61704A28200AFE72A /* MiniUIAlertControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIAlertControl.m; sourceTree = "<group>"; };
+		C198B49715DEA60A00F2A0D6 /* libMiniLiteFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMiniLiteFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C198B49A15DEA60A00F2A0D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C198B49E15DEA60A00F2A0D6 /* MiniLiteFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiniLiteFramework-Prefix.pch"; sourceTree = "<group>"; };
+		C198B49F15DEA60A00F2A0D6 /* MiniLiteFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniLiteFramework.h; sourceTree = "<group>"; };
+		C198B4A115DEA60A00F2A0D6 /* MiniLiteFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniLiteFramework.m; sourceTree = "<group>"; };
+		C198B4AA15DEA66D00F2A0D6 /* NSData+Base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		C198B4AB15DEA66D00F2A0D6 /* NSData+Base64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		C198B4AC15DEA66D00F2A0D6 /* NSDate+Mini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Mini.h"; sourceTree = "<group>"; };
+		C198B4AD15DEA66D00F2A0D6 /* NSDate+Mini.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Mini.m"; sourceTree = "<group>"; };
+		C198B4AE15DEA66D00F2A0D6 /* NSIndexPath+Mini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+Mini.h"; sourceTree = "<group>"; };
+		C198B4AF15DEA66D00F2A0D6 /* NSIndexPath+Mini.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+Mini.m"; sourceTree = "<group>"; };
+		C198B4B015DEA66D00F2A0D6 /* NSString+Mini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Mini.h"; sourceTree = "<group>"; };
+		C198B4B115DEA66D00F2A0D6 /* NSString+Mini.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Mini.m"; sourceTree = "<group>"; };
+		C198B4B215DEA66D00F2A0D6 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		C198B4B315DEA66D00F2A0D6 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		C198B4B415DEA66D00F2A0D6 /* UIColor+Mini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Mini.h"; sourceTree = "<group>"; };
+		C198B4B515DEA66D00F2A0D6 /* UIColor+Mini.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Mini.m"; sourceTree = "<group>"; };
+		C198B4B615DEA66D00F2A0D6 /* UIImage+Mini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Mini.h"; sourceTree = "<group>"; };
+		C198B4B715DEA66D00F2A0D6 /* UIImage+Mini.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Mini.m"; sourceTree = "<group>"; };
+		C198B4B815DEA66D00F2A0D6 /* UINavigationBar+Mini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Mini.h"; sourceTree = "<group>"; };
+		C198B4B915DEA66D00F2A0D6 /* UINavigationBar+Mini.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Mini.m"; sourceTree = "<group>"; };
+		C198B4BA15DEA66D00F2A0D6 /* UIView+Mini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Mini.h"; sourceTree = "<group>"; };
+		C198B4BB15DEA66D00F2A0D6 /* UIView+Mini.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Mini.m"; sourceTree = "<group>"; };
+		C198B4BD15DEA66D00F2A0D6 /* MiniUINavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUINavigationController.h; sourceTree = "<group>"; };
+		C198B4BE15DEA66D00F2A0D6 /* MiniUINavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUINavigationController.m; sourceTree = "<group>"; };
+		C198B4BF15DEA66D00F2A0D6 /* MiniViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniViewController.h; sourceTree = "<group>"; };
+		C198B4C015DEA66D00F2A0D6 /* MiniViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniViewController.m; sourceTree = "<group>"; };
+		C198B4C215DEA66D00F2A0D6 /* MiniUIBadgeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIBadgeView.h; sourceTree = "<group>"; };
+		C198B4C315DEA66D00F2A0D6 /* MiniUIBadgeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIBadgeView.m; sourceTree = "<group>"; };
+		C198B4C415DEA66D00F2A0D6 /* MiniUITabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUITabBar.h; sourceTree = "<group>"; };
+		C198B4C515DEA66D00F2A0D6 /* MiniUITabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUITabBar.m; sourceTree = "<group>"; };
+		C198B4C615DEA66D00F2A0D6 /* MiniUITabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUITabBarController.h; sourceTree = "<group>"; };
+		C198B4C715DEA66D00F2A0D6 /* MiniUITabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUITabBarController.m; sourceTree = "<group>"; };
+		C198B4C815DEA66D00F2A0D6 /* MiniUITabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUITabBarItem.h; sourceTree = "<group>"; };
+		C198B4C915DEA66D00F2A0D6 /* MiniUITabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUITabBarItem.m; sourceTree = "<group>"; };
+		C198B4CB15DEA66D00F2A0D6 /* MiniDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniDefine.h; sourceTree = "<group>"; };
+		C198B4CE15DEA66D00F2A0D6 /* MiniFileUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniFileUtil.h; sourceTree = "<group>"; };
+		C198B4CF15DEA66D00F2A0D6 /* MiniFileUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniFileUtil.m; sourceTree = "<group>"; };
+		C198B4D015DEA66D00F2A0D6 /* MiniImageCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniImageCache.h; sourceTree = "<group>"; };
+		C198B4D115DEA66D00F2A0D6 /* MiniImageCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniImageCache.m; sourceTree = "<group>"; };
+		C198B4D215DEA66D00F2A0D6 /* MiniImagePickerUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniImagePickerUtil.h; sourceTree = "<group>"; };
+		C198B4D315DEA66D00F2A0D6 /* MiniImagePickerUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniImagePickerUtil.m; sourceTree = "<group>"; };
+		C198B4D415DEA66D00F2A0D6 /* MiniLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniLocationManager.h; sourceTree = "<group>"; };
+		C198B4D515DEA66D00F2A0D6 /* MiniLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniLocationManager.m; sourceTree = "<group>"; };
+		C198B4D615DEA66D00F2A0D6 /* MiniSingletonFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniSingletonFactory.h; sourceTree = "<group>"; };
+		C198B4D715DEA66D00F2A0D6 /* MiniSingletonFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniSingletonFactory.m; sourceTree = "<group>"; };
+		C198B4D815DEA66D00F2A0D6 /* MiniSysUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniSysUtil.h; sourceTree = "<group>"; };
+		C198B4D915DEA66D00F2A0D6 /* MiniSysUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniSysUtil.m; sourceTree = "<group>"; };
+		C198B4DA15DEA66D00F2A0D6 /* MiniUIAccelerometer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIAccelerometer.h; sourceTree = "<group>"; };
+		C198B4DB15DEA66D00F2A0D6 /* MiniUIAccelerometer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIAccelerometer.m; sourceTree = "<group>"; };
+		C198B4DC15DEA66D00F2A0D6 /* MiniUIImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIImage.h; sourceTree = "<group>"; };
+		C198B4DD15DEA66D00F2A0D6 /* MiniUIImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIImage.m; sourceTree = "<group>"; };
+		C198B4DE15DEA66D00F2A0D6 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		C198B4E115DEA66D00F2A0D6 /* MiniUIEmojiLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIEmojiLabel.h; sourceTree = "<group>"; };
+		C198B4E215DEA66D00F2A0D6 /* MiniUIEmojiLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIEmojiLabel.m; sourceTree = "<group>"; };
+		C198B4E315DEA66D00F2A0D6 /* MiniUIEmojiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIEmojiView.h; sourceTree = "<group>"; };
+		C198B4E415DEA66D00F2A0D6 /* MiniUIEmojiView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIEmojiView.m; sourceTree = "<group>"; };
+		C198B4E515DEA66D00F2A0D6 /* MiniPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniPageControl.h; sourceTree = "<group>"; };
+		C198B4E615DEA66D00F2A0D6 /* MiniPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniPageControl.m; sourceTree = "<group>"; };
+		C198B4E715DEA66D00F2A0D6 /* MiniToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniToolBar.h; sourceTree = "<group>"; };
+		C198B4E815DEA66D00F2A0D6 /* MiniToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniToolBar.m; sourceTree = "<group>"; };
+		C198B4E915DEA66D00F2A0D6 /* MiniUIActionSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIActionSheet.h; sourceTree = "<group>"; };
+		C198B4EA15DEA66D00F2A0D6 /* MiniUIActionSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIActionSheet.m; sourceTree = "<group>"; };
+		C198B4EB15DEA66D00F2A0D6 /* MiniUIActionSheetPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIActionSheetPickerView.h; sourceTree = "<group>"; };
+		C198B4EC15DEA66D00F2A0D6 /* MiniUIActionSheetPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIActionSheetPickerView.m; sourceTree = "<group>"; };
+		C198B4ED15DEA66D00F2A0D6 /* MiniUIAlertTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIAlertTableView.h; sourceTree = "<group>"; };
+		C198B4EE15DEA66D00F2A0D6 /* MiniUIAlertTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIAlertTableView.m; sourceTree = "<group>"; };
+		C198B4EF15DEA66D00F2A0D6 /* MiniUIAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIAlertView.h; sourceTree = "<group>"; };
+		C198B4F015DEA66D00F2A0D6 /* MiniUIAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIAlertView.m; sourceTree = "<group>"; };
+		C198B4F115DEA66D00F2A0D6 /* MiniUIButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIButton.h; sourceTree = "<group>"; };
+		C198B4F215DEA66D00F2A0D6 /* MiniUIButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIButton.m; sourceTree = "<group>"; };
+		C198B4F315DEA66D00F2A0D6 /* MiniUIGalleryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIGalleryView.h; sourceTree = "<group>"; };
+		C198B4F415DEA66D00F2A0D6 /* MiniUIGalleryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIGalleryView.m; sourceTree = "<group>"; };
+		C198B4F515DEA66D00F2A0D6 /* MiniUIImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIImageView.h; sourceTree = "<group>"; };
+		C198B4F615DEA66D00F2A0D6 /* MiniUIImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIImageView.m; sourceTree = "<group>"; };
+		C198B4F715DEA66D00F2A0D6 /* MiniUITextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUITextField.h; sourceTree = "<group>"; };
+		C198B4F815DEA66D00F2A0D6 /* MiniUITextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUITextField.m; sourceTree = "<group>"; };
+		C198B4F915DEA66D00F2A0D6 /* MiniUITextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUITextView.h; sourceTree = "<group>"; };
+		C198B4FA15DEA66D00F2A0D6 /* MiniUITextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUITextView.m; sourceTree = "<group>"; };
+		C198B4FB15DEA66D00F2A0D6 /* MiniUIToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUIToolBar.h; sourceTree = "<group>"; };
+		C198B4FC15DEA66D00F2A0D6 /* MiniUIToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUIToolBar.m; sourceTree = "<group>"; };
+		C198B4FD15DEA66D00F2A0D6 /* MiniUITouchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUITouchView.h; sourceTree = "<group>"; };
+		C198B4FE15DEA66D00F2A0D6 /* MiniUITouchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUITouchView.m; sourceTree = "<group>"; };
+		C198B52615DEA6D400F2A0D6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C198B53815DEAA1F00F2A0D6 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C198B53A15DEAA1F00F2A0D6 /* SVProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		C198B53B15DEAE9500F2A0D6 /* MiniEmojiCodeUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniEmojiCodeUtil.h; sourceTree = "<group>"; };
+		C198B56E15DEB29E00F2A0D6 /* MiniEmojiCodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniEmojiCodeUtil.m; sourceTree = "<group>"; };
+		C19991CA1792E48E00BAD44C /* MiniObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniObject.h; sourceTree = "<group>"; };
+		C19991CB1792E48E00BAD44C /* MiniObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniObject.m; sourceTree = "<group>"; };
+		C19991CC1792E4A800BAD44C /* NSUserDefaults+Mini.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Mini.h"; sourceTree = "<group>"; };
+		C19991CD1792E4A800BAD44C /* NSUserDefaults+Mini.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Mini.m"; sourceTree = "<group>"; };
+		C19992091792E73E00BAD44C /* MiniLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniLog.h; sourceTree = "<group>"; };
+		C199920A1792E77300BAD44C /* MiniLoggerClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniLoggerClient.h; sourceTree = "<group>"; };
+		C19DE5261791274C0084047A /* MiniUINaviTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniUINaviTitleView.h; sourceTree = "<group>"; };
+		C19DE5271791274C0084047A /* MiniUINaviTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUINaviTitleView.m; sourceTree = "<group>"; };
+		C19DE52917912B310084047A /* UILabel+Mini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Mini.h"; sourceTree = "<group>"; };
+		C19DE52A17912B310084047A /* UILabel+Mini.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Mini.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C198B49415DEA60A00F2A0D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C12E4974180A335C00482A10 /* Security.framework in Frameworks */,
+				C198B52715DEA6D400F2A0D6 /* UIKit.framework in Frameworks */,
+				C198B49B15DEA60A00F2A0D6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C198B48C15DEA60A00F2A0D6 = {
+			isa = PBXGroup;
+			children = (
+				C198B49C15DEA60A00F2A0D6 /* MiniLiteFramework */,
+				C198B49915DEA60A00F2A0D6 /* Frameworks */,
+				C198B49815DEA60A00F2A0D6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C198B49815DEA60A00F2A0D6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C198B49715DEA60A00F2A0D6 /* libMiniLiteFramework.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C198B49915DEA60A00F2A0D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C12E4973180A335C00482A10 /* Security.framework */,
+				C198B52615DEA6D400F2A0D6 /* UIKit.framework */,
+				C198B49A15DEA60A00F2A0D6 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C198B49C15DEA60A00F2A0D6 /* MiniLiteFramework */ = {
+			isa = PBXGroup;
+			children = (
+				C198B52815DEA97B00F2A0D6 /* Headers */,
+				C198B4A815DEA66D00F2A0D6 /* Classes */,
+				C198B49F15DEA60A00F2A0D6 /* MiniLiteFramework.h */,
+				C198B4A115DEA60A00F2A0D6 /* MiniLiteFramework.m */,
+				C198B49D15DEA60A00F2A0D6 /* Supporting Files */,
+			);
+			path = MiniLiteFramework;
+			sourceTree = "<group>";
+		};
+		C198B49D15DEA60A00F2A0D6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C198B49E15DEA60A00F2A0D6 /* MiniLiteFramework-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C198B4A815DEA66D00F2A0D6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C198B4A915DEA66D00F2A0D6 /* Categroy */,
+				C198B4BC15DEA66D00F2A0D6 /* Controllers */,
+				C198B4CA15DEA66D00F2A0D6 /* Define */,
+				C198B4CD15DEA66D00F2A0D6 /* Util */,
+				C198B4DF15DEA66D00F2A0D6 /* Views */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C198B4A915DEA66D00F2A0D6 /* Categroy */ = {
+			isa = PBXGroup;
+			children = (
+				C19DE52917912B310084047A /* UILabel+Mini.h */,
+				C19DE52A17912B310084047A /* UILabel+Mini.m */,
+				C161380716CAC1BC0082FDA9 /* UIDevice+Ext.h */,
+				C161380816CAC1BC0082FDA9 /* UIDevice+Ext.m */,
+				C198B4AA15DEA66D00F2A0D6 /* NSData+Base64.h */,
+				C198B4AB15DEA66D00F2A0D6 /* NSData+Base64.m */,
+				C198B4AC15DEA66D00F2A0D6 /* NSDate+Mini.h */,
+				C198B4AD15DEA66D00F2A0D6 /* NSDate+Mini.m */,
+				C198B4AE15DEA66D00F2A0D6 /* NSIndexPath+Mini.h */,
+				C198B4AF15DEA66D00F2A0D6 /* NSIndexPath+Mini.m */,
+				C198B4B015DEA66D00F2A0D6 /* NSString+Mini.h */,
+				C198B4B115DEA66D00F2A0D6 /* NSString+Mini.m */,
+				C198B4B215DEA66D00F2A0D6 /* NSString+URLEncoding.h */,
+				C198B4B315DEA66D00F2A0D6 /* NSString+URLEncoding.m */,
+				C198B4B415DEA66D00F2A0D6 /* UIColor+Mini.h */,
+				C198B4B515DEA66D00F2A0D6 /* UIColor+Mini.m */,
+				C198B4B615DEA66D00F2A0D6 /* UIImage+Mini.h */,
+				C198B4B715DEA66D00F2A0D6 /* UIImage+Mini.m */,
+				C198B4B815DEA66D00F2A0D6 /* UINavigationBar+Mini.h */,
+				C198B4B915DEA66D00F2A0D6 /* UINavigationBar+Mini.m */,
+				C198B4BA15DEA66D00F2A0D6 /* UIView+Mini.h */,
+				C198B4BB15DEA66D00F2A0D6 /* UIView+Mini.m */,
+				C19991CC1792E4A800BAD44C /* NSUserDefaults+Mini.h */,
+				C19991CD1792E4A800BAD44C /* NSUserDefaults+Mini.m */,
+			);
+			path = Categroy;
+			sourceTree = "<group>";
+		};
+		C198B4BC15DEA66D00F2A0D6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C198B4BD15DEA66D00F2A0D6 /* MiniUINavigationController.h */,
+				C198B4BE15DEA66D00F2A0D6 /* MiniUINavigationController.m */,
+				C198B4BF15DEA66D00F2A0D6 /* MiniViewController.h */,
+				C198B4C015DEA66D00F2A0D6 /* MiniViewController.m */,
+				C198B4C115DEA66D00F2A0D6 /* TabBarViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C198B4C115DEA66D00F2A0D6 /* TabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C198B4C215DEA66D00F2A0D6 /* MiniUIBadgeView.h */,
+				C198B4C315DEA66D00F2A0D6 /* MiniUIBadgeView.m */,
+				C198B4C415DEA66D00F2A0D6 /* MiniUITabBar.h */,
+				C198B4C515DEA66D00F2A0D6 /* MiniUITabBar.m */,
+				C198B4C615DEA66D00F2A0D6 /* MiniUITabBarController.h */,
+				C198B4C715DEA66D00F2A0D6 /* MiniUITabBarController.m */,
+				C198B4C815DEA66D00F2A0D6 /* MiniUITabBarItem.h */,
+				C198B4C915DEA66D00F2A0D6 /* MiniUITabBarItem.m */,
+			);
+			path = TabBarViewController;
+			sourceTree = "<group>";
+		};
+		C198B4CA15DEA66D00F2A0D6 /* Define */ = {
+			isa = PBXGroup;
+			children = (
+				C198B4CB15DEA66D00F2A0D6 /* MiniDefine.h */,
+			);
+			path = Define;
+			sourceTree = "<group>";
+		};
+		C198B4CD15DEA66D00F2A0D6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C12E4979180A436400482A10 /* KeychainItemWrapper.h */,
+				C12E497A180A436400482A10 /* KeychainItemWrapper.m */,
+				C19991CA1792E48E00BAD44C /* MiniObject.h */,
+				C19991CB1792E48E00BAD44C /* MiniObject.m */,
+				C198B53B15DEAE9500F2A0D6 /* MiniEmojiCodeUtil.h */,
+				C198B56E15DEB29E00F2A0D6 /* MiniEmojiCodeUtil.m */,
+				C198B4CE15DEA66D00F2A0D6 /* MiniFileUtil.h */,
+				C198B4CF15DEA66D00F2A0D6 /* MiniFileUtil.m */,
+				C198B4D015DEA66D00F2A0D6 /* MiniImageCache.h */,
+				C198B4D115DEA66D00F2A0D6 /* MiniImageCache.m */,
+				C198B4D215DEA66D00F2A0D6 /* MiniImagePickerUtil.h */,
+				C198B4D315DEA66D00F2A0D6 /* MiniImagePickerUtil.m */,
+				C198B4D415DEA66D00F2A0D6 /* MiniLocationManager.h */,
+				C198B4D515DEA66D00F2A0D6 /* MiniLocationManager.m */,
+				C198B4D615DEA66D00F2A0D6 /* MiniSingletonFactory.h */,
+				C198B4D715DEA66D00F2A0D6 /* MiniSingletonFactory.m */,
+				C198B4D815DEA66D00F2A0D6 /* MiniSysUtil.h */,
+				C198B4D915DEA66D00F2A0D6 /* MiniSysUtil.m */,
+				C198B4DA15DEA66D00F2A0D6 /* MiniUIAccelerometer.h */,
+				C198B4DB15DEA66D00F2A0D6 /* MiniUIAccelerometer.m */,
+				C198B4DC15DEA66D00F2A0D6 /* MiniUIImage.h */,
+				C198B4DD15DEA66D00F2A0D6 /* MiniUIImage.m */,
+				C198B4DE15DEA66D00F2A0D6 /* SynthesizeSingleton.h */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		C198B4DF15DEA66D00F2A0D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C19DE5261791274C0084047A /* MiniUINaviTitleView.h */,
+				C19DE5271791274C0084047A /* MiniUINaviTitleView.m */,
+				C1369B73170F0B150020DF98 /* MiniUISegmentView.h */,
+				C1369B74170F0B150020DF98 /* MiniUISegmentView.m */,
+				C198B4E015DEA66D00F2A0D6 /* em */,
+				C17385A51704A28200AFE72A /* MiniUIAlertControl.h */,
+				C17385A61704A28200AFE72A /* MiniUIAlertControl.m */,
+				C198B4E515DEA66D00F2A0D6 /* MiniPageControl.h */,
+				C198B4E615DEA66D00F2A0D6 /* MiniPageControl.m */,
+				C198B4E715DEA66D00F2A0D6 /* MiniToolBar.h */,
+				C198B4E815DEA66D00F2A0D6 /* MiniToolBar.m */,
+				C198B4E915DEA66D00F2A0D6 /* MiniUIActionSheet.h */,
+				C198B4EA15DEA66D00F2A0D6 /* MiniUIActionSheet.m */,
+				C198B4EB15DEA66D00F2A0D6 /* MiniUIActionSheetPickerView.h */,
+				C198B4EC15DEA66D00F2A0D6 /* MiniUIActionSheetPickerView.m */,
+				C198B4ED15DEA66D00F2A0D6 /* MiniUIAlertTableView.h */,
+				C198B4EE15DEA66D00F2A0D6 /* MiniUIAlertTableView.m */,
+				C198B4EF15DEA66D00F2A0D6 /* MiniUIAlertView.h */,
+				C198B4F015DEA66D00F2A0D6 /* MiniUIAlertView.m */,
+				C198B4F115DEA66D00F2A0D6 /* MiniUIButton.h */,
+				C198B4F215DEA66D00F2A0D6 /* MiniUIButton.m */,
+				C198B4F315DEA66D00F2A0D6 /* MiniUIGalleryView.h */,
+				C198B4F415DEA66D00F2A0D6 /* MiniUIGalleryView.m */,
+				C198B4F515DEA66D00F2A0D6 /* MiniUIImageView.h */,
+				C198B4F615DEA66D00F2A0D6 /* MiniUIImageView.m */,
+				C198B4F715DEA66D00F2A0D6 /* MiniUITextField.h */,
+				C198B4F815DEA66D00F2A0D6 /* MiniUITextField.m */,
+				C198B4F915DEA66D00F2A0D6 /* MiniUITextView.h */,
+				C198B4FA15DEA66D00F2A0D6 /* MiniUITextView.m */,
+				C198B4FB15DEA66D00F2A0D6 /* MiniUIToolBar.h */,
+				C198B4FC15DEA66D00F2A0D6 /* MiniUIToolBar.m */,
+				C198B4FD15DEA66D00F2A0D6 /* MiniUITouchView.h */,
+				C198B4FE15DEA66D00F2A0D6 /* MiniUITouchView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C198B4E015DEA66D00F2A0D6 /* em */ = {
+			isa = PBXGroup;
+			children = (
+				C198B4E115DEA66D00F2A0D6 /* MiniUIEmojiLabel.h */,
+				C198B4E215DEA66D00F2A0D6 /* MiniUIEmojiLabel.m */,
+				C198B4E315DEA66D00F2A0D6 /* MiniUIEmojiView.h */,
+				C198B4E415DEA66D00F2A0D6 /* MiniUIEmojiView.m */,
+			);
+			path = em;
+			sourceTree = "<group>";
+		};
+		C198B52815DEA97B00F2A0D6 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				C198B53815DEAA1F00F2A0D6 /* MBProgressHUD.h */,
+				C198B53A15DEAA1F00F2A0D6 /* SVProgressHUD.h */,
+				C19992091792E73E00BAD44C /* MiniLog.h */,
+				C199920A1792E77300BAD44C /* MiniLoggerClient.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C198B49615DEA60A00F2A0D6 /* MiniLiteFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C198B4A515DEA60A00F2A0D6 /* Build configuration list for PBXNativeTarget "MiniLiteFramework" */;
+			buildPhases = (
+				C198B49315DEA60A00F2A0D6 /* Sources */,
+				C198B49415DEA60A00F2A0D6 /* Frameworks */,
+				C198B49515DEA60A00F2A0D6 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MiniLiteFramework;
+			productName = MiniLiteFramework;
+			productReference = C198B49715DEA60A00F2A0D6 /* libMiniLiteFramework.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C198B48E15DEA60A00F2A0D6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = Wuquancheng;
+			};
+			buildConfigurationList = C198B49115DEA60A00F2A0D6 /* Build configuration list for PBXProject "MiniLiteFramework" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C198B48C15DEA60A00F2A0D6;
+			productRefGroup = C198B49815DEA60A00F2A0D6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C198B49615DEA60A00F2A0D6 /* MiniLiteFramework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C198B49315DEA60A00F2A0D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C198B4FF15DEA6A400F2A0D6 /* NSData+Base64.m in Sources */,
+				C198B50015DEA6A400F2A0D6 /* NSDate+Mini.m in Sources */,
+				C198B50115DEA6A400F2A0D6 /* NSIndexPath+Mini.m in Sources */,
+				C198B50215DEA6A400F2A0D6 /* NSString+Mini.m in Sources */,
+				C198B50315DEA6A400F2A0D6 /* NSString+URLEncoding.m in Sources */,
+				C198B50415DEA6A400F2A0D6 /* UIColor+Mini.m in Sources */,
+				C198B50515DEA6A400F2A0D6 /* UIImage+Mini.m in Sources */,
+				C198B50615DEA6A400F2A0D6 /* UINavigationBar+Mini.m in Sources */,
+				C198B50715DEA6A400F2A0D6 /* UIView+Mini.m in Sources */,
+				C198B50815DEA6A400F2A0D6 /* MiniUINavigationController.m in Sources */,
+				C198B50915DEA6A400F2A0D6 /* MiniViewController.m in Sources */,
+				C198B50A15DEA6A400F2A0D6 /* MiniUIBadgeView.m in Sources */,
+				C198B50B15DEA6A400F2A0D6 /* MiniUITabBar.m in Sources */,
+				C198B50C15DEA6A400F2A0D6 /* MiniUITabBarController.m in Sources */,
+				C198B50D15DEA6A400F2A0D6 /* MiniUITabBarItem.m in Sources */,
+				C198B50E15DEA6A400F2A0D6 /* MiniFileUtil.m in Sources */,
+				C198B50F15DEA6A400F2A0D6 /* MiniImageCache.m in Sources */,
+				C198B51015DEA6A400F2A0D6 /* MiniImagePickerUtil.m in Sources */,
+				C198B51115DEA6A400F2A0D6 /* MiniLocationManager.m in Sources */,
+				C198B51215DEA6A400F2A0D6 /* MiniSingletonFactory.m in Sources */,
+				C198B51315DEA6A400F2A0D6 /* MiniSysUtil.m in Sources */,
+				C198B51415DEA6A400F2A0D6 /* MiniUIAccelerometer.m in Sources */,
+				C198B51515DEA6A400F2A0D6 /* MiniUIImage.m in Sources */,
+				C198B51615DEA6A400F2A0D6 /* MiniUIEmojiLabel.m in Sources */,
+				C198B51715DEA6A400F2A0D6 /* MiniUIEmojiView.m in Sources */,
+				C198B51815DEA6A400F2A0D6 /* MiniPageControl.m in Sources */,
+				C12E497B180A436400482A10 /* KeychainItemWrapper.m in Sources */,
+				C198B51915DEA6A400F2A0D6 /* MiniToolBar.m in Sources */,
+				C198B51A15DEA6A400F2A0D6 /* MiniUIActionSheet.m in Sources */,
+				C198B51B15DEA6A400F2A0D6 /* MiniUIActionSheetPickerView.m in Sources */,
+				C198B51C15DEA6A400F2A0D6 /* MiniUIAlertTableView.m in Sources */,
+				C198B51D15DEA6A400F2A0D6 /* MiniUIAlertView.m in Sources */,
+				C198B51E15DEA6A400F2A0D6 /* MiniUIButton.m in Sources */,
+				C198B51F15DEA6A400F2A0D6 /* MiniUIGalleryView.m in Sources */,
+				C198B52015DEA6A400F2A0D6 /* MiniUIImageView.m in Sources */,
+				C198B52115DEA6A400F2A0D6 /* MiniUITextField.m in Sources */,
+				C198B52215DEA6A400F2A0D6 /* MiniUITextView.m in Sources */,
+				C198B52315DEA6A400F2A0D6 /* MiniUIToolBar.m in Sources */,
+				C198B52415DEA6A400F2A0D6 /* MiniUITouchView.m in Sources */,
+				C198B52515DEA6A400F2A0D6 /* MiniLiteFramework.m in Sources */,
+				C198B56F15DEB29E00F2A0D6 /* MiniEmojiCodeUtil.m in Sources */,
+				C161380A16CAC1D20082FDA9 /* UIDevice+Ext.m in Sources */,
+				C17385A71704A29000AFE72A /* MiniUIAlertControl.m in Sources */,
+				C1369B75170F0B1C0020DF98 /* MiniUISegmentView.m in Sources */,
+				C19DE52B17912B360084047A /* UILabel+Mini.m in Sources */,
+				C1F397731791B437002E2C7E /* MiniUINaviTitleView.m in Sources */,
+				C19991CE1792E4A800BAD44C /* NSUserDefaults+Mini.m in Sources */,
+				C19992081792E68300BAD44C /* MiniObject.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C198B4A315DEA60A00F2A0D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos6.0;
+			};
+			name = Debug;
+		};
+		C198B4A415DEA60A00F2A0D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos6.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C198B4A615DEA60A00F2A0D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/MiniLiteFramework.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MiniLiteFramework/MiniLiteFramework-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C198B4A715DEA60A00F2A0D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/MiniLiteFramework.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MiniLiteFramework/MiniLiteFramework-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)_release";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C198B49115DEA60A00F2A0D6 /* Build configuration list for PBXProject "MiniLiteFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C198B4A315DEA60A00F2A0D6 /* Debug */,
+				C198B4A415DEA60A00F2A0D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C198B4A515DEA60A00F2A0D6 /* Build configuration list for PBXNativeTarget "MiniLiteFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C198B4A615DEA60A00F2A0D6 /* Debug */,
+				C198B4A715DEA60A00F2A0D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C198B48E15DEA60A00F2A0D6 /* Project object */;
+}

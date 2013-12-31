@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files of the 'Mini3Rd' target in the 'Mini3Rd' project
+//
+
+#ifdef __OBJC__
+#define KGap 10
+    #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "UIView+Mini.h"
+#import "MiniViewController.h"
+#import "MiniLog.h"
+#import "UIImage+Mini.h"
+#endif

@@ -1,0 +1,20 @@
+//
+// Prefix header for all source files of the 'MiniLiteFramework' target in the 'MiniLiteFramework' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "UINavigationBar+Mini.h"
+#import "MiniUINavigationController.h"
+#import "UIView+Mini.h"
+#import "MiniUIButton.h"
+#import "UIImage+Mini.h"
+#import "MiniUIImage.h"
+#import "MiniDefine.h"
+#import "MiniImageCache.h"
+#import "NSIndexPath+Mini.h"
+#import "SynthesizeSingleton.h"
+#import "MiniSingletonFactory.h"
+#import "MBProgressHUD.h"
+#endif
