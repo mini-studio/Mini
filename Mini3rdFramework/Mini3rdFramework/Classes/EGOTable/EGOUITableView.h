@@ -3,7 +3,7 @@
 //  RefreshTable
 //
 //  Created by Wuquancheng on 12-9-7.
-//  Copyright (c) 2012年 youlu. All rights reserved.
+//  Copyright (c) 2012年 Mini. All rights reserved.
 //
 
 //#define __ARC__

@@ -3,7 +3,7 @@
 //  HaloCoreFramework
 //
 //  Created by wu quancheng on 12-6-26.
-//  Copyright (c) 2012年 YouLu. All rights reserved.
+//  Copyright (c) 2012年 Mini. All rights reserved.
 //
 
 #import "MiniLoggerClient.h"

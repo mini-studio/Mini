@@ -3,7 +3,7 @@
 //  SDWebImage
 //
 //  Created by Wuquancheng on 12-11-12.
-//  Copyright (c) 2012年 youlu. All rights reserved.
+//  Copyright (c) 2012年 Mini. All rights reserved.
 //
 
 #import "UIImage+WebCache.h"

@@ -3,7 +3,7 @@
 //  YConference
 //
 //  Created by William on 12-9-13.
-//  Copyright (c) 2012年 Youlu Ltd., Co. All rights reserved.
+//  Copyright (c) 2012年 Mini Ltd., Co. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
