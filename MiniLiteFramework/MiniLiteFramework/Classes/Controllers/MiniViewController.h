@@ -27,13 +27,13 @@
 
 - (void)showMessageInfo:(NSString *)info inView:(UIView *)inView delay:(NSInteger)delay;
 
-- (void)showWating:(NSString *)message;
+- (void)showWaiting:(NSString *)message;
 
-- (void)showWating:(NSString *)message inView:(UIView *)inView;
+- (void)showWaiting:(NSString *)message inView:(UIView *)inView;
 
-- (void)showWating:(NSString *)message enable:(BOOL)enable;
+- (void)showWaiting:(NSString *)message userInteractionEnabled:(BOOL)userInteractionEnabled;
 
-- (void)showWating:(NSString *)message inView:(UIView *)inView enable:(BOOL)enable;
+- (void)showWaiting:(NSString *)message inView:(UIView *)inView userInteractionEnabled:(BOOL)userInteractionEnabled;
 
 - (void)dismissWating;
 
@@ -60,10 +60,15 @@
 
 + (void)showImageInWindow:(UIImage *)image oriFrame:(CGRect)frame;
 
-- (void)selectedAsChild;
+
 @end
 
 @interface MiniViewController (http)
 - (void)requestStart:(NSDictionary *)properties;
 - (void)requestEnd:(NSDictionary *)properties;
+@end
+
+@interface MiniViewController (child)
+- (void)selectedAsChild;
+- (void)deselectedAsChild;
 @end

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C198B49615DEA60A00F2A0D6"
-               BuildableName = "libMiniLiteFramework_release.a"
+               BuildableName = "libMiniLiteFramework.a"
                BlueprintName = "MiniLiteFramework"
                ReferencedContainer = "container:MiniLiteFramework.xcodeproj">
             </BuildableReference>

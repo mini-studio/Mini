@@ -53,6 +53,14 @@
 		C169C45D16FF344500ED87D8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C169C41616FF33AC00ED87D8 /* MBProgressHUD.m */; };
 		C169C45E16FF344500ED87D8 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C169C41916FF33AC00ED87D8 /* SVProgressHUD.m */; };
 		C169C59F16FF514D00ED87D8 /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C169C3E516FF33AC00ED87D8 /* MWCaptionView.m */; };
+		C1AC15EC19036F7500F3582C /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AC15EB1903691300F3582C /* QRCodeGenerator.m */; };
+		C1AC15ED19036F8200F3582C /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = C1AC15DC1903691300F3582C /* bitstream.c */; };
+		C1AC15EE19036F8700F3582C /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = C1AC15DE1903691300F3582C /* mask.c */; };
+		C1AC15EF19036F8C00F3582C /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = C1AC15E01903691300F3582C /* qrencode.c */; };
+		C1AC15F019036F8F00F3582C /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = C1AC15E21903691300F3582C /* qrinput.c */; };
+		C1AC15F119036F9300F3582C /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = C1AC15E41903691300F3582C /* qrspec.c */; };
+		C1AC15F219036F9500F3582C /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = C1AC15E61903691300F3582C /* rscode.c */; };
+		C1AC15F319036F9800F3582C /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = C1AC15E81903691300F3582C /* split.c */; };
 		C1BA54F1178B8A370016B0AA /* ImageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BA54EC178B8A2F0016B0AA /* ImageViewCell.m */; };
 		C1BA54F3178B8A3E0016B0AA /* WaterFlowViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BA54F0178B8A2F0016B0AA /* WaterFlowViewCell.m */; };
 		C1F272BC177FF826004917C6 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F272A6177FF812004917C6 /* AFHTTPClient.m */; };
@@ -183,6 +191,22 @@
 		C169C41B16FF33AC00ED87D8 /* MiniViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniViewController.h; sourceTree = "<group>"; };
 		C169C41C16FF33AC00ED87D8 /* UIImage+Mini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Mini.h"; sourceTree = "<group>"; };
 		C169C41D16FF33AC00ED87D8 /* UIView+Mini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Mini.h"; sourceTree = "<group>"; };
+		C1AC15DC1903691300F3582C /* bitstream.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
+		C1AC15DD1903691300F3582C /* bitstream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
+		C1AC15DE1903691300F3582C /* mask.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = mask.c; sourceTree = "<group>"; };
+		C1AC15DF1903691300F3582C /* mask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mask.h; sourceTree = "<group>"; };
+		C1AC15E01903691300F3582C /* qrencode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = qrencode.c; sourceTree = "<group>"; };
+		C1AC15E11903691300F3582C /* qrencode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qrencode.h; sourceTree = "<group>"; };
+		C1AC15E21903691300F3582C /* qrinput.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = qrinput.c; sourceTree = "<group>"; };
+		C1AC15E31903691300F3582C /* qrinput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qrinput.h; sourceTree = "<group>"; };
+		C1AC15E41903691300F3582C /* qrspec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = qrspec.c; sourceTree = "<group>"; };
+		C1AC15E51903691300F3582C /* qrspec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qrspec.h; sourceTree = "<group>"; };
+		C1AC15E61903691300F3582C /* rscode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = rscode.c; sourceTree = "<group>"; };
+		C1AC15E71903691300F3582C /* rscode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
+		C1AC15E81903691300F3582C /* split.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
+		C1AC15E91903691300F3582C /* split.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		C1AC15EA1903691300F3582C /* QRCodeGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRCodeGenerator.h; sourceTree = "<group>"; };
+		C1AC15EB1903691300F3582C /* QRCodeGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
 		C1BA54EB178B8A2F0016B0AA /* ImageViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageViewCell.h; sourceTree = "<group>"; };
 		C1BA54EC178B8A2F0016B0AA /* ImageViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageViewCell.m; sourceTree = "<group>"; };
 		C1BA54ED178B8A2F0016B0AA /* WaterFlowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterFlowView.h; sourceTree = "<group>"; };
@@ -295,6 +319,7 @@
 		C169C39616FF33AC00ED87D8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C1AC15DA1903691300F3582C /* QRCode */,
 				C12E497D180B25EF00482A10 /* Socket */,
 				C1BA54EA178B8A2F0016B0AA /* WaterFlow */,
 				C1F272A4177FF812004917C6 /* AFNetworking */,
@@ -517,6 +542,37 @@
 			path = Mini3rdFramework/Headers;
 			sourceTree = SOURCE_ROOT;
 		};
+		C1AC15DA1903691300F3582C /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				C1AC15DB1903691300F3582C /* Libqrencode */,
+				C1AC15EA1903691300F3582C /* QRCodeGenerator.h */,
+				C1AC15EB1903691300F3582C /* QRCodeGenerator.m */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		C1AC15DB1903691300F3582C /* Libqrencode */ = {
+			isa = PBXGroup;
+			children = (
+				C1AC15DC1903691300F3582C /* bitstream.c */,
+				C1AC15DD1903691300F3582C /* bitstream.h */,
+				C1AC15DE1903691300F3582C /* mask.c */,
+				C1AC15DF1903691300F3582C /* mask.h */,
+				C1AC15E01903691300F3582C /* qrencode.c */,
+				C1AC15E11903691300F3582C /* qrencode.h */,
+				C1AC15E21903691300F3582C /* qrinput.c */,
+				C1AC15E31903691300F3582C /* qrinput.h */,
+				C1AC15E41903691300F3582C /* qrspec.c */,
+				C1AC15E51903691300F3582C /* qrspec.h */,
+				C1AC15E61903691300F3582C /* rscode.c */,
+				C1AC15E71903691300F3582C /* rscode.h */,
+				C1AC15E81903691300F3582C /* split.c */,
+				C1AC15E91903691300F3582C /* split.h */,
+			);
+			path = Libqrencode;
+			sourceTree = "<group>";
+		};
 		C1BA54EA178B8A2F0016B0AA /* WaterFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +671,7 @@
 				C169C42816FF33E300ED87D8 /* DCRoundSwitchOutlineLayer.m in Sources */,
 				C169C42916FF33E300ED87D8 /* DCRoundSwitchToggleLayer.m in Sources */,
 				C169C42D16FF341600ED87D8 /* DCRoundSwitch.m in Sources */,
+				C1AC15F319036F9800F3582C /* split.c in Sources */,
 				C169C43B16FF342D00ED87D8 /* EGOUITableView.m in Sources */,
 				C169C43C16FF342D00ED87D8 /* SVPullToRefresh.m in Sources */,
 				C169C43D16FF342D00ED87D8 /* UITableView+EGO.m in Sources */,
@@ -623,21 +680,26 @@
 				C169C44016FF342D00ED87D8 /* IASKAppSettingsViewController.m in Sources */,
 				C169C44116FF342D00ED87D8 /* IASKSpecifierValuesViewController.m in Sources */,
 				C169C44216FF342D00ED87D8 /* IASKSettingsData.m in Sources */,
+				C1AC15EF19036F8C00F3582C /* qrencode.c in Sources */,
 				C169C44316FF342D00ED87D8 /* IASKSettingsReader.m in Sources */,
 				C169C44416FF342D00ED87D8 /* IASKSettingsStore.m in Sources */,
 				C169C44516FF342D00ED87D8 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
 				C169C44616FF342D00ED87D8 /* IASKPSTitleValueSpecifierViewCell.m in Sources */,
 				C169C44716FF342D00ED87D8 /* IASKPSToggleSwitchSpecifierViewCell.m in Sources */,
 				C169C44816FF342D00ED87D8 /* IASKSwitch.m in Sources */,
+				C1AC15F119036F9300F3582C /* qrspec.c in Sources */,
 				C169C44916FF342D00ED87D8 /* IASKTextField.m in Sources */,
+				C1AC15ED19036F8200F3582C /* bitstream.c in Sources */,
 				C169C44A16FF342D00ED87D8 /* IASKUITableViewCell.m in Sources */,
 				C169C44B16FF344500ED87D8 /* MiniLoggerClient.m in Sources */,
 				C169C44C16FF344500ED87D8 /* MWPhoto.m in Sources */,
 				C169C44D16FF344500ED87D8 /* MWPhotoBrowser.m in Sources */,
 				C169C44E16FF344500ED87D8 /* MWTapDetectingImageView.m in Sources */,
+				C1AC15F019036F8F00F3582C /* qrinput.c in Sources */,
 				C169C44F16FF344500ED87D8 /* MWTapDetectingView.m in Sources */,
 				C169C45016FF344500ED87D8 /* MWZoomingScrollView.m in Sources */,
 				C169C45216FF344500ED87D8 /* MKAnnotationView+WebCache.m in Sources */,
+				C1AC15F219036F9500F3582C /* rscode.c in Sources */,
 				C169C45316FF344500ED87D8 /* SDImageCache.m in Sources */,
 				C169C45416FF344500ED87D8 /* SDWebImageDecoder.m in Sources */,
 				C169C45516FF344500ED87D8 /* SDWebImageDownloader.m in Sources */,
@@ -649,6 +711,7 @@
 				C169C45B16FF344500ED87D8 /* SVGeocoder.m in Sources */,
 				C169C45C16FF344500ED87D8 /* SVPlacemark.m in Sources */,
 				C169C45D16FF344500ED87D8 /* MBProgressHUD.m in Sources */,
+				C1AC15EE19036F8700F3582C /* mask.c in Sources */,
 				C169C45E16FF344500ED87D8 /* SVProgressHUD.m in Sources */,
 				C169C59F16FF514D00ED87D8 /* MWCaptionView.m in Sources */,
 				C15918C517021D5100331097 /* SVSegmentedControl.m in Sources */,
@@ -667,6 +730,7 @@
 				C1BA54F3178B8A3E0016B0AA /* WaterFlowViewCell.m in Sources */,
 				C161E8D717B78CB50087D743 /* WaterFlowView.m in Sources */,
 				C12E4985180B30B400482A10 /* AsyncSocket.m in Sources */,
+				C1AC15EC19036F7500F3582C /* QRCodeGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,7 +760,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Mini3rdFramework;
-				SDKROOT = iphoneos5.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -716,7 +780,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Mini3rdFramework_release;
-				SDKROOT = iphoneos5.1;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -727,7 +791,6 @@
 				DSTROOT = /tmp/Mini3Rd.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -738,7 +801,6 @@
 				DSTROOT = /tmp/Mini3Rd.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

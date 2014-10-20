@@ -27,31 +27,23 @@
 
 - (void)convertWithJson:(id)json
 {
-    if ( json == [NSNull null])
-    {
+    if ( json == [NSNull null]) {
         return;
     }
-    for ( NSString *key in [json allKeys] )
-    {
+    for ( NSString *key in [json allKeys] ) {
         id value = [json valueForKey:key];
-        if ( value==[NSNull null] )
-        {
+        if ( value==[NSNull null] ) {
             continue;
         }
-        else if ( [@"id" isEqualToString:key])
-        {
+        else if ( [@"id" isEqualToString:key]) {
             [self setValue:value forKey:@"mid"];
         }
-        else
-        {
-            if ( [value isKindOfClass:[NSArray class]] )
-            {
+        else {
+            if ( [value isKindOfClass:[NSArray class]] ){
                 Class clazz = [self classForAttri:key];
-                if ( clazz != nil )
-                {
+                if ( clazz != nil ) {
                     NSMutableArray *array = [NSMutableArray array];
-                    for ( id v in value )
-                    {
+                    for ( id v in value ) {
                         MiniObject *o = (MiniObject *)[[clazz alloc] init];
                         [o convertWithJson:v];
                         [array addObject:o];
@@ -59,8 +51,7 @@
                     value = array;
                 }
             }
-            else if ( [value isKindOfClass:[NSDictionary class]] )
-            {
+            else if ( [value isKindOfClass:[NSDictionary class]] ) {
                 Class clazz = [self classForAttri:key];
                 if ( clazz != nil ) {
                     MiniObject *o = (MiniObject *)[[clazz alloc] init];
@@ -147,6 +138,18 @@
         free(properties);
     }
     return self;
+}
+
+- (NSDictionary*)dictionary
+{
+    return @{};
+}
+
+- (NSString*)jsonString
+{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self dictionary] options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return jsonString;
 }
 
 @end

@@ -87,12 +87,22 @@
         }
         [color set];
         CGContextRef context = UIGraphicsGetCurrentContext();
-        titileTop = self.height - font.lineHeight;
+        CGFloat bottom = [[self.attri valueForKey:@"bottomSpace"] floatValue];
+        titileTop = self.height - font.lineHeight-bottom;
         [title drawInRect:CGRectMake(0, titileTop, rect.size.width, font.lineHeight) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
         CGContextSetShadow(context, CGSizeMake(0, 0), 0.0);        
     }
+    NSString *iconHeight = [self.attri valueForKey:@"iconHeight"];
     NSInteger h = titileTop - 4;
-    CGRect imageRect = [self imageRect:CGRectMake((self.width-h)/2, 4, h,h )];
+    if ( iconHeight != nil ) {
+        h = [iconHeight integerValue];
+    }
+    CGFloat top = 4;
+    NSString *iconTop = [self.attri valueForKey:@"iconTop"];
+    if (iconTop!=nil) {
+        top = [iconTop floatValue];
+    }
+    CGRect imageRect = [self imageRect:CGRectMake((self.width-h)/2, top, h,h )];
     if (self.selected)
     {
         if ( selectImage != nil )

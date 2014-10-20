@@ -270,22 +270,22 @@
     [self showMessageInfo:info inView:self.view delay:delay];
 }
 
-- (void)showWating:(NSString *)message inView:(UIView *)inView
+- (void)showWaiting:(NSString *)message inView:(UIView *)inView
 {
-    [self showWating:message inView:inView enable:NO];
+    [self showWaiting:message inView:inView userInteractionEnabled:NO];
 }
 
-- (void)showWating:(NSString *)message
+- (void)showWaiting:(NSString *)message
 {
-    [self showWating:message inView:self.contentView];
+    [self showWaiting:message inView:self.contentView];
 }
 
-- (void)showWating:(NSString *)message enable:(BOOL)enable
+- (void)showWaiting:(NSString *)message userInteractionEnabled:(BOOL)userInteractionEnabled
 {
-    [self showWating:message inView:self.contentView enable:enable];
+    [self showWaiting:message inView:self.contentView userInteractionEnabled:userInteractionEnabled];
 }
 
-- (void)showWating:(NSString *)message inView:(UIView *)inView enable:(BOOL)enable
+- (void)showWaiting:(NSString *)message inView:(UIView *)inView userInteractionEnabled:(BOOL)userInteractionEnabled
 {
     if ( _hud )
     {
@@ -298,7 +298,7 @@
         [_hud show:YES];
         [_hud retain];
     }
-    if ( enable ) {
+    if (userInteractionEnabled) {
         _hud.userInteractionEnabled = NO;
     }
 
@@ -470,12 +470,6 @@
     [view release];
 }
 
-
-- (void)selectedAsChild
-{
-    
-}
-
 @end
 
 @implementation  MiniViewController (http)
@@ -484,7 +478,7 @@
 {
     if ( [[properties valueForKey:@"show_wating"] boolValue] )
     {
-        [self showWating:@""];
+        [self showWaiting:@""];
     }
 }
 
@@ -493,4 +487,14 @@
     [self dismissWating];
 }
 
+@end
+
+@implementation MiniViewController (child)
+- (void)selectedAsChild
+{
+}
+
+- (void)deselectedAsChild
+{
+}
 @end

@@ -34,7 +34,11 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
+    [self layout];
+}
+
+- (void)layout
+{
     if ( self.leftButton != nil ) {
         self.leftButton.center = CGPointMake(10 + self.leftButton.width/2, self.height/2);
     }
@@ -69,6 +73,7 @@
 -(void)setTitle:(NSString *)title
 {
     self.titleLabel.text = title;
+    [self layout];
 }
 
 - (void)setBackGround:(UIImage *)image
