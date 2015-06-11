@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MiniUINaviTitleView.h"
 @class MBProgressHUD;
+@class MiniUITabBar;
 
 
 @interface MiniViewController : UIViewController
@@ -17,6 +18,7 @@
 }
 @property (nonatomic,getter = isVisible) BOOL visible;
 @property (nonatomic,retain)MiniUINaviTitleView *naviTitleView;
+@property (nonatomic,retain)MiniUITabBar *miniTabBar;
 @property (nonatomic,retain)UIView              *contentView;
 
 - (void)setNaviTitleViewShow:(BOOL)shown;
@@ -25,9 +27,13 @@
 
 - (void)showMessageInfo:(NSString *)info delay:(NSInteger)delay;
 
+- (void)showMessageInfo:(NSString *)info;
+
 - (void)showMessageInfo:(NSString *)info inView:(UIView *)inView delay:(NSInteger)delay;
 
 - (void)showWaiting:(NSString *)message;
+
+- (void)showWaiting;
 
 - (void)showWaiting:(NSString *)message inView:(UIView *)inView;
 
@@ -71,4 +77,8 @@
 @interface MiniViewController (child)
 - (void)selectedAsChild;
 - (void)deselectedAsChild;
+@end
+
+@interface MiniViewController(tabbar)
+- (void)addTabBarView:(MiniUITabBar*)tabvar;
 @end

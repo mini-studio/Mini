@@ -16,6 +16,8 @@ typedef void(^MINIButtonTouchupHanlder)(MiniUIButton *button);
     BOOL _longPressEvent;
     NSTimer		*_initiateTimer;
     MINIButtonTouchupHanlder _handler;
+    NSMutableDictionary *_colors;
+    UIView *_bottomline;
 }
 
 @end
@@ -28,8 +30,38 @@ typedef void(^MINIButtonTouchupHanlder)(MiniUIButton *button);
 {
     Block_release(_handler);
     _handler = nil;
-    [_userInfo release];
+    RELEASE(_userInfo);
+    RELEASE(_colors);
+    RELEASE(_bottomline);
     [super dealloc];
+}
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        if (_colors == nil) {
+            _colors = [[NSMutableDictionary dictionary] retain];
+        }
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        if (_colors == nil) {
+            _colors = [[NSMutableDictionary dictionary] retain];
+        }
+    }
+    return self;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    if (_bottomline != nil) {
+        _bottomline.frame = CGRectMake(0, self.height-0.5f, self.width, 0.5f);
+    }
 }
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
@@ -78,6 +110,7 @@ typedef void(^MINIButtonTouchupHanlder)(MiniUIButton *button);
     _longPressEvent = YES;
 	[super sendActionsForControlEvents:UIControlEventTouchInsideRepeat];
 }
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan:touches withEvent:event];
@@ -187,4 +220,73 @@ typedef void(^MINIButtonTouchupHanlder)(MiniUIButton *button);
     [self addTarget:self action:@selector(handleButtonTouchup) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)setBackgroundColor:(UIColor *)color forState:(UIControlState)state
+{
+    if(state == UIControlStateNormal)
+    {
+        [super setBackgroundColor:color];
+    }
+    [_colors setValue:color forKey:[self keyForState:state]];
+}
+
+- (UIColor *)backgroundColorForState:(UIControlState)state
+{
+    return [_colors valueForKey:[self keyForState:state]];
+}
+
+- (NSString *)keyForState:(UIControlState)state
+{
+    return [NSString stringWithFormat:@"state_%lu", (unsigned long)state];
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    NSString *selectedKey = [self keyForState:UIControlStateSelected];
+    UIColor *color = [_colors valueForKey:selectedKey];
+    if (selected && color != nil) {
+        [super setBackgroundColor:color];
+    }
+    else {
+        NSString *normalKey = [self keyForState:UIControlStateNormal];
+        [super setBackgroundColor:[_colors valueForKey:normalKey]];
+    }
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [super setHighlighted:highlighted];
+    NSString *highlightedKey = [self keyForState:UIControlStateHighlighted];
+    UIColor *highlightedColor = [_colors valueForKey:highlightedKey];
+    if (highlighted && highlightedColor) {
+        [super setBackgroundColor:highlightedColor];
+    }
+    else {
+        if ([self isSelected]) {
+            NSString *selectedKey = [self keyForState:UIControlStateSelected];
+            UIColor *selectedColor = [_colors valueForKey:selectedKey];
+            if (selectedColor != nil) {
+                [super setBackgroundColor:selectedColor];
+            }
+        } else {
+            NSString *normalKey = [self keyForState:UIControlStateNormal];
+            UIColor *color = [_colors valueForKey:normalKey];
+            [super setBackgroundColor:color];
+        }
+    }
+}
+
+- (void)setFontSize:(CGFloat)fontSize
+{
+    [[self titleLabel] setFont:[UIFont systemFontOfSize:fontSize]];
+}
+
+- (void)setBottomLine:(UIColor*)color
+{
+    if (_bottomline == nil) {
+        _bottomline = [[UIView alloc] initWithFrame:CGRectZero];
+        [self addSubview:_bottomline];
+    }
+    _bottomline.backgroundColor = color;
+}
 @end

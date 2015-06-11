@@ -10,29 +10,29 @@
 	<string>MiniLiteFramework</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>72EC8CE1-5BD1-48BF-80CE-AB835479663A</key>
+		<key>D01B77874EB349C70BE81DDAE2542988003065C8</key>
 		<string>https://github.com/mini-studio/Mini.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MiniLiteFramework/MiniLiteFramework.xcodeproj/project.xcworkspace</string>
+	<string>MiniLiteFramework/MiniLiteFramework.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>72EC8CE1-5BD1-48BF-80CE-AB835479663A</key>
+		<key>D01B77874EB349C70BE81DDAE2542988003065C8</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/mini-studio/Mini.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>72EC8CE1-5BD1-48BF-80CE-AB835479663A</string>
+	<string>D01B77874EB349C70BE81DDAE2542988003065C8</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>72EC8CE1-5BD1-48BF-80CE-AB835479663A</string>
+			<string>D01B77874EB349C70BE81DDAE2542988003065C8</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Mini</string>
 		</dict>

@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "NSString+Mini.h"
 #import "UIDevice+Ext.h"
+#import "MiniUITabBar.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -156,7 +157,11 @@
 {
     UIView *view = [self contentView];
     CGFloat top = _naviTitleView==nil?0:_naviTitleView.bottom;
-    view.frame = CGRectMake(0, top, self.view.width, self.view.height-top);
+    CGFloat height = self.view.height-top;
+    if (self.miniTabBar != nil) {
+        height = height - self.miniTabBar.height;
+    }
+    view.frame = CGRectMake(0, top, self.view.width, height);
 }
 
 - (UIView*)contentView
@@ -180,9 +185,15 @@
 - (void)dealloc
 {
     [_contentView release];
+    _contentView = nil;
     [_naviTitleView release];
+    _naviTitleView = nil;
     [_hud release];
-    _hud = nil;
+     _hud = nil;
+    if (_miniTabBar != nil) {
+        [_miniTabBar release];
+        _miniTabBar = nil;
+    }
     [super dealloc];
 }
 
@@ -270,6 +281,11 @@
     [self showMessageInfo:info inView:self.view delay:delay];
 }
 
+- (void)showMessageInfo:(NSString *)info
+{
+    [self showMessageInfo:info delay:2];
+}
+
 - (void)showWaiting:(NSString *)message inView:(UIView *)inView
 {
     [self showWaiting:message inView:inView userInteractionEnabled:NO];
@@ -278,6 +294,11 @@
 - (void)showWaiting:(NSString *)message
 {
     [self showWaiting:message inView:self.contentView];
+}
+
+- (void)showWaiting
+{
+    [self showWaiting:nil inView:self.contentView];
 }
 
 - (void)showWaiting:(NSString *)message userInteractionEnabled:(BOOL)userInteractionEnabled
@@ -496,5 +517,15 @@
 
 - (void)deselectedAsChild
 {
+}
+
+@end
+
+@implementation MiniViewController(tabbar)
+- (void)addTabBarView:(MiniUITabBar*)tabbar
+{
+    self.miniTabBar = tabbar;
+    [self.view addSubview:self.miniTabBar];
+    [self resetContentView];
 }
 @end

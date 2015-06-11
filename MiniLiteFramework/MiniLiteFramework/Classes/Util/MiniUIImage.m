@@ -12,6 +12,7 @@
 @implementation MiniUIImage
 + (UIImage *)imagePreciseNamed:(NSString *)name ext:(NSString *)ext
 {
+    NSString *n = name;
     if ( IS_IPHONE5 )
     {
         name = [NSString stringWithFormat:@"%@-568h",name];
@@ -20,6 +21,11 @@
     {
         name = [NSString stringWithFormat:@"%@.%@",name,ext];
     }
-    return [UIImage imageNamed:name];
+    UIImage *image = [UIImage imageNamed:name];
+    if (image == nil) {
+        name = [NSString stringWithFormat:@"%@.%@",n,ext];
+    }
+    image = [UIImage imageNamed:name];
+    return image;
 }
 @end

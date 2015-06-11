@@ -31,5 +31,12 @@ enum {
 
 - (void)setTouchupHandler:(void (^)(MiniUIButton *button))handler;
 
+- (void)setBackgroundColor:(UIColor *)color forState:(UIControlState)state;
+
+- (UIColor *)backgroundColorForState:(UIControlState)state;
+
+- (void)setFontSize:(CGFloat)fontSize;
+
+- (void)setBottomLine:(UIColor*)color;
 
 @end
