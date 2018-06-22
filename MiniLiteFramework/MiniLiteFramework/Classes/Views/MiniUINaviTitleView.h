@@ -13,4 +13,6 @@
 @property (nonatomic,strong) MiniUIButton *rightButton;
 @property (nonatomic,strong) NSString     *title;
 @property (nonatomic,strong) UIImage      *backGround;
+@property (nonatomic,strong,readonly)UILabel     *titleLabel;
+@property (nonatomic,strong) UIView *shadowView;
 @end

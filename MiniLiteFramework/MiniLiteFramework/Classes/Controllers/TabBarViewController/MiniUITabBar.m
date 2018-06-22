@@ -279,5 +279,17 @@
 	[super dealloc];
 }
 
+- (void)setShadowView:(UIView *)shadowView
+{
+    if (_shadowView != nil) {
+        [_shadowView removeFromSuperview];
+    }
+    _shadowView = shadowView;
+    if (_shadowView != nil) {
+        _shadowView.frame = CGRectMake(0, -_shadowView.height, self.width, _shadowView.height);
+        [self addSubview:_shadowView];
+    }
+}
+
 
 @end

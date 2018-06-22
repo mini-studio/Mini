@@ -24,13 +24,13 @@
 @property (nonatomic,assign) BOOL keyBoardVisible;
 @property (nonatomic,assign) BOOL scrolled;
 @property (nonatomic,assign) CGRect keyboardBounds;
-@property (nonatomic,assign) UIScrollView *scrollview;
+@property (nonatomic,weak) UIScrollView *scrollview;
 
 - (id)initWithFrame:(CGRect)frame scrollView:(UIScrollView *)scrollView;
 
 
 
-- (void)scroollToVisible;
+- (void)scrollToVisible;
 
 @end
 

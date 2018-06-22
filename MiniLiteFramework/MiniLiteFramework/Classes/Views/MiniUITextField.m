@@ -23,7 +23,6 @@
 @synthesize userInfo;
 @synthesize miniUITextFieldDelegate;
 @synthesize scrolled = _scrolled;
-@synthesize scrollview = _scrollview;
 
 @synthesize offset = _offset;
 
@@ -76,6 +75,7 @@
     [textFieldDelegate release];
     miniUITextFieldDelegate = nil;
     self.userInfo = nil;
+    _scrollview = nil;
     [super dealloc];
 }
 
@@ -88,7 +88,7 @@
     return self;
 }
 
-- (void)scroollToVisible
+- (void)scrollToVisible
 {
     UIWindow *window = ([UIApplication sharedApplication].delegate).window;
     CGRect frame = [self.superview convertRect:self.frame toView:window];
@@ -120,8 +120,13 @@
     self.keyborderFrame = keyborderFrame;
     if ( [self isFirstResponder] )
     {
-        [self scroollToVisible];
-    }
+        if (!self.keyBorderShowing) {
+            if (self.scrollview != nil) {
+                self.offset = self.scrollview.contentOffset;
+            }
+        }
+        [self scrollToVisible];
+    }    
     self.keyBorderShowing = YES;
 }
 
@@ -141,7 +146,7 @@
 {
     if ( self.keyBorderShowing )
     {
-        [self scroollToVisible];
+        [self scrollToVisible];
     }
     else
     {
@@ -169,7 +174,7 @@
         
         if ((!tf.scrolled) && (tf.keyBoardVisible))
         {
-            [tf scroollToVisible];
+            [tf scrollToVisible];
         }
         
         if ( tf.miniUITextFieldDelegate != nil )

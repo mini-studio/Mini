@@ -13,7 +13,8 @@
 SYNTHESIZE_MINI_SINGLETON_FOR_CLASS(MiniFileUtil)
 + (NSString *)fileWithDocumentsPath:(NSString *)path
 {
-    NSString *_path = [[NSHomeDirectory () stringByAppendingPathComponent:@"Documents/user/"] stringByAppendingPathComponent:path];
+    NSString *doc = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *_path = [NSString stringWithFormat:@"%@/user/%@", doc, path];
     NSFileManager *manager = [NSFileManager defaultManager];    
     if ( ![manager fileExistsAtPath:_path]) 
     {
@@ -48,7 +49,8 @@ SYNTHESIZE_MINI_SINGLETON_FOR_CLASS(MiniFileUtil)
 + (NSString *)getFilePathWithUrl:(NSString *)url ext:(NSString *)ext
 {
     NSString *md5 = [url MD5String];
-    NSString *path = [[NSHomeDirectory () stringByAppendingPathComponent:@"Documents/Download/Files/"] stringByAppendingPathComponent:md5];
+    NSString *doc = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [[doc stringByAppendingPathComponent:@"/user/Download/Files/"] stringByAppendingPathComponent:md5];
     path = [NSString stringWithFormat:@"%@.%@",path,ext];
     return path;
 }

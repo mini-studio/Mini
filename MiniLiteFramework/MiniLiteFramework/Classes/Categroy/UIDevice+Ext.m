@@ -177,7 +177,13 @@ char *getMacAddress(char *macAddress, char *ifName) {
 {
     if ( mainVersion==0 ) {
         mainVersionString = [[UIDevice currentDevice] systemVersion];
-        mainVersion = [[mainVersionString substringToIndex:1] intValue];
+        NSRange range = [mainVersionString rangeOfString:@"."];
+        if (range.location != NSNotFound) {
+            mainVersion = [[mainVersionString substringToIndex:range.location] intValue];
+        }
+        else {
+            mainVersion = (int)[mainVersionString floatValue];
+        }        
     }
 	return mainVersion;
 }

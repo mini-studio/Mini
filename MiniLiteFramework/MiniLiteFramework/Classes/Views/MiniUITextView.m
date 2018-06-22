@@ -16,15 +16,25 @@
 }
 
 @property (nonatomic,retain)UIColor *placeholderColor;
+@property (nonatomic) CGPoint offset;
+@property (nonatomic) BOOL keyBorderShowing;
+@property (nonatomic) CGRect keyborderFrame;
+
 @end
 
 @implementation MiniUITextView
 @synthesize placeholder;
 @synthesize placeholderColor;
+@synthesize offset = _offset;
+
+@synthesize keyBorderShowing = _keyBorderShowing;
+@synthesize keyborderFrame = _keyborderFrame;
 
 - (void)initial
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBorderWillShow:)name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBorderWillHide:)name:UIKeyboardWillHideNotification object:nil];
     self.placeholderColor = [UIColor grayColor];
 }
 
@@ -72,6 +82,7 @@
     [placeHolderLabel release];
     [placeholderColor release];
     [placeholder release];
+    _scrollview = nil;
     [super dealloc];
 }
 
@@ -105,5 +116,67 @@
     [super drawRect:rect];
 }
 
+- (void)scrollToVisible
+{
+    if (_scrollview != nil) {
+        UIWindow *window = ([UIApplication sharedApplication].delegate).window;
+        CGRect frame = [self.superview convertRect:self.frame toView:window];
+        frame.origin.y += 10;
+        CGFloat maxY = CGRectGetMaxY(frame);
+        if( maxY > self.keyborderFrame.origin.y ) //below keyborder
+        {
+            CGPoint __offset = self.scrollview.contentOffset;
+            __offset.y += (maxY - self.keyborderFrame.origin.y);
+            [UIView animateWithDuration:0.30F animations:^{
+                self.scrollview.contentOffset = __offset;
+            }completion:^(BOOL finished) {
+            }];
+        }
+        else if ( frame.origin.y < 20 )
+        {
+            CGPoint __offset = self.scrollview.contentOffset;
+            __offset.y += 30;
+            [UIView animateWithDuration:0.30F animations:^{
+                self.scrollview.contentOffset = __offset;
+            }completion:^(BOOL finished) {
+            }];
+        }
+    }
+}
+
+- (void)handleKeyBorderWillShow:(NSNotification *)noti
+{
+    if (self.scrollview != nil) {
+        CGRect keyborderFrame = [[noti.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        self.keyborderFrame = keyborderFrame;
+        if ( [self isFirstResponder] )
+        {
+            if (!self.keyBorderShowing) {
+                self.offset = self.scrollview.contentOffset;
+            }
+            [self scrollToVisible];
+        }        
+        self.keyBorderShowing = YES;
+    }
+}
+
+- (void)handleKeyBorderWillHide:(NSNotification *)noti
+{
+    if (self.scrollview != nil) {
+        self.keyBorderShowing = NO;
+        if ( self.offset.y != MAXFLOAT )
+        {
+            [UIView animateWithDuration:0.25f animations:^{
+                self.scrollview.contentOffset = self.offset;
+            }];
+        }
+        [self resetOffsetTrace];
+    }
+}
+
+- (void)resetOffsetTrace
+{
+    self.offset = CGPointMake(0,MAXFLOAT);
+}
 
 @end

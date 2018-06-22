@@ -116,9 +116,7 @@
 {
      _setupNaviTitleView = YES;
     if (show) {
-        CGFloat top = 0;
-        if ( [UIDevice iosMainVersion] >= 7 )
-            top = 20;
+        CGFloat top = [self statusBarHeight];
         if ( _naviTitleView != nil ) {
             [_naviTitleView removeAllSubviews];
             _naviTitleView.frame = CGRectMake(0, top, self.view.width, [self naviViewHeight]);
@@ -137,6 +135,15 @@
         }
     }
     [self resetContentView];
+}
+
+- (NSInteger)statusBarHeight
+{
+    if ( [UIDevice iosMainVersion] >= 7 )
+        return 20;
+    else {
+        return 0;
+    }
 }
 
 - (CGFloat)naviViewHeight

@@ -24,6 +24,7 @@
 @property (nonatomic, retain)NSMutableArray*				tabItemsArray;
 @property (nonatomic, assign)id<MiniUITabBarDelegate>	delegate;
 @property (nonatomic)        NSInteger                     selectedTabIndex;
+@property (nonatomic,strong) UIView *shadowView;
 
 - (id)initWithFrame:(CGRect)frame;
 - (CGFloat)bottomHighlightImageXAtIndex:(NSUInteger)tabIndex;

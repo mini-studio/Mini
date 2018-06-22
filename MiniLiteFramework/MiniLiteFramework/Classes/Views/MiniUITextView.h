@@ -11,9 +11,12 @@
 @interface MiniUITextView : UITextView
 {
     NSString *placeholder;
+    UIScrollView           *_scrollview;
 }
-
+@property (nonatomic,retain) id  userInfo;
 @property (nonatomic,retain)NSString *placeholder;
+@property (nonatomic,weak) UIScrollView *scrollview;
+
 - (void)textChanged:(NSNotification *)notification;
 
 @end

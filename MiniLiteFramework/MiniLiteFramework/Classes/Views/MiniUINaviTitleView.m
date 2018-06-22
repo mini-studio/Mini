@@ -81,4 +81,14 @@
     self.backgoundView.image = image;
 }
 
+- (void)setShadowView:(UIView *)shadowView
+{
+    if (_shadowView != nil) {
+        [_shadowView removeFromSuperview];
+    }
+    _shadowView = shadowView;
+    shadowView.frame = CGRectMake(0, self.height, self.width, shadowView.height);
+    [self addSubview:shadowView];
+}
+
 @end
