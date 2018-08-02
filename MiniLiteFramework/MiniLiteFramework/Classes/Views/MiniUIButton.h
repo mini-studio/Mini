@@ -25,11 +25,11 @@ enum {
 
 + (id)buttonWithBackGroundImage:(UIImage *)backGroundImage highlightedBackGroundImage:(UIImage *)highlightedBackGroundImage resizableImageWithCapInsets:(UIEdgeInsets)insets title:(NSString *)title;
 
-+ (id)naviBackbuttonWithBackGroundImage:(UIImage *)backGroundImage highlightedBackGroundImage:(UIImage *)highlightedBackGroundImage title:(NSString *)title;
++ (id)naviBackButtonWithBackGroundImage:(UIImage *)backGroundImage highlightedBackGroundImage:(UIImage *)highlightedBackGroundImage title:(NSString *)title;
 
 + (id)buttonWithImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage;
 
-- (void)setTouchupHandler:(void (^)(MiniUIButton *button))handler;
+- (void)setTouchUpHandler:(void (^)(MiniUIButton *button))handler;
 
 - (void)setBackgroundColor:(UIColor *)color forState:(UIControlState)state;
 

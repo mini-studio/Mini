@@ -176,7 +176,7 @@ typedef void(^MINIButtonTouchupHanlder)(MiniUIButton *button);
 
 }
 
-+ (id)naviBackbuttonWithBackGroundImage:(UIImage *)backGroundImage highlightedBackGroundImage:(UIImage *)highlightedBackGroundImage title:(NSString *)title
++ (id)naviBackButtonWithBackGroundImage:(UIImage *)backGroundImage highlightedBackGroundImage:(UIImage *)highlightedBackGroundImage title:(NSString *)title
 {
     MiniUIButton *button = [self buttonWithBackGroundImage:backGroundImage highlightedBackGroundImage:highlightedBackGroundImage title:title];
     [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
@@ -210,7 +210,7 @@ typedef void(^MINIButtonTouchupHanlder)(MiniUIButton *button);
     }
 }
 
-- (void)setTouchupHandler:(void (^)(MiniUIButton *button))handler
+- (void)setTouchUpHandler:(void (^)(MiniUIButton *button))handler
 {
     if ( _handler != nil ) {
         Block_release(_handler);
@@ -238,6 +238,7 @@ typedef void(^MINIButtonTouchupHanlder)(MiniUIButton *button);
 {
     return [NSString stringWithFormat:@"state_%lu", (unsigned long)state];
 }
+
 
 - (void)setSelected:(BOOL)selected
 {

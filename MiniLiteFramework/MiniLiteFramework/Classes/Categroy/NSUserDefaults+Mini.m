@@ -9,14 +9,14 @@
 #import "NSUserDefaults+Mini.h"
 
 @implementation NSUserDefaults (Mini)
-- (void)setMiniObject:(MiniObject*)object forkey:(NSString*)key
+- (void)setMiniObject:(MiniObject*)object forKey:(NSString*)key
 {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
     [self setValue:data forKey:key];
     [self synchronize];
 }
 
-- (MiniObject*)miniObjectValueForKey:(NSString *)key
+- (MiniObject*)miniObjectValueforKey:(NSString *)key
 {
     NSData *data = [self valueForKey:key];
     if ( data != nil )
@@ -29,7 +29,7 @@
     }
 }
 
-- (void)setString:(NSString*)string forkey:(NSString*)key
+- (void)setString:(NSString*)string forKey:(NSString*)key
 {
     [self setValue:string forKey:key];
     [self synchronize];
@@ -37,7 +37,7 @@
 
 - (NSString*)stringValueForKey:(NSString*)key defaultValue:(NSString*)df
 {
-    NSString* v = [self stringForKey:key];
+    NSString* v = [self valueForKey:key];
     if ( v == nil ) {
         return df;
     }

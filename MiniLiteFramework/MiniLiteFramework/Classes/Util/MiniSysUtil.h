@@ -24,7 +24,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(MiniSysUtil)
 
 - (void)sendSMS:(NSArray*)receivers title:(NSString *)title body:(NSString*)body viewController:(UIViewController*)viewController block:(void (^)(MFMessageComposeViewController *controller,MessageComposeResult result))block;
 
-- (BOOL)isExperiedWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
+- (BOOL)isExpiredWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
 
 - (void)copyToBoard:(NSString *)content;
 

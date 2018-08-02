@@ -16,7 +16,7 @@
 
 @property (nonatomic) CGPoint offset;
 @property (nonatomic) BOOL keyBorderShowing;
-@property (nonatomic) CGRect keyborderFrame;
+@property (nonatomic) CGRect keyboardFrame;
 @end
 
 @implementation MiniUITextField
@@ -25,16 +25,17 @@
 @synthesize scrolled = _scrolled;
 
 @synthesize offset = _offset;
+@synthesize scrollView = _scrollView;
 
 @synthesize keyBorderShowing = _keyBorderShowing;
-@synthesize keyborderFrame = _keyborderFrame;
+@synthesize keyboardFrame = _keyboardFrame;
 
 - (id)initWithFrame:(CGRect)frame scrollView:(UIScrollView *)scrollView
 {
     self = [self initWithFrame:frame];
     if ( self )
     {
-        self.scrollview = scrollView;
+        self.scrollView = scrollView;
         [self initial];
     }
     return self;
@@ -75,7 +76,7 @@
     [textFieldDelegate release];
     miniUITextFieldDelegate = nil;
     self.userInfo = nil;
-    _scrollview = nil;
+    _scrollView = nil;
     [super dealloc];
 }
 
@@ -94,21 +95,21 @@
     CGRect frame = [self.superview convertRect:self.frame toView:window];
     frame.origin.y += 10;
     CGFloat maxY = CGRectGetMaxY(frame);
-    if( maxY > self.keyborderFrame.origin.y ) //below keyborder
+    if( maxY > self.keyboardFrame.origin.y ) //below keyborder
     {
-        CGPoint __offset = self.scrollview.contentOffset;
-        __offset.y += (maxY - self.keyborderFrame.origin.y);
+        CGPoint __offset = self.scrollView.contentOffset;
+        __offset.y += (maxY - self.keyboardFrame.origin.y);
         [UIView animateWithDuration:0.30F animations:^{
-            self.scrollview.contentOffset = __offset;
+            self.scrollView.contentOffset = __offset;
         }completion:^(BOOL finished) {
         }];
     }
     else if ( frame.origin.y < 20 )
     {
-        CGPoint __offset = self.scrollview.contentOffset;
+        CGPoint __offset = self.scrollView.contentOffset;
         __offset.y += 30;
         [UIView animateWithDuration:0.30F animations:^{
-            self.scrollview.contentOffset = __offset;
+            self.scrollView.contentOffset = __offset;
         }completion:^(BOOL finished) {
         }];
     }
@@ -116,13 +117,15 @@
 
 - (void)handleKeyBorderWillShow:(NSNotification *)noti
 {
-    CGRect keyborderFrame = [[noti.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    self.keyborderFrame = keyborderFrame;
+    CGRect keyboardFrame = [[noti.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.keyboardFrame = keyboardFrame;
     if ( [self isFirstResponder] )
     {
         if (!self.keyBorderShowing) {
-            if (self.scrollview != nil) {
-                self.offset = self.scrollview.contentOffset;
+            if (self.scrollView != nil) {
+                if (self.scrollView != nil && [self.scrollView respondsToSelector:@selector(setContentOffset:)]) {
+                    self.offset = self.scrollView.contentOffset;
+                }
             }
         }
         [self scrollToVisible];
@@ -136,7 +139,9 @@
     if ( self.offset.y != MAXFLOAT )
     {
         [UIView animateWithDuration:0.25f animations:^{
-            self.scrollview.contentOffset = self.offset;
+            if (self.scrollView != nil && [self.scrollView respondsToSelector:@selector(setContentOffset:)]) {
+                self.scrollView.contentOffset = self.offset;
+            }
         }];
     }
     [self resetOffsetTrace];
@@ -150,7 +155,7 @@
     }
     else
     {
-        self.offset = self.scrollview.contentOffset;
+        self.offset = self.scrollView.contentOffset;
     }
     return [super becomeFirstResponder];
 }

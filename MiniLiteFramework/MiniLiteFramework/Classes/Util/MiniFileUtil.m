@@ -11,17 +11,109 @@
 
 @implementation MiniFileUtil
 SYNTHESIZE_MINI_SINGLETON_FOR_CLASS(MiniFileUtil)
-+ (NSString *)fileWithDocumentsPath:(NSString *)path
+
++ (NSString *)fileWithDocumentsPath:(NSString *)path delete:(BOOL)del
 {
     NSString *doc = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *_path = [NSString stringWithFormat:@"%@/user/%@", doc, path];
-    NSFileManager *manager = [NSFileManager defaultManager];    
-    if ( ![manager fileExistsAtPath:_path]) 
+    NSString *_path = [NSString stringWithFormat:@"%@/%@", doc, path];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:_path]) {
+        if (del) {
+            [manager removeItemAtPath:_path error:nil];
+        }
+    }
+    if ( ![manager fileExistsAtPath:_path])
     {
-        [manager createDirectoryAtPath:_path withIntermediateDirectories:YES attributes:nil error:nil]; 
+        [manager createDirectoryAtPath:_path withIntermediateDirectories:YES attributes:nil error:nil];
     }
     return _path;
 }
+
++ (NSString *)fileWithDocumentsPath:(NSString *)path
+{
+    return [self fileWithDocumentsPath:path delete:NO];
+}
+
++ (NSString *)ensureDocumentsPath:(NSString *)path
+{
+    return [MiniFileUtil fileWithDocumentsPath:path];
+}
+
++ (void)ensurePath:(NSString *)path delete:(BOOL)del error:(NSError**)error
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:path]) {
+        if (del) {
+            [manager removeItemAtPath:path error:error];
+        }
+    }
+    if ( ![manager fileExistsAtPath:path])
+    {
+        [manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:error];
+    }
+}
+
+
++ (void)ensurePath:(NSString *)path error:(NSError**)error
+{
+    [self ensurePath:path delete:NO error:error];
+}
+
++ (NSString *)ensureLibraryPath:(NSString *)path  delete:(BOOL)del
+{
+    NSString *doc = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *_path = [NSString stringWithFormat:@"%@/%@", doc, path];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:_path] && del) {
+        [manager removeItemAtPath:_path error:nil];
+    }
+    if ( ![manager fileExistsAtPath:_path])
+    {
+        [manager createDirectoryAtPath:_path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return _path;
+}
+
++ (NSString *)ensureLibraryPath:(NSString *)path
+{
+    return [self ensureLibraryPath:path delete:NO];
+}
+
+
++ (NSString *)fileWithLibraryPath:(NSString *)path name:(NSString *)fname
+{
+    NSString *_path = [self ensureLibraryPath:path];
+    _path = [NSString stringWithFormat:@"%@/%@",_path,fname];
+    return _path;
+}
+
++ (NSString *)ensureCachesPath:(NSString *)path
+{
+    return [self ensureCachesPath:path delete:NO];
+}
+
++ (NSString *)ensureCachesPath:(NSString *)path delete:(BOOL)del
+{
+    NSString *doc = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *_path = [NSString stringWithFormat:@"%@/%@", doc, path];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:_path] && del) {
+        [manager removeItemAtPath:_path error:del];
+    }
+    if ( ![manager fileExistsAtPath:_path])
+    {
+        [manager createDirectoryAtPath:_path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return _path;
+}
+
++ (NSString *)fileWithCachesPath:(NSString *)path name:(NSString *)fname
+{
+    NSString *_path = [self ensureCachesPath:path];
+    _path = [NSString stringWithFormat:@"%@/%@",_path,fname];
+    return _path;
+}
+
 
 + (NSString *)fileWithDocumentsPath:(NSString *)path name:(NSString *)fname
 {
@@ -29,6 +121,8 @@ SYNTHESIZE_MINI_SINGLETON_FOR_CLASS(MiniFileUtil)
     _path = [NSString stringWithFormat:@"%@/%@",_path,fname];
     return _path;
 }
+
+
 
 + (void)deleteDir:(NSString *)dirpath
 {
@@ -50,7 +144,7 @@ SYNTHESIZE_MINI_SINGLETON_FOR_CLASS(MiniFileUtil)
 {
     NSString *md5 = [url MD5String];
     NSString *doc = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *path = [[doc stringByAppendingPathComponent:@"/user/Download/Files/"] stringByAppendingPathComponent:md5];
+    NSString *path = [[doc stringByAppendingPathComponent:@"/Download/Files/"] stringByAppendingPathComponent:md5];
     path = [NSString stringWithFormat:@"%@.%@",path,ext];
     return path;
 }

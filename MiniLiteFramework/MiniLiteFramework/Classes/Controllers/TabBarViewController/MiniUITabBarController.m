@@ -519,6 +519,12 @@
     self.tabBarView.delegate = self;
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.contentView.frame = self.self.view.bounds;
+    self.tabBarView.frame = CGRectMake(0, self.contentView.height-[self tabBarVisualHeight], self.view.width, [self tabBarVisualHeight]);
+}
+
 - (MiniUITabBar *)tabBarView
 {
     if ( tabBarView == nil )
@@ -739,7 +745,8 @@
             [ctl performSelector:@selector(addTabBarView:) withObject:self.tabBarView];
         }
     }
-    [self.contentView addSubview:controller.view];
+    UIView *controlView = controller.view;
+    [self.contentView addSubview:controlView];
     self.selectedViewController = controller;
 }
 

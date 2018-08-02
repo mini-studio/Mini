@@ -10,8 +10,8 @@
 
 @interface MiniUIImageView : UIImageView
 {
-    void (^touchesBeganBlock)();
+    void (^toucheAction)();
 }
 
-- (void)setTouchesBeganBlock:( void (^)() )block;
+- (void)setToucheAction:( void (^)() )block;
 @end

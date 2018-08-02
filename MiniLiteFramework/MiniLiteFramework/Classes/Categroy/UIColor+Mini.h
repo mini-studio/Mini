@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIColor (Mini)
++(UIColor*)colorWithRGB:(NSUInteger)color;
 +(UIColor*)colorWithRGBA:(NSUInteger)color;
 +(UIColor*)colorWithString:(NSString *)string;
 @end

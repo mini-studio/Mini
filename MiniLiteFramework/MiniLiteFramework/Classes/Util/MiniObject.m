@@ -8,10 +8,13 @@
 
 #import "MiniObject.h"
 #import "MiniLog.h"
+#import "NSArray+MiniObject.h"
+#import "NSDictionary+MiniObject.h"
 #import <objc/runtime.h>
 
 @interface MiniObject()
-@property (nonatomic,strong)NSMutableDictionary *clazzmap;
+@property (nonatomic,strong)NSMutableDictionary *propertyClazzDictionary;
+@property (nonatomic,strong)NSMutableDictionary *propertiesDataMap;
 @end
 
 @implementation MiniObject
@@ -20,9 +23,34 @@
 {
     self = [super init];
     if (self) {
-        self.clazzmap = [NSMutableDictionary dictionary];
+        self.propertyClazzDictionary = [NSMutableDictionary dictionary];
+        self.propertiesDataMap = [NSMutableDictionary dictionary];
     }
     return self;
+}
+
+- (void)setClassKey:(NSString*)key dataKey:(NSString*)dataKey
+{
+    [self.propertiesDataMap setValue:key forKey:dataKey];
+}
+
+- (Class)classForAttri:(NSString *)attriName
+{
+    return [self.propertyClazzDictionary valueForKey:attriName];
+}
+
+- (void)setAttri:(NSString*)attri clazz:(Class)clazz
+{
+    [self.propertyClazzDictionary setValue:clazz forKey:attri];
+}
+
+- (void)setPropertyName:(NSString*)propertyName clazz:(Class)clazz
+{
+    [self.propertyClazzDictionary setValue:clazz forKey:propertyName];
+}
+- (void)setPropertyName:(NSString*)propertyName dataName:(NSString*)dataName
+{
+    [self.propertiesDataMap setValue:propertyName forKey:dataName];
 }
 
 - (void)convertWithJson:(id)json
@@ -35,32 +63,44 @@
         if ( value==[NSNull null] ) {
             continue;
         }
-        else if ( [@"id" isEqualToString:key]) {
-            [self setValue:value forKey:@"mid"];
-        }
         else {
-            if ( [value isKindOfClass:[NSArray class]] ){
-                Class clazz = [self classForAttri:key];
-                if ( clazz != nil ) {
-                    NSMutableArray *array = [NSMutableArray array];
-                    for ( id v in value ) {
-                        MiniObject *o = (MiniObject *)[[clazz alloc] init];
-                        [o convertWithJson:v];
-                        [array addObject:o];
+            NSString *classKey = [self.propertiesDataMap valueForKey:key];
+            if ( [@"id" isEqualToString:key]) {
+                if (classKey == nil) {
+                    [self setValue:value forKey:@"mid"];
+                }
+                else {
+                   [self setValue:value forKey:classKey];
+                }
+            }
+            else {
+                if (classKey == nil) {
+                    classKey = key;
+                }
+                if ( [value isKindOfClass:[NSArray class]] ){
+                    Class clazz = [self classForAttri:classKey];
+                    if ( clazz != nil ) {
+                        NSMutableArray *array = [NSMutableArray array];
+                        for ( id v in value ) {
+                            MiniObject *o = (MiniObject *)[[clazz alloc] init];
+                            [o convertWithJson:v];
+                            [array addObject:o];
+                        }
+                        value = array;
                     }
-                    value = array;
                 }
-            }
-            else if ( [value isKindOfClass:[NSDictionary class]] ) {
-                Class clazz = [self classForAttri:key];
-                if ( clazz != nil ) {
-                    MiniObject *o = (MiniObject *)[[clazz alloc] init];
-                    [o convertWithJson:value];
-                    value = o;
+                else if ( [value isKindOfClass:[NSDictionary class]] ) {
+                    Class clazz = [self classForAttri:classKey];
+                    if ( clazz != nil ) {
+                        MiniObject *o = (MiniObject *)[[clazz alloc] init];
+                        [o convertWithJson:value];
+                        value = o;
+                    }
                 }
+                [self setValue:value forKey:classKey];
             }
-            [self setValue:value forKey:key];
         }
+        
     }
 }
 
@@ -69,15 +109,7 @@
     LOG_DEBUG(@"=========[%@] %@ undefinedKey==============",[[self class] description],key);
 }
 
-- (Class)classForAttri:(NSString *)attriName
-{
-    return [self.clazzmap valueForKey:attriName];
-}
 
-- (void)setAttri:(NSString*)attri clazz:(Class)clazz
-{
-    [self.clazzmap setValue:clazz forKey:attri];
-}
 
 - (void)encodeWithCoder:(NSCoder*)coder
 {
@@ -142,7 +174,35 @@
 
 - (NSDictionary*)dictionary
 {
-    return @{};
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    NSArray *properties = [self __properties__];
+    if (properties != nil && properties.count > 0) {
+        for(NSString *p in properties) {
+            id value = [self valueForKey:p];
+            if ([value isKindOfClass:[NSArray class]]) {
+                [dic setValue:[(NSArray *)value jsonArray] forKey:p];
+            }
+            else if ([value isKindOfClass:[NSDictionary class]]) {
+                [dic setValue:[(NSDictionary *)value jsonDictionary] forKey:p];
+            }
+            else {
+                [dic setValue:value forKey:p];
+            }
+        }
+    }
+    return dic;
+}
+
+-(NSArray*)__properties__
+{
+    NSMutableArray *__properties = [NSMutableArray array];
+    int count = 0;
+    objc_property_t* properties = class_copyPropertyList([self class], &count);
+    for (int i = 0; i < count ; i++) {
+        NSString *propertyName = [NSString stringWithCString:property_getName(properties[i]) encoding:NSUTF8StringEncoding];
+        [__properties addObject:propertyName];
+    }
+    return __properties;
 }
 
 - (NSString*)jsonString

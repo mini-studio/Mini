@@ -270,22 +270,39 @@
     return [super navigationItem];
 }
 
-- (void)showMessageInfo:(NSString *)info inView:(UIView *)inView delay:(NSInteger)delay
+
+
+- (void)showMessageInfo:(NSString *)info inView:(UIView *)inView delay:(NSInteger)delay block:(void (^)(void))block
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:inView animated:YES];
     hud.customView = [[UIView alloc] initWithFrame:CGRectZero];
     hud.customView.backgroundColor = [UIColor clearColor];
     hud.mode = MBProgressHUDModeCustomView;
-	hud.labelText = info;
+    hud.labelText = info;
     if ( delay )
     {
         [hud hide:YES afterDelay:delay];
+        if (block != nil)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            block();
+        });
     }
+    
+}
+
+- (void)showMessageInfo:(NSString *)info inView:(UIView *)inView delay:(NSInteger)delay
+{
+    [self showMessageInfo:info inView:inView delay:delay block:nil];
 }
 
 - (void)showMessageInfo:(NSString *)info delay:(NSInteger)delay
 {
     [self showMessageInfo:info inView:self.view delay:delay];
+}
+
+- (void)showMessageInfo:(NSString *)info delay:(NSInteger)delay block:(void (^)(void))block
+{
+    [self showMessageInfo:info inView:self.view delay:delay block:block];
 }
 
 - (void)showMessageInfo:(NSString *)info
@@ -394,7 +411,7 @@
 {
     UIImage *image = [MiniUIImage imageNamed:[self naviBackButtonBackgroundName]];
     UIImage *himage = [MiniUIImage imageNamed:[self naviBackButtonHighlightedBackgroundName]];
-    MiniUIButton *button = [MiniUIButton naviBackbuttonWithBackGroundImage:image highlightedBackGroundImage:himage title:title];
+    MiniUIButton *button = [MiniUIButton naviBackButtonWithBackGroundImage:image highlightedBackGroundImage:himage title:title];
     [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 6, 0, 0)];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     if ( _setupNaviTitleView ) {
@@ -528,11 +545,20 @@
 
 @end
 
-@implementation MiniViewController(tabbar)
-- (void)addTabBarView:(MiniUITabBar*)tabbar
+@implementation MiniViewController(tabBar)
+- (void)addTabBarView:(MiniUITabBar*)tabBar
 {
-    self.miniTabBar = tabbar;
+    self.miniTabBar = tabBar;
     [self.view addSubview:self.miniTabBar];
     [self resetContentView];
+}
+
+- (void)didTabBarItemSelected
+{
+
+}
+- (void)didTabBarItemDeselected
+{
+    
 }
 @end

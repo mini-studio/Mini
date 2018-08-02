@@ -12,33 +12,37 @@
 
 - (void)dealloc
 {
-    if ( touchesBeganBlock )
+    if ( toucheAction )
     {
-        Block_release( touchesBeganBlock );
-        touchesBeganBlock = nil;
+        Block_release( toucheAction );
+        toucheAction = nil;
     }
     [super dealloc];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    if ( touchesBeganBlock )
+    if ( toucheAction )
     {
-        touchesBeganBlock(self);
+        toucheAction(self);
+    }
+    else {
+        [super touchesBegan:touches withEvent:event];
     }
 }
 
-- (void)setTouchesBeganBlock:( void (^)() )block
+- (void)setToucheAction:( void (^)() )block
 {
-    if ( touchesBeganBlock )
+    if ( toucheAction )
     {
-        Block_release( touchesBeganBlock );
-        touchesBeganBlock = nil;
+        Block_release( toucheAction );
+        toucheAction = nil;
     }
     
     if ( block )
     {
-        touchesBeganBlock = Block_copy( block );
+        self.userInteractionEnabled = YES;
+        toucheAction = Block_copy( block );
     }
 }
 @end

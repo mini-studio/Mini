@@ -27,6 +27,8 @@
 
 - (void)showMessageInfo:(NSString *)info delay:(NSInteger)delay;
 
+- (void)showMessageInfo:(NSString *)info delay:(NSInteger)delay block:(void (^)(void))block;
+
 - (void)showMessageInfo:(NSString *)info;
 
 - (void)showMessageInfo:(NSString *)info inView:(UIView *)inView delay:(NSInteger)delay;
@@ -79,6 +81,8 @@
 - (void)deselectedAsChild;
 @end
 
-@interface MiniViewController(tabbar)
-- (void)addTabBarView:(MiniUITabBar*)tabvar;
+@interface MiniViewController(tabBar)
+- (void)addTabBarView:(MiniUITabBar*)tabBar;
+- (void)didTabBarItemSelected;
+- (void)didTabBarItemDeselected;
 @end

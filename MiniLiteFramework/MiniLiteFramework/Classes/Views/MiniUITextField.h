@@ -16,7 +16,7 @@
     CGRect                  _keyboardBounds;
     BOOL                    _keyBoardVisible;
     BOOL                    _scrolled;
-    UIScrollView           *_scrollview;
+    UIScrollView           *_scrollView;
 }
 
 @property (nonatomic,assign) id  miniUITextFieldDelegate;
@@ -24,7 +24,7 @@
 @property (nonatomic,assign) BOOL keyBoardVisible;
 @property (nonatomic,assign) BOOL scrolled;
 @property (nonatomic,assign) CGRect keyboardBounds;
-@property (nonatomic,weak) UIScrollView *scrollview;
+@property (nonatomic,weak) UIScrollView *scrollView;
 
 - (id)initWithFrame:(CGRect)frame scrollView:(UIScrollView *)scrollView;
 

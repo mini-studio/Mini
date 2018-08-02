@@ -30,7 +30,7 @@ SYNTHESIZE_MINI_SINGLETON_FOR_CLASS(MiniImagePickerUtil)
          callback = Block_copy(block);
     }   
     MiniUIActionSheet *act = [[MiniUIActionSheet alloc] initWithTitle:title delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册选择照片", nil];
-    [act setBlock:^(MiniUIActionSheet *actionsheet ,NSInteger buttonIndex) {
+    [act setBlock:^(MiniUIActionSheet *actionSheet ,NSInteger buttonIndex) {
         if ( buttonIndex == 0 ) //从相机
         {
             if ( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
@@ -59,7 +59,7 @@ SYNTHESIZE_MINI_SINGLETON_FOR_CLASS(MiniImagePickerUtil)
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *image = (UIImage *)[info valueForKey:self.useEditeImage?UIImagePickerControllerEditedImage:UIImagePickerControllerOriginalImage];
+    UIImage *image = (UIImage *)[info valueForKey:self.useEditImage?UIImagePickerControllerEditedImage:UIImagePickerControllerOriginalImage];
     [picker dismissModalViewControllerAnimated:YES];
     if ( callback )
     {

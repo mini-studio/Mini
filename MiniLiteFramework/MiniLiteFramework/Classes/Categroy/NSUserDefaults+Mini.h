@@ -10,11 +10,11 @@
 #import "MiniObject.h"
 
 @interface NSUserDefaults (Mini)
-- (void)setMiniObject:(MiniObject*)object forkey:(NSString*)key;
+- (void)setMiniObject:(MiniObject*)object forKey:(NSString*)key;
 
-- (MiniObject*)miniObjectValueForKey:(NSString *)key;
+- (MiniObject*)miniObjectValueforKey:(NSString *)key;
 
-- (void)setString:(NSString*)string forkey:(NSString*)key;
+- (void)setString:(NSString*)string forKey:(NSString*)key;
 
 - (NSString*)stringValueForKey:(NSString*)key defaultValue:(NSString*)df;
 

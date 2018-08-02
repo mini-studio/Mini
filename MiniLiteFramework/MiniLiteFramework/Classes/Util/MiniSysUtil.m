@@ -160,7 +160,7 @@ SYNTHESIZE_MINI_SINGLETON_FOR_CLASS ( MiniSysUtil )
     }
 }
 
-- (BOOL)isExperiedWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day
+- (BOOL)isExpiredWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day
 {
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setYear:year];
