@@ -77,7 +77,7 @@
         }
     }
     UIFont *font = self.titleFont ? self.titleFont : [UIFont systemFontOfSize:titleFontHeight];
-    NSInteger titileTop = 0;
+    NSInteger titleTop = 0;
     if (title.length > 0)
     {
         UIColor *color = [self.attri valueForKey:self.selected?@"highLightTitleColor":@"titleColor"];
@@ -88,12 +88,12 @@
         [color set];
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGFloat bottom = [[self.attri valueForKey:@"bottomSpace"] floatValue];
-        titileTop = self.height - font.lineHeight-bottom;
-        [title drawInRect:CGRectMake(0, titileTop, rect.size.width, font.lineHeight) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
+        titleTop = self.height - font.lineHeight-bottom;
+        [title drawInRect:CGRectMake(0, titleTop, rect.size.width, font.lineHeight) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
         CGContextSetShadow(context, CGSizeMake(0, 0), 0.0);        
     }
     NSString *iconHeight = [self.attri valueForKey:@"iconHeight"];
-    NSInteger h = titileTop - 4;
+    NSInteger h = titleTop - 4;
     if ( iconHeight != nil ) {
         h = [iconHeight integerValue];
     }

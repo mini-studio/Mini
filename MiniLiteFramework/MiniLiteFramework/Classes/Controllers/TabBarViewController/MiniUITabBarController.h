@@ -35,10 +35,10 @@
 
 /*
  *===========================================================
- 
+
  ============================================================
  */
-@protocol MiniUITabBarControllerDelegate 
+@protocol MiniUITabBarControllerDelegate
 @required
 - (BOOL)willSelectedAtIndex:(NSInteger)index;
 - (void)willDeselectedAtIndex:(NSInteger)index;
@@ -51,7 +51,7 @@
  
  ============================================================
  */
-@interface MiniUITabBarController : UITabBarController <MiniUITabBarDelegate>
+@interface MiniUITabBarController : UIViewController<MiniUITabBarDelegate>
 {
     NSInteger     currentSelectedIndex;
     MiniUITabBar  *tabBarView;
@@ -59,50 +59,7 @@
     
     id<MiniUITabBarControllerDelegate> controllerDelegate;
 }
-
-@property (nonatomic,retain) MiniUITabBar *tabBarView;
-@property (nonatomic)NSInteger currentSelectedIndex;
-@property (nonatomic) UIEdgeInsets  tabBarViewEdgeInsets;
-@property (nonatomic,assign) id<MiniUITabBarControllerDelegate> controllerDelegate;
-
-- (NSInteger)heightForTabBarView;
-
-- (id)initWithItems:(NSArray *)array;
-
-- (void)setItems:(NSArray *)array;
-
-- (NSInteger)tabBarVisualHeight;
-- (NSInteger)tabBarHeight;
-
-- (void)resetItem:(MiniTabBarItem *)item atIndex:(NSUInteger)index;
-
-- (void)setBadgeText:(NSString *)bageString atIndex:(NSInteger)index;
-
-- (void)setBadge:(NSInteger)badge atIndex:(NSInteger)index;
-
-- (void)setBadgeImage:(UIImage *)badgeImage atIndex:(NSInteger)index;
-
-- (void)setIcon:(UIImage *)icon highLightIcon:(UIImage *)highLightIcon atIndex:(NSUInteger)index;
-
-- (UIViewController *)viewControllerAtIndex:(NSInteger)index;
-
-- (UIImage *)navigationBarBackGroundForIndex:(NSInteger)index;
-@end
-
-/*
- *===========================================================
- 
- ============================================================
- */
-@interface MiniTabBarController : UIViewController<MiniUITabBarDelegate>
-{
-    NSInteger     currentSelectedIndex;
-    MiniUITabBar  *tabBarView;
-    UIEdgeInsets  tabBarViewEdgeInsets;
-    
-    id<MiniUITabBarControllerDelegate> controllerDelegate;
-}
-
+@property(nonatomic,retain) UIView *contentView;
 @property (nonatomic,retain) MiniUITabBar *tabBarView;
 @property (nonatomic)NSInteger currentSelectedIndex;
 @property (nonatomic) UIEdgeInsets  tabBarViewEdgeInsets;
@@ -120,7 +77,7 @@
 
 - (void)resetItem:(MiniTabBarItem *)item atIndex:(NSUInteger)index;
 
-- (void)setBadgeText:(NSString *)bageString atIndex:(NSInteger)index;
+- (void)setBadgeText:(NSString *)badgeString atIndex:(NSInteger)index;
 
 - (void)setBadge:(NSInteger)badge atIndex:(NSInteger)index;
 

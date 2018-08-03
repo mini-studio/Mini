@@ -34,7 +34,7 @@
 - (NSInteger)getBadgeNumberByIndex:(NSInteger)index;
 - (void)resetItem:(MiniUITabBarItem *)item atIndex:(NSUInteger)index;
 - (void)setTabBackImage:(UIImage *)tabBg;
-- (void)setTabItemHighlightImage:(UIImage *)itemHighlighBg;
+- (void)setTabItemHighlightImage:(UIImage *)itemHighlightBg;
 - (MiniUITabBarItem *)itemAtIndex:(NSInteger)index;
 - (UIView *)backgroundView;
 @end

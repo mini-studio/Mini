@@ -37,22 +37,57 @@
 	[super layoutSubviews];
 
 	NSInteger button_x = 0;
-    NSInteger buttonWidth = self.width/[self visibleTabCount];
-	for (NSInteger i = 0; i<self.tabItemsArray.count; i++)
-	{
-        MiniUITabBarItem* item = [self.tabItemsArray objectAtIndex:i];
-		item.frame = CGRectMake(button_x, self.height - item.height, buttonWidth, item.height);
-		//[self addSubview:item];
-		button_x += buttonWidth;
+	if (self.height < self.width) {
+        NSInteger buttonWidth = self.width / [self visibleTabCount];
+        for (NSInteger i = 0; i < self.tabItemsArray.count; i++) {
+            MiniUITabBarItem *item = [self.tabItemsArray objectAtIndex:i];
+            item.frame = CGRectMake(button_x, self.height - item.height, buttonWidth, item.height);
+            //[self addSubview:item];
+            button_x += buttonWidth;
+            [item setNeedsDisplay];
+        }
+        UIImage *itemHighlightBg = highLightImageView.image;
+        CGFloat height = itemHighlightBg.size.height;
+        if ( height > self.height )
+        {
+            height = self.height;
+        }
+        CGRect frame = CGRectMake(0, (self.height - height)/2, itemHighlightBg.size.width, height);
+        highLightImageView.frame = frame ;
+        [self sendSubviewToBack:[self viewWithTag:KTabBagTag]];
+        [self layoutFloatingImageView:buttonWidth];
+    }
+    else {
+        NSInteger buttonWidth = self.width;
+        CGFloat gap = 50;
+        CGFloat left = 0;
+        CGFloat itemHeight = ((MiniUITabBarItem*)[self.tabItemsArray objectAtIndex:0]).height;
+        CGFloat top = (self.height - self.tabItemsArray.count * (itemHeight + gap) + gap)/2;
+        for (NSInteger i = 0; i < self.tabItemsArray.count; i++) {
+            MiniUITabBarItem *item = [self.tabItemsArray objectAtIndex:i];
+            item.frame = CGRectMake(left, top, buttonWidth, item.height);
+            top = (item.bottom + gap);
+            [item setNeedsDisplay];
+        }
+        CGRect frame = CGRectMake(0, 0, buttonWidth, itemHeight);
+        highLightImageView.frame = frame ;
+        [self sendSubviewToBack:[self viewWithTag:KTabBagTag]];
+        [self layoutFloatingImageView:buttonWidth];
 	}
-    [self sendSubviewToBack:[self viewWithTag:KTabBagTag]];
-    [self layoutFloatingImageView:buttonWidth];
+
 }
 
 - (void)layoutFloatingImageView:(CGFloat)width
 {
     highLightImageView.width = width;
-    highLightImageView.left = [self bottomHighlightImageXAtIndex:selectedTabIndex];
+    if (self.width > self.height) {
+        highLightImageView.left = [self bottomHighlightImageXAtIndex:selectedTabIndex];
+    }
+    else {
+        MiniUITabBarItem *item = [self.tabItemsArray objectAtIndex:selectedTabIndex];
+        highLightImageView.top = item.top;
+    }
+    
 }
 
 - (void)setTabItemsArray:(NSMutableArray *)array
@@ -137,7 +172,12 @@
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.2];
-    highLightImageView.left = [self bottomHighlightImageXAtIndex:selectedIndex];
+    if(self.height < self.width) {
+        highLightImageView.left = [self bottomHighlightImageXAtIndex:selectedIndex];
+    }
+    else {
+        highLightImageView.top = [self bottomHighlightImageYAtIndex:selectedIndex];
+    }
     [UIView commitAnimations];
     if(selectedTabIndex >= 0)
     {
@@ -192,8 +232,13 @@
     {
         return;
     }
-	highLightImageView.left = [self bottomHighlightImageXAtIndex:index];
-	UIButton* button = [self.tabItemsArray objectAtIndex:index];
+    UIButton* button = [self.tabItemsArray objectAtIndex:index];
+    if (self.width > self.height) {
+        highLightImageView.left = [self bottomHighlightImageXAtIndex:index];
+    }
+    else {
+        highLightImageView.origin = button.origin;
+    }
 	[self touchDownAction:button];
     selectedTabIndex = index;
 }
@@ -201,10 +246,27 @@
 
 - (CGFloat)bottomHighlightImageXAtIndex:(NSUInteger)tabIndex
 {
-	CGFloat tabItemWidth = self.frame.size.width / self.tabItemsArray.count;
-	CGFloat halfTabItemWidth = (tabItemWidth / 2.0) - (highLightImageView.width / 2.0);
-	return (tabIndex * tabItemWidth) + halfTabItemWidth;
+    if (self.height < self.width) {
+        CGFloat tabItemWidth = self.frame.size.width / self.tabItemsArray.count;
+        CGFloat halfTabItemWidth = (tabItemWidth / 2.0) - (highLightImageView.width / 2.0);
+        return (tabIndex * tabItemWidth) + halfTabItemWidth;
+    }
+    else {
+        return 0;
+    }
 }
+
+- (CGFloat)bottomHighlightImageYAtIndex:(NSUInteger)tabIndex
+{
+    if (self.height > self.width) {
+        UIButton *button = [[self tabItemsArray] objectAtIndex:tabIndex];
+        return button.top;
+    }
+    else {
+        return 0;
+    }
+}
+
 
 - (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index
 {
@@ -254,16 +316,9 @@
     return [self viewWithTag:KTabBagTag];
 }
 
-- (void)setTabItemHighlightImage:(UIImage *)itemHighlighBg
+- (void)setTabItemHighlightImage:(UIImage *)itemHighlightBg
 {
-    highLightImageView.image = itemHighlighBg;
-    NSInteger height = itemHighlighBg.size.height;
-    if ( height > self.height )
-    {
-        height = self.height;
-    }
-    CGRect frame = CGRectMake(0, (self.height - height)/2, itemHighlighBg.size.width, height);
-    highLightImageView.frame = frame ;
+    highLightImageView.image = itemHighlightBg;
 }
 
 - (MiniUITabBarItem *)itemAtIndex:(NSInteger)index

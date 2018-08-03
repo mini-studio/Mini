@@ -112,6 +112,11 @@
     }
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self resetContentView];
+}
+
 - (void)setNaviTitleViewShow:(BOOL)show
 {
      _setupNaviTitleView = YES;
@@ -163,12 +168,24 @@
 - (void)resetContentView
 {
     UIView *view = [self contentView];
-    CGFloat top = _naviTitleView==nil?0:_naviTitleView.bottom;
-    CGFloat height = self.view.height-top;
-    if (self.miniTabBar != nil) {
-        height = height - self.miniTabBar.height;
+    if (self.view.height > self.view.width) {
+        CGFloat top = _naviTitleView == nil ? 0 : _naviTitleView.bottom;
+        CGFloat height = self.view.height - top;
+        if (self.miniTabBar != nil) {
+            height = height - self.miniTabBar.height;
+        }
+        view.frame = CGRectMake(0, top, self.view.width, height);
     }
-    view.frame = CGRectMake(0, top, self.view.width, height);
+    else {
+        CGFloat top = _naviTitleView == nil ? 0 : _naviTitleView.bottom;
+        CGFloat height = self.view.height - top;
+        CGFloat left = 0;
+        if (self.miniTabBar != nil) {
+            self.miniTabBar.frame = CGRectMake(0, 0, self.miniTabBar.width, self.miniTabBar.height);
+            left = self.miniTabBar.right;
+        }
+        view.frame = CGRectMake(left, top, self.view.width - left, height);
+    }
 }
 
 - (UIView*)contentView
@@ -349,8 +366,6 @@
 
 }
 
-
-
 - (void)dismissWating:(BOOL)animated
 {
     if ( _hud )
@@ -410,8 +425,8 @@
 - (void)setNaviBackButtonTitle:(NSString *)title target:(id)target action:(SEL)action
 {
     UIImage *image = [MiniUIImage imageNamed:[self naviBackButtonBackgroundName]];
-    UIImage *himage = [MiniUIImage imageNamed:[self naviBackButtonHighlightedBackgroundName]];
-    MiniUIButton *button = [MiniUIButton naviBackButtonWithBackGroundImage:image highlightedBackGroundImage:himage title:title];
+    UIImage *hImage = [MiniUIImage imageNamed:[self naviBackButtonHighlightedBackgroundName]];
+    MiniUIButton *button = [MiniUIButton naviBackButtonWithBackGroundImage:image highlightedBackGroundImage:hImage title:title];
     [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 6, 0, 0)];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     if ( _setupNaviTitleView ) {
@@ -483,10 +498,10 @@
 + (void)showImageInWindow:(UIImage *)image oriFrame:(CGRect)oriframe
 {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    CGSize wsize = window.size;
-    wsize.width *=0.9f;
-    wsize.height *=0.9f;
-    CGSize size = [image sizeForScaleToFixSize:wsize];
+    CGSize wSize = window.size;
+    wSize.width *=0.9f;
+    wSize.height *=0.9f;
+    CGSize size = [image sizeForScaleToFixSize:wSize];
     CGRect frame = CGRectMake((window.size.width - size.width )/2, (window.size.height - size.height )/2, size.width, size.height);
     
     MiniControlView *view = [[MiniControlView alloc] initWithFrame:window.bounds];
@@ -549,6 +564,7 @@
 - (void)addTabBarView:(MiniUITabBar*)tabBar
 {
     self.miniTabBar = tabBar;
+    [self.miniTabBar removeFromSuperview];
     [self.view addSubview:self.miniTabBar];
     [self resetContentView];
 }
