@@ -138,7 +138,16 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return [self.topViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+}
+
+- (BOOL)shouldAutorotate {
+    return self.topViewController.shouldAutorotate;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return self.topViewController.supportedInterfaceOrientations;
 }
 
 

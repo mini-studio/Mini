@@ -60,6 +60,7 @@
 		C19DE52B17912B360084047A /* UILabel+Mini.m in Sources */ = {isa = PBXBuildFile; fileRef = C19DE52A17912B310084047A /* UILabel+Mini.m */; };
 		C1F397731791B437002E2C7E /* MiniUINaviTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C19DE5271791274C0084047A /* MiniUINaviTitleView.m */; };
 		F7FD61C90F71F3AF060F2D71 /* MiniApp.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD636B828197356576EDD0 /* MiniApp.m */; };
+		F7FD62FE7343C28C7048C2E9 /* MiniTabUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD6C4E7E80DF0010B31F37 /* MiniTabUINavigationController.m */; };
 		F7FD66B987D88C9A2E65AD85 /* NSDictionary+MiniObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD686EABCCA506BF5C521B /* NSDictionary+MiniObject.m */; };
 		F7FD6B3EF3AC267F306102F1 /* NSArray+MiniObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD63F5CDF1009104186324 /* NSArray+MiniObject.m */; };
 /* End PBXBuildFile section */
@@ -190,6 +191,8 @@
 		F7FD65D65B9C3FEB6707147E /* NSDictionary+MiniObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MiniObject.h"; sourceTree = "<group>"; };
 		F7FD67A40141A9A4E93E99A5 /* NSArray+MiniObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MiniObject.h"; sourceTree = "<group>"; };
 		F7FD686EABCCA506BF5C521B /* NSDictionary+MiniObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MiniObject.m"; sourceTree = "<group>"; };
+		F7FD6AD770D0137081379C69 /* MiniTabUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniTabUINavigationController.h; sourceTree = "<group>"; };
+		F7FD6C4E7E80DF0010B31F37 /* MiniTabUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniTabUINavigationController.m; sourceTree = "<group>"; };
 		F7FD6DDFED7711A656B69735 /* MiniApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniApp.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,6 +327,8 @@
 				C198B4C715DEA66D00F2A0D6 /* MiniUITabBarController.m */,
 				C198B4C815DEA66D00F2A0D6 /* MiniUITabBarItem.h */,
 				C198B4C915DEA66D00F2A0D6 /* MiniUITabBarItem.m */,
+				F7FD6C4E7E80DF0010B31F37 /* MiniTabUINavigationController.m */,
+				F7FD6AD770D0137081379C69 /* MiniTabUINavigationController.h */,
 			);
 			path = TabBarViewController;
 			sourceTree = "<group>";
@@ -532,6 +537,7 @@
 				F7FD6B3EF3AC267F306102F1 /* NSArray+MiniObject.m in Sources */,
 				F7FD66B987D88C9A2E65AD85 /* NSDictionary+MiniObject.m in Sources */,
 				F7FD61C90F71F3AF060F2D71 /* MiniApp.m in Sources */,
+				F7FD62FE7343C28C7048C2E9 /* MiniTabUINavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -149,10 +149,10 @@
     [super viewDidLayoutSubviews];
     self.contentView.frame = self.self.view.bounds;
     if (self.view.width > self.view.height) {
-        self.tabBarView.frame = CGRectMake(0, 0, [self tabBarVisualHeight], self.contentView.height);
+        self.tabBarView.frame = CGRectMake(0, 0, [self landscapeTabBarVisualWidth], self.contentView.height);
     }
     else {
-        self.tabBarView.frame = CGRectMake(0, self.contentView.height-[self tabBarVisualHeight], self.view.width, [self tabBarVisualHeight]);
+        self.tabBarView.frame = CGRectMake(0, self.contentView.height-[self portraitTabBarVisualHeight], self.view.width, [self portraitTabBarVisualHeight]);
     }
 
 }
@@ -220,6 +220,15 @@
 
 - (NSInteger)tabBarVisualHeight
 {
+    return [self heightForTabBarView];
+}
+
+- (NSInteger)portraitTabBarVisualHeight
+{
+    return [self heightForTabBarView];
+}
+
+- (NSInteger)landscapeTabBarVisualWidth {
     return [self heightForTabBarView];
 }
 

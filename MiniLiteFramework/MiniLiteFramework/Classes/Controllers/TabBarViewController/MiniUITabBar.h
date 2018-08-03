@@ -29,7 +29,7 @@
 - (id)initWithFrame:(CGRect)frame;
 - (CGFloat)bottomHighlightImageXAtIndex:(NSUInteger)tabIndex;
 - (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index;
-- (void)setBadgeText:(NSString*)bageText atIndex:(NSInteger)index;
+- (void)setBadgeText:(NSString*)badgeText atIndex:(NSInteger)index;
 - (void)setBadgeImage:(UIImage *)image atIndex:(NSInteger)index;
 - (NSInteger)getBadgeNumberByIndex:(NSInteger)index;
 - (void)resetItem:(MiniUITabBarItem *)item atIndex:(NSUInteger)index;
