@@ -120,10 +120,10 @@
 - (void)setNaviTitleViewShow:(BOOL)show
 {
      _setupNaviTitleView = YES;
+    CGFloat top = [self statusBarHeight];
     if (show) {
-        CGFloat top = [self statusBarHeight];
         if ( _naviTitleView != nil ) {
-            [_naviTitleView removeAllSubviews];
+            //[_naviTitleView removeAllSubviews];
             _naviTitleView.frame = CGRectMake(0, top, self.view.width, [self naviViewHeight]);
         }
         else {
@@ -131,12 +131,15 @@
         }
         _naviTitleView.backgroundColor = [UIColor grayColor];
         [self.view addSubview:_naviTitleView];
+        _naviTitleView.hidden = NO;
     }
     else {
         if ( _naviTitleView != nil ) {
-            [_naviTitleView removeFromSuperview];
-            [_naviTitleView release];
-            _naviTitleView = nil;
+//            [_naviTitleView removeFromSuperview];
+//            [_naviTitleView release];
+//            _naviTitleView = nil;
+            _naviTitleView.frame = CGRectMake(0, top, self.view.width, 0);
+            _naviTitleView.hidden = YES;
         }
     }
     [self resetContentView];
@@ -169,7 +172,7 @@
 {
     UIView *view = [self contentView];
     if (self.view.height > self.view.width) {
-        CGFloat top = _naviTitleView == nil ? 0 : _naviTitleView.bottom;
+        CGFloat top = (_naviTitleView == nil || _naviTitleView.hidden) ? 0 : _naviTitleView.bottom;
         CGFloat height = self.view.height - top;
         if (self.miniTabBar != nil) {
             height = height - self.miniTabBar.height;
@@ -177,7 +180,7 @@
         view.frame = CGRectMake(0, top, self.view.width, height);
     }
     else {
-        CGFloat top = _naviTitleView == nil ? 0 : _naviTitleView.bottom;
+        CGFloat top = (_naviTitleView == nil ||  _naviTitleView.hidden) ? 0 : _naviTitleView.bottom;
         CGFloat height = self.view.height - top;
         CGFloat left = 0;
         if (self.miniTabBar != nil) {
