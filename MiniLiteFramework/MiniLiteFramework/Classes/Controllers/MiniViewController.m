@@ -122,6 +122,15 @@
      _setupNaviTitleView = YES;
     CGFloat top = [self statusBarHeight];
     if (show) {
+        if (top > 0) {
+            if (_statusBarView == nil) {
+                _statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, top)];
+                [self.view addSubview:_statusBarView];
+            }
+            if (_statusBarView.hidden) {
+                _statusBarView.hidden = NO;
+            }
+        }
         if ( _naviTitleView != nil ) {
             //[_naviTitleView removeAllSubviews];
             _naviTitleView.frame = CGRectMake(0, top, self.view.width, [self naviViewHeight]);
@@ -134,10 +143,10 @@
         _naviTitleView.hidden = NO;
     }
     else {
+        if (_statusBarView != nil) {
+            _statusBarView.hidden = YES;
+        }
         if ( _naviTitleView != nil ) {
-//            [_naviTitleView removeFromSuperview];
-//            [_naviTitleView release];
-//            _naviTitleView = nil;
             _naviTitleView.frame = CGRectMake(0, top, self.view.width, 0);
             _naviTitleView.hidden = YES;
         }
@@ -194,8 +203,11 @@
         }
         view.frame = CGRectMake(left, top, self.view.width - left, height);
     }
-    if (_naviTitleView != nil) {
+    if (_naviTitleView != nil ) {
         _naviTitleView.frame = CGRectMake(view.left, _naviTitleView.top, view.width, _naviTitleView.height);
+        if (_statusBarView != nil && _naviTitleView.top > 0) {
+            _statusBarView.frame = CGRectMake(0, 0, self.view.width, _statusBarView.height);
+        }
     }
 }
 

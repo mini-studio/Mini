@@ -19,7 +19,8 @@
 @property (nonatomic,getter = isVisible) BOOL visible;
 @property (nonatomic,retain)MiniUINaviTitleView *naviTitleView;
 @property (nonatomic,retain)MiniUITabBar *miniTabBar;
-@property (nonatomic,retain)UIView              *contentView;
+@property (nonatomic,retain)UIView  *contentView;
+@property (nonatomic, assign, readonly)UIView * statusBarView;
 
 - (void)setNaviTitleViewShow:(BOOL)shown;
 
