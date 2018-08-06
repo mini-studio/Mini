@@ -184,10 +184,18 @@
         CGFloat height = self.view.height - top;
         CGFloat left = 0;
         if (self.miniTabBar != nil) {
-            self.miniTabBar.frame = CGRectMake(0, 0, self.miniTabBar.width, self.miniTabBar.height);
-            left = self.miniTabBar.right;
+            if (self.miniTabBar.enableAutoRotate) {
+                self.miniTabBar.frame = CGRectMake(0, 0, self.miniTabBar.width, self.miniTabBar.height);
+                left = self.miniTabBar.right;
+            }
+            else {
+                height = height - self.miniTabBar.height;
+            }
         }
         view.frame = CGRectMake(left, top, self.view.width - left, height);
+    }
+    if (_naviTitleView != nil) {
+        _naviTitleView.frame = CGRectMake(view.left, _naviTitleView.top, view.width, _naviTitleView.height);
     }
 }
 

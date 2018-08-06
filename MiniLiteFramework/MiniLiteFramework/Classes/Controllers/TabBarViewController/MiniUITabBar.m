@@ -17,27 +17,27 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    
-	if ((self = [super initWithFrame:frame]))
-	{
+    if ((self = [super initWithFrame:frame]))
+    {
+        _enableAutoRotate = YES;
         selectedTabIndex = -1;
         UIImageView* v = [[UIImageView alloc] init];
         v.tag = KTabBagTag;
         [self addSubview:v];
         [v release];
-        
-		highLightImageView = [[UIImageView alloc]  initWithFrame:CGRectZero];
-		highLightImageView.hidden = NO;
-		[self addSubview:highLightImageView];
-	}
-	return self;
+
+        highLightImageView = [[UIImageView alloc]  initWithFrame:CGRectZero];
+        highLightImageView.hidden = NO;
+        [self addSubview:highLightImageView];
+    }
+    return self;
 }
 - (void)layoutSubviews
 {
-	[super layoutSubviews];
+    [super layoutSubviews];
 
-	NSInteger button_x = 0;
-	if (self.height < self.width) {
+    NSInteger button_x = 0;
+    if (self.height < self.width) {
         NSInteger buttonWidth = self.width / [self visibleTabCount];
         for (NSInteger i = 0; i < self.tabItemsArray.count; i++) {
             MiniUITabBarItem *item = [self.tabItemsArray objectAtIndex:i];
@@ -46,16 +46,17 @@
             button_x += buttonWidth;
             [item setNeedsDisplay];
         }
-        UIImage *itemHighlightBg = highLightImageView.image;
-        CGFloat height = itemHighlightBg.size.height;
-        if ( height > self.height )
-        {
-            height = self.height;
-        }
-        CGRect frame = CGRectMake(0, (self.height - height)/2, itemHighlightBg.size.width, height);
+        CGRect frame = CGRectMake(0, 0, buttonWidth, self.height);
         highLightImageView.frame = frame ;
         [self sendSubviewToBack:[self viewWithTag:KTabBagTag]];
         [self layoutFloatingImageView:buttonWidth];
+        if (_shadowView != nil) { //在顶部
+            _shadowView.hidden = NO;
+            _shadowView.frame = CGRectMake(0, -_shadowView.height, self.width, _shadowView.height);
+        }
+        if (_shadowViewLandscape != nil) {
+            _shadowViewLandscape.hidden = YES;
+        }
     }
     else {
         NSInteger buttonWidth = self.width;
@@ -73,7 +74,14 @@
         highLightImageView.frame = frame ;
         [self sendSubviewToBack:[self viewWithTag:KTabBagTag]];
         [self layoutFloatingImageView:buttonWidth];
-	}
+        if (_shadowViewLandscape != nil) { //在右侧
+            _shadowViewLandscape.hidden = NO;
+            _shadowViewLandscape.frame = CGRectMake(self.width, 0 , _shadowViewLandscape.width, self.height);
+        }
+        if (_shadowView != nil) {
+            _shadowView.hidden = YES;
+        }
+    }
 
 }
 
@@ -87,53 +95,53 @@
         MiniUITabBarItem *item = [self.tabItemsArray objectAtIndex:selectedTabIndex];
         highLightImageView.top = item.top;
     }
-    
+
 }
 
 - (void)setTabItemsArray:(NSMutableArray *)array
 {
-	if (tabItemsArray != array)
-	{
-		[tabItemsArray release];
-		tabItemsArray = nil;
-		tabItemsArray = array;
-		[tabItemsArray retain];
-		
-		[self createTabItems];
-	}
+    if (tabItemsArray != array)
+    {
+        [tabItemsArray release];
+        tabItemsArray = nil;
+        tabItemsArray = array;
+        [tabItemsArray retain];
+
+        [self createTabItems];
+    }
 }
 
 - (void)drawRect:(CGRect)rect
 {
-    [self.bgImage drawInRect:rect];	
+    [self.bgImage drawInRect:rect];
 }
 
 - (void)addShadowToBottomView
 {
-	UIImage* image = [MiniUIImage imageNamed:@"shadow_bottom"];
-	if (image)
-	{
-		UIImageView* shadowView = [[UIImageView alloc] initWithImage:image];
-		CGRect rect = CGRectMake(0, 0 - image.size.height, self.width, image.size.height);
-		shadowView.frame = rect;
-		[self addSubview:shadowView];
-		[shadowView release];
-	}
+    UIImage* image = [MiniUIImage imageNamed:@"shadow_bottom"];
+    if (image)
+    {
+        UIImageView* shadowView = [[UIImageView alloc] initWithImage:image];
+        CGRect rect = CGRectMake(0, 0 - image.size.height, self.width, image.size.height);
+        shadowView.frame = rect;
+        [self addSubview:shadowView];
+        [shadowView release];
+    }
 }
 
 - (void)createTabItems
 {
-	NSInteger itemCount = self.tabItemsArray.count;
+    NSInteger itemCount = self.tabItemsArray.count;
     NSInteger width = self.width/itemCount;
     NSInteger height = self.height;
-	for (MiniUITabBarItem* item in self.tabItemsArray)
-	{
+    for (MiniUITabBarItem* item in self.tabItemsArray)
+    {
         item.frame = CGRectMake(0.0, 0.0, width, height);
-		
-		[item addTarget:self action:@selector(touchDownAction:)forControlEvents:UIControlEventTouchDown];
-		[item addTarget:self action:@selector(touchUpInsideAction:)forControlEvents:UIControlEventTouchUpInside];
-		[self addSubview:item];
-	}
+
+        [item addTarget:self action:@selector(touchDownAction:)forControlEvents:UIControlEventTouchDown];
+        [item addTarget:self action:@selector(touchUpInsideAction:)forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:item];
+    }
 }
 
 - (void)resetItem:(MiniUITabBarItem *)item atIndex:(NSUInteger)index
@@ -144,7 +152,7 @@
         [old removeFromSuperview];
         [self.tabItemsArray removeObjectAtIndex:index];
         [self.tabItemsArray insertObject:item atIndex:index];
-        
+
         NSInteger itemCount = self.tabItemsArray.count;
         NSInteger width = self.width/itemCount;
         NSInteger height = self.height;
@@ -167,9 +175,9 @@
     MiniUITabBarItem* item = (MiniUITabBarItem*)selectedButton;
     item.selected = YES;
     item.highlighted = item.selected ? NO : YES;
-    
+
     NSUInteger selectedIndex = [self.tabItemsArray indexOfObjectIdenticalTo:item];
-    
+
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.2];
     if(self.height < self.width) {
@@ -186,17 +194,17 @@
         lastItem.highlighted = item.selected ? NO : YES;
         [lastItem setNeedsDisplay];
     }
-    
+
     selectedTabIndex = selectedIndex;
-    
+
     [item setNeedsDisplay];
 }
 
 - (void)touchDownAction:(UIButton*)button
 {
-    NSInteger selectedIndex = [self.tabItemsArray indexOfObject:button]; 
+    NSInteger selectedIndex = [self.tabItemsArray indexOfObject:button];
     BOOL ret = YES;
-    if ( [delegate respondsToSelector:@selector(willTouchDownAtItemAtIndex:)] ) 
+    if ( [delegate respondsToSelector:@selector(willTouchDownAtItemAtIndex:)] )
     {
         ret = [delegate willTouchDownAtItemAtIndex:selectedIndex];
     }
@@ -206,19 +214,19 @@
         {
             [self dimAllButtonsExcept:button];
         }
-    }	
-	if ([delegate respondsToSelector:@selector(touchDownAtItemAtIndex:)])
+    }
+    if ([delegate respondsToSelector:@selector(touchDownAtItemAtIndex:)])
     {
-		[delegate touchDownAtItemAtIndex:selectedIndex];
+        [delegate touchDownAtItemAtIndex:selectedIndex];
     }
 }
 
 - (void)touchUpInsideAction:(UIButton*)button
 {
     //[self dimAllButtonsExcept:button];
-	
-	if ([delegate respondsToSelector:@selector(touchUpInsideItemAtIndex:)])
-		[delegate touchUpInsideItemAtIndex:[self.tabItemsArray indexOfObject:button]];
+
+    if ([delegate respondsToSelector:@selector(touchUpInsideItemAtIndex:)])
+        [delegate touchUpInsideItemAtIndex:[self.tabItemsArray indexOfObject:button]];
 }
 
 //- (void)otherTouchesAction:(UIButton*)button
@@ -228,7 +236,7 @@
 
 - (void)setSelectedTabIndex:(NSInteger)index
 {
-    if ( index < 0 || index >= self.tabItemsArray.count ) 
+    if ( index < 0 || index >= self.tabItemsArray.count )
     {
         return;
     }
@@ -239,7 +247,7 @@
     else {
         highLightImageView.origin = button.origin;
     }
-	[self touchDownAction:button];
+    [self touchDownAction:button];
     selectedTabIndex = index;
 }
 
@@ -303,12 +311,12 @@
     if ( tabBackImg.size.width < 20 )
     {
         tabBackImg = [tabBackImg stretchableImageWithLeftCapWidth:ceil(tabBackImg.size.width/2) topCapHeight:ceil(tabBackImg.size.height/2)];
-    }        
+    }
     tab.image = tabBackImg;
     tab.width = self.width;
     tab.height = tabBackImg.size.height;
     tab.top = self.height - tabBackImg.size.height;
-    
+
 }
 
 - (UIView *)backgroundView
@@ -328,10 +336,10 @@
 
 - (void)dealloc
 {
-	[highLightImageView release];
-	[bgImage release];
-	[tabItemsArray release];
-	[super dealloc];
+    [highLightImageView release];
+    [bgImage release];
+    [tabItemsArray release];
+    [super dealloc];
 }
 
 - (void)setShadowView:(UIView *)shadowView
@@ -340,9 +348,21 @@
         [_shadowView removeFromSuperview];
     }
     _shadowView = shadowView;
+    _shadowView.hidden = YES;
     if (_shadowView != nil) {
         _shadowView.frame = CGRectMake(0, -_shadowView.height, self.width, _shadowView.height);
         [self addSubview:_shadowView];
+    }
+}
+
+- (void)setShadowViewLandscape:(UIView *)shadowViewLandscape {
+    if (_shadowViewLandscape != nil) {
+        [_shadowViewLandscape removeFromSuperview];
+    }
+    _shadowViewLandscape = shadowViewLandscape;
+    if (_shadowViewLandscape != nil) {
+        [self addSubview:_shadowViewLandscape];
+        _shadowViewLandscape.hidden = YES;
     }
 }
 

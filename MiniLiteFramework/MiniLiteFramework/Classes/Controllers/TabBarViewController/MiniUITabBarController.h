@@ -27,7 +27,7 @@
 @property (nonatomic,retain)UIFont *titleFont;
 @property (nonatomic,retain)Class clazz;
 - (id)initWithControllerClass:(Class)controllerClass image:(UIImage*)image highlightedImage:(UIImage*)highlightedImage title:(NSString*)title;
-- (id)initWithControllerClass:(Class)controllerClass image:(UIImage*)image highlightedImage:(UIImage*)image;
+- (id)initWithControllerClass:(Class)controllerClass image:(UIImage*)image highlightedImage:(UIImage*)highlightedImage;
 - (id)initWithControllerClass:(Class)controllerClass image:(UIImage*)image title:(NSString*)title;
 - (id)initWithControllerClass:(Class)controllerClass image:(UIImage*)image highlightedImage:(UIImage*)highlightedImage title:(NSString*)title clazz:(Class)clazz;
 

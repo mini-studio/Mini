@@ -148,7 +148,7 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.contentView.frame = self.self.view.bounds;
-    if (self.view.width > self.view.height) {
+    if (self.view.width > self.view.height && self.tabBarView.enableAutoRotate) {
         self.tabBarView.frame = CGRectMake(0, 0, [self landscapeTabBarVisualWidth], self.contentView.height);
     }
     else {

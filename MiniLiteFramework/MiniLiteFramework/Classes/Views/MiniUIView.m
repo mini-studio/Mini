@@ -18,6 +18,7 @@
 @implementation MiniUIView
 {
     void (^toucheAction)(MiniUIView* view);
+    void (^toucheUpInsideAction)(MiniUIView* view);
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -33,6 +34,11 @@
     {
         Block_release( toucheAction );
         toucheAction = nil;
+    }
+    if ( toucheUpInsideAction )
+    {
+        Block_release( toucheUpInsideAction );
+        toucheUpInsideAction = nil;
     }
     if (_leftBorderView != nil) {
         [_leftBorderView release];
@@ -76,6 +82,15 @@
     }
 }
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
+    if ( toucheUpInsideAction ) {
+        toucheUpInsideAction(self);
+    }
+    else {
+        [super touchesEnded:touches withEvent:event];
+    }
+}
+
 - (void)setToucheAction:( void (^)(MiniUIView* view) )block
 {
     if ( toucheAction )
@@ -87,6 +102,20 @@
     if ( block )
     {
         toucheAction = Block_copy( block );
+    }
+}
+
+- (void)setToucheUpInsideAction:( void (^)(MiniUIView* view) )block
+{
+    if ( toucheUpInsideAction )
+    {
+        Block_release( toucheUpInsideAction );
+        toucheUpInsideAction = nil;
+    }
+
+    if ( block )
+    {
+        toucheUpInsideAction = Block_copy( block );
     }
 }
 

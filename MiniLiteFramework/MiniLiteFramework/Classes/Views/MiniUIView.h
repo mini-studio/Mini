@@ -22,4 +22,5 @@ typedef NS_OPTIONS(NSUInteger, MiniUIViewBorder) {
 @property (nonatomic, strong) UIColor *borderColor;
 @property (nonatomic, strong) CAShapeLayer *borderLayer;
 - (void)setToucheAction:( void (^)(MiniUIView* view) )block;
+- (void)setToucheUpInsideAction:( void (^)(MiniUIView* view) )block;
 @end
