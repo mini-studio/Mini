@@ -11,6 +11,8 @@
 #import "NSString+Mini.h"
 #import "UIDevice+Ext.h"
 #import "MiniUITabBar.h"
+#import "UIColor+Mini.h"
+#import "UIView+block.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -63,12 +65,14 @@
     BOOL _setupNaviTitleView;
 }
 
+@property (nonatomic, retain)UILabel *toastLabel;
 @end
 
 @implementation MiniViewController
 @synthesize visible = _visible;
 @synthesize naviTitleView = _naviTitleView;
 @synthesize contentView = _contentView;
+
 - (id)init
 {
     self = [super init];
@@ -240,6 +244,10 @@
     if (_miniTabBar != nil) {
         [_miniTabBar release];
         _miniTabBar = nil;
+    }
+    if (_toastLabel != nil) {
+       [_toastLabel release];
+        _toastLabel = nil;
     }
     [super dealloc];
 }
@@ -551,6 +559,44 @@
         }];
     }];
     [view release];
+}
+
+- (void)toast:(NSString *)message {
+    if (_toastLabel == nil) {
+        _toastLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _toastLabel.backgroundColor = [UIColor colorWithString:@"000000CC"];
+        _toastLabel.font = [UIFont systemFontOfSize:18];
+        _toastLabel.textColor = [UIColor whiteColor];
+        _toastLabel.textAlignment = NSTextAlignmentCenter;
+        _toastLabel.numberOfLines = 0;
+        _toastLabel.layer.cornerRadius = 4;
+        _toastLabel.layer.masksToBounds = YES;
+        [_toastLabel retain];
+    }
+    _toastLabel.hidden = YES;
+    _toastLabel.frame = CGRectMake(50, self.view.height-100, self.view.width - 100, 100);
+    _toastLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |  UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
+    _toastLabel.text = message;
+    [_toastLabel sizeToFit];
+    CGSize size = _toastLabel.size;
+    size.width = size.width + 26;
+    size.height = size.height + 26;
+    _toastLabel.frame = CGRectMake((self.view.width - size.width)/2, self.view.height, size.width, size.height);
+    [self.view addSubview:_toastLabel];
+    _toastLabel.hidden = NO;
+    _toastLabel.alpha = 1;
+    [UIView animateWithDuration:0.25 animations:^{
+        _toastLabel.bottom = self.view.height  - 100;
+    } completion:^(BOOL finished) {
+        [UIView actionAfter:3 action:^{
+            [UIView animateWithDuration:0.25 animations:^{
+                _toastLabel.alpha = 0;
+            } completion: ^(BOOL finished) {
+                _toastLabel.top = self.view.height;
+                [_toastLabel removeFromSuperview];
+            }];
+        }];
+    }];
 }
 
 @end

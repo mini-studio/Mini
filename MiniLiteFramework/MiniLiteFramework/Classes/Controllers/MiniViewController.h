@@ -22,6 +22,7 @@
 @property (nonatomic,retain)UIView  *contentView;
 @property (nonatomic, assign, readonly)UIView * statusBarView;
 
+
 - (void)setNaviTitleViewShow:(BOOL)shown;
 
 - (void)setNaviTitle:(NSString*)title;
@@ -68,6 +69,8 @@
 - (UITableViewCell *)loadCellFromNib:(NSString *)nib clazz:(Class)clazz;
 
 + (void)showImageInWindow:(UIImage *)image oriFrame:(CGRect)frame;
+
+- (void)toast:(NSString*)message;
 
 
 @end

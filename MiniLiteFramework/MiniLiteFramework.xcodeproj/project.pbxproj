@@ -59,10 +59,19 @@
 		C19992081792E68300BAD44C /* MiniObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C19991CB1792E48E00BAD44C /* MiniObject.m */; };
 		C19DE52B17912B360084047A /* UILabel+Mini.m in Sources */ = {isa = PBXBuildFile; fileRef = C19DE52A17912B310084047A /* UILabel+Mini.m */; };
 		C1F397731791B437002E2C7E /* MiniUINaviTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C19DE5271791274C0084047A /* MiniUINaviTitleView.m */; };
+		F7FD613215E599D6880890BA /* UIView+Border.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD680A48CE50C1ED781390 /* UIView+Border.m */; };
 		F7FD61C90F71F3AF060F2D71 /* MiniApp.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD636B828197356576EDD0 /* MiniApp.m */; };
+		F7FD61DE782B6742623185A7 /* UIView+block.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD6ED31B7597AF61971E4D /* UIView+block.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F7FD62E1F9FCEF4246C3B9D3 /* NSDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD65971CC8F8F16C43C3A8 /* NSDictionary+Json.m */; };
 		F7FD62FE7343C28C7048C2E9 /* MiniTabUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD6C4E7E80DF0010B31F37 /* MiniTabUINavigationController.m */; };
 		F7FD66B987D88C9A2E65AD85 /* NSDictionary+MiniObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD686EABCCA506BF5C521B /* NSDictionary+MiniObject.m */; };
+		F7FD67D596CD94E890334E48 /* NSString+json.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD666F334411551D843C77 /* NSString+json.m */; };
+		F7FD69175FE82235C8B002CE /* NSArray+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD6C758A1314A4960EF4C1 /* NSArray+Json.m */; };
 		F7FD6B3EF3AC267F306102F1 /* NSArray+MiniObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD63F5CDF1009104186324 /* NSArray+MiniObject.m */; };
+		F7FD6CA96A591361E60DE237 /* NSData+json.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD6A795D3B27F1438BC211 /* NSData+json.m */; };
+		F7FD6CF10A2E6C862255465B /* NSError+Desc.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD6DF9645DDDBDA52B9196 /* NSError+Desc.m */; };
+		F7FD6D36B10147C94AFA029F /* UILabel+string.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD65409069B5BCA870A587 /* UILabel+string.m */; };
+		F7FD6FE51688B9D148868AC2 /* NSString+size.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD6081D2F9215CE9B0A6D5 /* NSString+size.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -186,14 +195,32 @@
 		C19DE5271791274C0084047A /* MiniUINaviTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniUINaviTitleView.m; sourceTree = "<group>"; };
 		C19DE52917912B310084047A /* UILabel+Mini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Mini.h"; sourceTree = "<group>"; };
 		C19DE52A17912B310084047A /* UILabel+Mini.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Mini.m"; sourceTree = "<group>"; };
+		F7FD6081D2F9215CE9B0A6D5 /* NSString+size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+size.m"; sourceTree = "<group>"; };
+		F7FD62921200BBC0F44C47AB /* NSString+json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+json.h"; sourceTree = "<group>"; };
 		F7FD636B828197356576EDD0 /* MiniApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniApp.m; sourceTree = "<group>"; };
+		F7FD63BA0E15C1FC270E50AF /* NSData+json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+json.h"; sourceTree = "<group>"; };
 		F7FD63F5CDF1009104186324 /* NSArray+MiniObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MiniObject.m"; sourceTree = "<group>"; };
+		F7FD65409069B5BCA870A587 /* UILabel+string.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+string.m"; sourceTree = "<group>"; };
+		F7FD656D2B0DF134B6AAB220 /* UIView+block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+block.h"; sourceTree = "<group>"; };
+		F7FD65971CC8F8F16C43C3A8 /* NSDictionary+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Json.m"; sourceTree = "<group>"; };
 		F7FD65D65B9C3FEB6707147E /* NSDictionary+MiniObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MiniObject.h"; sourceTree = "<group>"; };
+		F7FD666542BE7CD790049E9B /* NSArray+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Json.h"; sourceTree = "<group>"; };
+		F7FD666F334411551D843C77 /* NSString+json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+json.m"; sourceTree = "<group>"; };
 		F7FD67A40141A9A4E93E99A5 /* NSArray+MiniObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MiniObject.h"; sourceTree = "<group>"; };
+		F7FD680A48CE50C1ED781390 /* UIView+Border.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Border.m"; sourceTree = "<group>"; };
 		F7FD686EABCCA506BF5C521B /* NSDictionary+MiniObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MiniObject.m"; sourceTree = "<group>"; };
+		F7FD687E8EDFA701D543C66F /* UIView+Border.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Border.h"; sourceTree = "<group>"; };
+		F7FD68F3598CF2B7585DF0E7 /* NSString+size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+size.h"; sourceTree = "<group>"; };
+		F7FD693AE189BD23419096E4 /* UILabel+string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+string.h"; sourceTree = "<group>"; };
+		F7FD6A795D3B27F1438BC211 /* NSData+json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+json.m"; sourceTree = "<group>"; };
 		F7FD6AD770D0137081379C69 /* MiniTabUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniTabUINavigationController.h; sourceTree = "<group>"; };
+		F7FD6B43362D208FDD865356 /* NSDictionary+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Json.h"; sourceTree = "<group>"; };
 		F7FD6C4E7E80DF0010B31F37 /* MiniTabUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniTabUINavigationController.m; sourceTree = "<group>"; };
+		F7FD6C758A1314A4960EF4C1 /* NSArray+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Json.m"; sourceTree = "<group>"; };
+		F7FD6DC15183E5AD4CCAC7D9 /* NSError+Desc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Desc.h"; sourceTree = "<group>"; };
 		F7FD6DDFED7711A656B69735 /* MiniApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniApp.h; sourceTree = "<group>"; };
+		F7FD6DF9645DDDBDA52B9196 /* NSError+Desc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Desc.m"; sourceTree = "<group>"; };
+		F7FD6ED31B7597AF61971E4D /* UIView+block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+block.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,34 +299,52 @@
 		C198B4A915DEA66D00F2A0D6 /* Categroy */ = {
 			isa = PBXGroup;
 			children = (
-				C19DE52917912B310084047A /* UILabel+Mini.h */,
-				C19DE52A17912B310084047A /* UILabel+Mini.m */,
-				C161380716CAC1BC0082FDA9 /* UIDevice+Ext.h */,
-				C161380816CAC1BC0082FDA9 /* UIDevice+Ext.m */,
+				F7FD666542BE7CD790049E9B /* NSArray+Json.h */,
+				F7FD6C758A1314A4960EF4C1 /* NSArray+Json.m */,
+				F7FD67A40141A9A4E93E99A5 /* NSArray+MiniObject.h */,
+				F7FD63F5CDF1009104186324 /* NSArray+MiniObject.m */,
 				C198B4AA15DEA66D00F2A0D6 /* NSData+Base64.h */,
 				C198B4AB15DEA66D00F2A0D6 /* NSData+Base64.m */,
+				F7FD63BA0E15C1FC270E50AF /* NSData+json.h */,
+				F7FD6A795D3B27F1438BC211 /* NSData+json.m */,
 				C198B4AC15DEA66D00F2A0D6 /* NSDate+Mini.h */,
 				C198B4AD15DEA66D00F2A0D6 /* NSDate+Mini.m */,
+				F7FD6B43362D208FDD865356 /* NSDictionary+Json.h */,
+				F7FD65971CC8F8F16C43C3A8 /* NSDictionary+Json.m */,
+				F7FD65D65B9C3FEB6707147E /* NSDictionary+MiniObject.h */,
+				F7FD686EABCCA506BF5C521B /* NSDictionary+MiniObject.m */,
+				F7FD6DC15183E5AD4CCAC7D9 /* NSError+Desc.h */,
+				F7FD6DF9645DDDBDA52B9196 /* NSError+Desc.m */,
 				C198B4AE15DEA66D00F2A0D6 /* NSIndexPath+Mini.h */,
 				C198B4AF15DEA66D00F2A0D6 /* NSIndexPath+Mini.m */,
+				F7FD62921200BBC0F44C47AB /* NSString+json.h */,
+				F7FD666F334411551D843C77 /* NSString+json.m */,
 				C198B4B015DEA66D00F2A0D6 /* NSString+Mini.h */,
 				C198B4B115DEA66D00F2A0D6 /* NSString+Mini.m */,
+				F7FD68F3598CF2B7585DF0E7 /* NSString+size.h */,
+				F7FD6081D2F9215CE9B0A6D5 /* NSString+size.m */,
 				C198B4B215DEA66D00F2A0D6 /* NSString+URLEncoding.h */,
 				C198B4B315DEA66D00F2A0D6 /* NSString+URLEncoding.m */,
-				C198B4B415DEA66D00F2A0D6 /* UIColor+Mini.h */,
-				C198B4B515DEA66D00F2A0D6 /* UIColor+Mini.m */,
-				C198B4B615DEA66D00F2A0D6 /* UIImage+Mini.h */,
-				C198B4B715DEA66D00F2A0D6 /* UIImage+Mini.m */,
-				C198B4B815DEA66D00F2A0D6 /* UINavigationBar+Mini.h */,
-				C198B4B915DEA66D00F2A0D6 /* UINavigationBar+Mini.m */,
-				C198B4BA15DEA66D00F2A0D6 /* UIView+Mini.h */,
-				C198B4BB15DEA66D00F2A0D6 /* UIView+Mini.m */,
 				C19991CC1792E4A800BAD44C /* NSUserDefaults+Mini.h */,
 				C19991CD1792E4A800BAD44C /* NSUserDefaults+Mini.m */,
-				F7FD63F5CDF1009104186324 /* NSArray+MiniObject.m */,
-				F7FD67A40141A9A4E93E99A5 /* NSArray+MiniObject.h */,
-				F7FD686EABCCA506BF5C521B /* NSDictionary+MiniObject.m */,
-				F7FD65D65B9C3FEB6707147E /* NSDictionary+MiniObject.h */,
+				C198B4B415DEA66D00F2A0D6 /* UIColor+Mini.h */,
+				C198B4B515DEA66D00F2A0D6 /* UIColor+Mini.m */,
+				C161380716CAC1BC0082FDA9 /* UIDevice+Ext.h */,
+				C161380816CAC1BC0082FDA9 /* UIDevice+Ext.m */,
+				C198B4B615DEA66D00F2A0D6 /* UIImage+Mini.h */,
+				C198B4B715DEA66D00F2A0D6 /* UIImage+Mini.m */,
+				C19DE52917912B310084047A /* UILabel+Mini.h */,
+				C19DE52A17912B310084047A /* UILabel+Mini.m */,
+				F7FD693AE189BD23419096E4 /* UILabel+string.h */,
+				F7FD65409069B5BCA870A587 /* UILabel+string.m */,
+				C198B4B815DEA66D00F2A0D6 /* UINavigationBar+Mini.h */,
+				C198B4B915DEA66D00F2A0D6 /* UINavigationBar+Mini.m */,
+				F7FD656D2B0DF134B6AAB220 /* UIView+block.h */,
+				F7FD6ED31B7597AF61971E4D /* UIView+block.m */,
+				F7FD687E8EDFA701D543C66F /* UIView+Border.h */,
+				F7FD680A48CE50C1ED781390 /* UIView+Border.m */,
+				C198B4BA15DEA66D00F2A0D6 /* UIView+Mini.h */,
+				C198B4BB15DEA66D00F2A0D6 /* UIView+Mini.m */,
 			);
 			path = Categroy;
 			sourceTree = "<group>";
@@ -538,6 +583,15 @@
 				F7FD66B987D88C9A2E65AD85 /* NSDictionary+MiniObject.m in Sources */,
 				F7FD61C90F71F3AF060F2D71 /* MiniApp.m in Sources */,
 				F7FD62FE7343C28C7048C2E9 /* MiniTabUINavigationController.m in Sources */,
+				F7FD6FE51688B9D148868AC2 /* NSString+size.m in Sources */,
+				F7FD62E1F9FCEF4246C3B9D3 /* NSDictionary+Json.m in Sources */,
+				F7FD6CF10A2E6C862255465B /* NSError+Desc.m in Sources */,
+				F7FD6D36B10147C94AFA029F /* UILabel+string.m in Sources */,
+				F7FD61DE782B6742623185A7 /* UIView+block.m in Sources */,
+				F7FD613215E599D6880890BA /* UIView+Border.m in Sources */,
+				F7FD69175FE82235C8B002CE /* NSArray+Json.m in Sources */,
+				F7FD6CA96A591361E60DE237 /* NSData+json.m in Sources */,
+				F7FD67D596CD94E890334E48 /* NSString+json.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
