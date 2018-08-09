@@ -77,5 +77,7 @@ typedef enum {
 + (NSString*)udid;
 + (NSString*)customUdid;
 + (BOOL)isPad;
++ (BOOL)isPhone;
 + (BOOL)isJailbroken;
++ (BOOL)isPodTouch;
 @end

@@ -123,8 +123,8 @@
 
 - (void)setNaviTitleViewShow:(BOOL)show
 {
-     _setupNaviTitleView = YES;
-    CGFloat top = [self statusBarHeight];
+    _setupNaviTitleView = YES;
+   CGFloat top = [self statusBarHeight];
     if (show) {
         if (top > 0) {
             if (_statusBarView == nil) {
@@ -217,9 +217,9 @@
 
 - (UIView*)contentView
 {
-    if ( !_setupNaviTitleView ) {
-        return self.view;
-    }
+//    if ( !_setupNaviTitleView ) {
+//        return self.view;
+//    }
     if ( _contentView == nil ) {
         _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, _naviTitleView.bottom, self.view.width, self.view.height-_naviTitleView.bottom)];
         _contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
@@ -565,7 +565,7 @@
     if (_toastLabel == nil) {
         _toastLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _toastLabel.backgroundColor = [UIColor colorWithString:@"000000CC"];
-        _toastLabel.font = [UIFont systemFontOfSize:18];
+        _toastLabel.font = [UIFont systemFontOfSize:[UIDevice isPad]?18:14];
         _toastLabel.textColor = [UIColor whiteColor];
         _toastLabel.textAlignment = NSTextAlignmentCenter;
         _toastLabel.numberOfLines = 0;
@@ -579,8 +579,9 @@
     _toastLabel.text = message;
     [_toastLabel sizeToFit];
     CGSize size = _toastLabel.size;
-    size.width = size.width + 26;
-    size.height = size.height + 26;
+    CGFloat increment = [UIDevice isPad]?26:12;
+    size.width = size.width + increment;
+    size.height = size.height + increment;
     _toastLabel.frame = CGRectMake((self.view.width - size.width)/2, self.view.height, size.width, size.height);
     [self.view addSubview:_toastLabel];
     _toastLabel.hidden = NO;

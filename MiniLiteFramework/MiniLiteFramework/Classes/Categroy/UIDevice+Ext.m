@@ -275,7 +275,21 @@ char *getMacAddress(char *macAddress, char *ifName) {
 
 + (BOOL)isPad
 {
-    return ( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad );
+    //return ( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad );
+    NSString *deviceType = [UIDevice currentDevice].model;
+    return [deviceType isEqualToString:@"iPad"];
+}
+
++ (BOOL)isPhone
+{
+    NSString *deviceType = [UIDevice currentDevice].model;
+    return [deviceType isEqualToString:@"iPhone"];
+}
+
++ (BOOL)isPodTouch
+{
+    NSString *deviceType = [UIDevice currentDevice].model;
+    return [deviceType isEqualToString:@"iPod touch"];
 }
 
 + (BOOL)isJailbroken

@@ -1,6 +1,8 @@
 
 #import "MiniUITabBar.h"
 #import "MiniUITabBarItem.h"
+#import "UIDevice+Ext.h"
+
 #define KTabBagTag 0x110
 
 @interface MiniUITabBar (PrivateMethods)
@@ -60,7 +62,7 @@
     }
     else {
         NSInteger buttonWidth = self.width;
-        CGFloat gap = 50;
+        CGFloat gap = [UIDevice isPad]?50:20;
         CGFloat left = 0;
         CGFloat itemHeight = ((MiniUITabBarItem*)[self.tabItemsArray objectAtIndex:0]).height;
         CGFloat top = (self.height - self.tabItemsArray.count * (itemHeight + gap) + gap)/2;

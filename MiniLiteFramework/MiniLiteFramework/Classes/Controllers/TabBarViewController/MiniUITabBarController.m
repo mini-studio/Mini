@@ -366,11 +366,11 @@
             controller = [[(UINavigationController*)controller viewControllers] objectAtIndex:0];
         }
     }
+    self.selectedIndex = itemIndex;
     if ( [controller respondsToSelector:@selector(didTabBarItemSelected)])
     {
         [controller performSelector:@selector(didTabBarItemSelected)];
     }
-    self.selectedIndex = itemIndex;
 
 }
 
@@ -394,6 +394,21 @@
 - (BOOL)willTouchDownAtItemAtIndex:(NSUInteger)itemIndex
 {
     return YES;
+}
+
+
+- (BOOL)shouldAutorotate{
+    return self.selectedViewController.shouldAutorotate;
+}
+
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
+    return self.selectedViewController.supportedInterfaceOrientations;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return [self.selectedViewController preferredInterfaceOrientationForPresentation];
 }
 
 
