@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MiniUINaviTitleView.h"
+#import "MiniViewControllerDelegate.h"
 @class MBProgressHUD;
 @class MiniUITabBar;
 
@@ -21,6 +22,7 @@
 @property (nonatomic,retain)MiniUITabBar *miniTabBar;
 @property (nonatomic,retain)UIView  *contentView;
 @property (nonatomic, assign, readonly)UIView * statusBarView;
+@property (nonatomic, retain) id<MiniViewControllerDelegate> controllerDelegate;
 
 
 - (void)setNaviTitleViewShow:(BOOL)shown;
@@ -72,6 +74,7 @@
 
 - (void)toast:(NSString*)message;
 
+- (BOOL)isNavigationControllerTopViewController;
 
 @end
 

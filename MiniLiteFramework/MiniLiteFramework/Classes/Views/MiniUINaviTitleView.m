@@ -32,7 +32,7 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
+
     if (_leftButton != nil) {
         [_leftButton release];
         _leftButton = nil;
@@ -57,6 +57,7 @@
         [_shadowView release];
         _shadowView = nil;
     }
+    [super dealloc];
 }
 
 - (void)layoutSubviews

@@ -208,6 +208,7 @@
 		F7FD666F334411551D843C77 /* NSString+json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+json.m"; sourceTree = "<group>"; };
 		F7FD67A40141A9A4E93E99A5 /* NSArray+MiniObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MiniObject.h"; sourceTree = "<group>"; };
 		F7FD680A48CE50C1ED781390 /* UIView+Border.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Border.m"; sourceTree = "<group>"; };
+		F7FD68488280DD3065C92042 /* MiniViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniViewControllerDelegate.h; sourceTree = "<group>"; };
 		F7FD686EABCCA506BF5C521B /* NSDictionary+MiniObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MiniObject.m"; sourceTree = "<group>"; };
 		F7FD687E8EDFA701D543C66F /* UIView+Border.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Border.h"; sourceTree = "<group>"; };
 		F7FD68F3598CF2B7585DF0E7 /* NSString+size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+size.h"; sourceTree = "<group>"; };
@@ -357,6 +358,7 @@
 				C198B4BF15DEA66D00F2A0D6 /* MiniViewController.h */,
 				C198B4C015DEA66D00F2A0D6 /* MiniViewController.m */,
 				C198B4C115DEA66D00F2A0D6 /* TabBarViewController */,
+				F7FD6AADD58E0700C49ED9E5 /* delegate */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -478,6 +480,14 @@
 				C199920A1792E77300BAD44C /* MiniLoggerClient.h */,
 			);
 			path = Headers;
+			sourceTree = "<group>";
+		};
+		F7FD6AADD58E0700C49ED9E5 /* delegate */ = {
+			isa = PBXGroup;
+			children = (
+				F7FD68488280DD3065C92042 /* MiniViewControllerDelegate.h */,
+			);
+			path = delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

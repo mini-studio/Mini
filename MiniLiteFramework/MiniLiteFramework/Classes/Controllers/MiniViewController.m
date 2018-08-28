@@ -142,8 +142,14 @@
         else {
             _naviTitleView = [[MiniUINaviTitleView alloc] initWithFrame:CGRectMake(0, top, self.view.width, [self naviViewHeight])];
         }
-        _naviTitleView.backgroundColor = [UIColor grayColor];
         [self.view addSubview:_naviTitleView];
+
+        if (self.controllerDelegate != nil) {
+            [self.controllerDelegate naviTileViewDidCreate:self];
+        }
+        else {
+            _naviTitleView.backgroundColor = [UIColor grayColor];
+        }
         _naviTitleView.hidden = NO;
     }
     else {
@@ -169,7 +175,12 @@
 
 - (CGFloat)naviViewHeight
 {
-    return 44;
+    if (self.controllerDelegate != nil) {
+        return [self.controllerDelegate naviTitleViewHeight:self];
+    }
+    else {
+        return 44;
+    }
 }
 
 - (void)setNaviTitle:(NSString*)title
@@ -248,6 +259,10 @@
     if (_toastLabel != nil) {
        [_toastLabel release];
         _toastLabel = nil;
+    }
+    if (_controllerDelegate != nil) {
+        [_controllerDelegate release];
+        _controllerDelegate = nil;
     }
     [super dealloc];
 }
@@ -599,6 +614,13 @@
         }];
     }];
 }
+
+
+- (BOOL)isNavigationControllerTopViewController
+{
+    return self.navigationController != nil && self.navigationController.viewControllers.count > 0 && self.navigationController.viewControllers[0] == self;
+}
+
 
 @end
 
