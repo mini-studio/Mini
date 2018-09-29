@@ -147,7 +147,7 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    self.contentView.frame = self.self.view.bounds;
+    self.contentView.frame = self.view.bounds;
     if (self.view.width > self.view.height && self.tabBarView.enableAutoRotate) {
         self.tabBarView.frame = CGRectMake(0, 0, [self landscapeTabBarVisualWidth], self.contentView.height);
     }
@@ -387,6 +387,7 @@
         }
     }
     UIView *controlView = controller.view;
+    controlView.frame = self.contentView.bounds;
     [self.contentView addSubview:controlView];
     self.selectedViewController = controller;
 }

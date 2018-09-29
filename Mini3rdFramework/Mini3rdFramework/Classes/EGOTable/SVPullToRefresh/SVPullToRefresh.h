@@ -14,15 +14,11 @@
 @interface SVPullToRefresh : UIView
 
 #ifdef __ARC__
-@property (nonatomic, strong) UIColor *arrowColor;
 @property (nonatomic, strong) UIColor *textColor;
-@property (nonatomic, readwrite) UIActivityIndicatorViewStyle activityIndicatorViewStyle;
 @property (nonatomic, strong) NSDate *lastUpdatedDate;
 
 #else
-@property (nonatomic, retain) UIColor *arrowColor;
 @property (nonatomic, retain) UIColor *textColor;
-@property (nonatomic, readwrite) UIActivityIndicatorViewStyle activityIndicatorViewStyle;
 @property (nonatomic, retain) NSDate *lastUpdatedDate;
 #endif
 - (void)triggerRefresh;

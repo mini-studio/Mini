@@ -116,6 +116,11 @@
     }
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self registerPopGestureRecognizer];
+}
+
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     [self resetContentView];
@@ -233,7 +238,8 @@
 //    }
     if ( _contentView == nil ) {
         _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, _naviTitleView.bottom, self.view.width, self.view.height-_naviTitleView.bottom)];
-        _contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        _contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin  |
+        UIViewAutoresizingFlexibleTopMargin;
         if (_naviTitleView  != nil ) {
            [self.view insertSubview:_contentView belowSubview:self.naviTitleView];
         }
@@ -263,6 +269,7 @@
     if (_controllerDelegate != nil) {
         [_controllerDelegate release];
         _controllerDelegate = nil;
+
     }
     [super dealloc];
 }
@@ -620,6 +627,25 @@
 {
     return self.navigationController != nil && self.navigationController.viewControllers.count > 0 && self.navigationController.viewControllers[0] == self;
 }
+
+
+- (void)registerPopGestureRecognizer {
+    if ([self isNavigationControllerTopViewController]) {
+
+    }
+    else {
+        self.navigationController.interactivePopGestureRecognizer.delegate = (id) self;
+    }
+}
+
+- (void)enablePopGestureRecognizer {
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+}
+
+- (void)disablePopGestureRecognizer {
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+}
+
 
 
 @end

@@ -22,7 +22,7 @@
 @property (nonatomic,retain)MiniUITabBar *miniTabBar;
 @property (nonatomic,retain)UIView  *contentView;
 @property (nonatomic, assign, readonly)UIView * statusBarView;
-@property (nonatomic, retain) id<MiniViewControllerDelegate> controllerDelegate;
+@property (nonatomic, retain) NSObject<MiniViewControllerDelegate> *controllerDelegate;
 
 
 - (void)setNaviTitleViewShow:(BOOL)shown;
@@ -75,6 +75,11 @@
 - (void)toast:(NSString*)message;
 
 - (BOOL)isNavigationControllerTopViewController;
+
+
+- (void)registerPopGestureRecognizer ;
+- (void)enablePopGestureRecognizer;
+- (void)disablePopGestureRecognizer;
 
 @end
 

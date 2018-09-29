@@ -35,6 +35,7 @@ typedef NSUInteger SVPullToRefreshState;
 
 #ifdef __ARC__
 @property (nonatomic, strong) UIImageView *arrow;
+@property (nonatomic, strong) UIView *arrayImageContainer;
 @property (nonatomic, strong, readonly) UIImage *arrowImage;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -44,7 +45,7 @@ typedef NSUInteger SVPullToRefreshState;
 #else
 @property (nonatomic, retain) UIImageView *arrow;
 @property (nonatomic, retain, readonly) UIImage *arrowImage;
-@property (nonatomic, retain) UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, retain) UIView *arrayImageContainer;
 @property (nonatomic, retain) UILabel *titleLabel;
 
 @property (nonatomic, retain, readonly) UILabel *dateLabel;
@@ -66,11 +67,11 @@ typedef NSUInteger SVPullToRefreshState;
 @implementation SVPullToRefresh
 
 // public properties
-@synthesize actionHandler, arrowColor, textColor, activityIndicatorViewStyle, lastUpdatedDate;
+@synthesize actionHandler, textColor, lastUpdatedDate;
 
 @synthesize state;
 @synthesize scrollView = _scrollView;
-@synthesize arrow, arrowImage, activityIndicatorView, titleLabel, dateLabel, dateFormatter, originalScrollViewContentInset;
+@synthesize arrayImageContainer, arrow, arrowImage, titleLabel, dateLabel, dateFormatter, originalScrollViewContentInset;
 
 - (void)dealloc {
 //    [self.scrollView removeObserver:self forKeyPath:@"contentOffset"];
@@ -83,9 +84,9 @@ typedef NSUInteger SVPullToRefreshState;
     }
     [arrow release];
     [arrowImage release];
-    [activityIndicatorView release];
     [titleLabel release];
     [dateFormatter release];
+    [arrayImageContainer release];
     [super dealloc];
 #endif
 }
@@ -104,11 +105,6 @@ typedef NSUInteger SVPullToRefreshState;
     self = [super initWithFrame:CGRectZero];
     self.scrollView = scrollView;
     [_scrollView addSubview:self];
-    
-    
-    // default styling values
-    self.arrowColor = [UIColor grayColor];
-    self.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     self.textColor = [UIColor darkGrayColor];
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 150, 20)];
@@ -118,7 +114,7 @@ typedef NSUInteger SVPullToRefreshState;
     titleLabel.textColor = textColor;
     [self addSubview:titleLabel];
     
-    [self addSubview:self.arrow];
+
     
     [scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     [scrollView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
@@ -127,6 +123,9 @@ typedef NSUInteger SVPullToRefreshState;
 	
     self.state = SVPullToRefreshStateHidden;
     self.frame = CGRectMake(0, -60, scrollView.bounds.size.width, 60);
+    self.arrayImageContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 15, 30, 30)];
+    [self addSubview:self.arrayImageContainer];
+    [self.arrayImageContainer addSubview:self.arrow];
     
     return self;
 }
@@ -143,11 +142,9 @@ typedef NSUInteger SVPullToRefreshState;
     dateFrame.origin.x = titleFrame.origin.x;
     dateLabel.frame = dateFrame;
     
-    CGRect arrowFrame = arrow.frame;
+    CGRect arrowFrame = arrayImageContainer.frame;
     arrowFrame.origin.x = ceil(remainingWidth*position);
-    arrow.frame = arrowFrame;
-    
-    self.activityIndicatorView.center = self.arrow.center;
+    arrayImageContainer.frame = arrowFrame;
 }
 
 #pragma mark - Getters
@@ -155,38 +152,15 @@ typedef NSUInteger SVPullToRefreshState;
 - (UIImageView *)arrow {
     if(!arrow) {
         arrow = [[UIImageView alloc] initWithImage:self.arrowImage];
-        arrow.frame = CGRectMake(0, 6, 22, 48);
         arrow.backgroundColor = [UIColor clearColor];
     }
     return arrow;
 }
 
 - (UIImage *)arrowImage {
-    CGRect rect = CGRectMake(0, 0, 22, 48);
-    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [[UIColor clearColor] set];
-    CGContextFillRect(context, rect);
-    
-    [self.arrowColor set];
-    CGContextTranslateCTM(context, 0, rect.size.height);
-    CGContextScaleCTM(context, 1.0, -1.0);
-    CGContextClipToMask(context, rect, [[UIImage imageNamed:@"SVPullToRefresh.bundle/arrow"] CGImage]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *output = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return output;
-}
-
-- (UIActivityIndicatorView *)activityIndicatorView {
-    if(!activityIndicatorView) {
-        activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        activityIndicatorView.hidesWhenStopped = YES;
-        [self addSubview:activityIndicatorView];
-    }
-    return activityIndicatorView;
+    UIImage *image = [UIImage imageNamed:@"SVPullToRefresh.bundle/arrow"];
+    image = [image scaleToSize:CGSizeMake(30, 30)];
+    return image;
 }
 
 - (UILabel *)dateLabel {
@@ -216,19 +190,11 @@ typedef NSUInteger SVPullToRefreshState;
 
 #pragma mark - Setters
 
-- (void)setArrowColor:(UIColor *)newArrowColor {
-    arrowColor = newArrowColor;
-    self.arrow.image = self.arrowImage;
-}
 
 - (void)setTextColor:(UIColor *)newTextColor {
     textColor = newTextColor;
     titleLabel.textColor = newTextColor;
 	dateLabel.textColor = newTextColor;
-}
-
-- (void)setActivityIndicatorViewStyle:(UIActivityIndicatorViewStyle)viewStyle {
-    self.activityIndicatorView.activityIndicatorViewStyle = viewStyle;
 }
 
 - (void)setScrollViewContentInset:(UIEdgeInsets)contentInset {
@@ -293,6 +259,10 @@ typedef NSUInteger SVPullToRefreshState;
         LOG_DEBUG(@"contentOffset.y >= -self.originalScrollViewContentInset.top");
         self.state = SVPullToRefreshStateHidden;
     }
+
+    //if (self.scrollView.isDragging && self.state != SVPullToRefreshStateTriggered) {
+        self.arrow.transform = CGAffineTransformMakeRotation(-contentOffset.y*0.3);
+    //}
 }
 
 - (void)triggerRefresh {
@@ -309,7 +279,7 @@ typedef NSUInteger SVPullToRefreshState;
     switch (newState) {
         case SVPullToRefreshStateHidden:
             titleLabel.text = NSLocalizedString(@"Pull to refresh...",);
-            [self.activityIndicatorView stopAnimating];
+            [self.arrow.layer removeAllAnimations];
             [self setScrollViewContentInset:self.originalScrollViewContentInset];
             [self rotateArrow:0 hide:NO];
             break;
@@ -317,32 +287,38 @@ typedef NSUInteger SVPullToRefreshState;
         case SVPullToRefreshStateVisible:
             titleLabel.text = NSLocalizedString(@"Pull to refresh...",);
             arrow.alpha = 1;
-            [self.activityIndicatorView stopAnimating];
+            [self.arrow.layer removeAllAnimations];
             [self setScrollViewContentInset:self.originalScrollViewContentInset];
-            [self rotateArrow:0 hide:NO];
+            //[self rotateArrow:0 hide:NO];
             break;
             
-        case SVPullToRefreshStateTriggered:
+        case SVPullToRefreshStateTriggered: {
             titleLabel.text = NSLocalizedString(@"Release to refresh...",);
-            [self rotateArrow:M_PI hide:NO];
             break;
+        }
             
-        case SVPullToRefreshStateLoading:
+        case SVPullToRefreshStateLoading: {
             titleLabel.text = NSLocalizedString(@"Loading...",);
-            [self.activityIndicatorView startAnimating];
-            [self setScrollViewContentInset:UIEdgeInsetsMake(self.frame.origin.y*-1+self.originalScrollViewContentInset.top, 0, 0, 0)];
-            [self rotateArrow:0 hide:YES];
-            if(actionHandler)
+            [self.arrow.layer removeAllAnimations];
+            CABasicAnimation *rotationAnimation;
+            rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+            rotationAnimation.toValue = [NSNumber numberWithFloat:M_PI];
+            rotationAnimation.cumulative = YES;
+            rotationAnimation.repeatCount = MAXFLOAT;
+            [self.arrow.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+
+            [self setScrollViewContentInset:UIEdgeInsetsMake(self.frame.origin.y * -1 + self.originalScrollViewContentInset.top, 0, 0, 0)];
+            if (actionHandler)
                 actionHandler();
             break;
+        }
     }
 }
 
 - (void)rotateArrow:(float)degrees hide:(BOOL)hide {
-    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-        self.arrow.layer.transform = CATransform3DMakeRotation(degrees, 0, 0, 1);
-        self.arrow.layer.opacity = !hide;
-    } completion:NULL];
+//    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+//        self.arrow.layer.transform = CATransform3DMakeRotation(degrees, 0, 0, 1);
+//    } completion:NULL];
 }
 
 @end
