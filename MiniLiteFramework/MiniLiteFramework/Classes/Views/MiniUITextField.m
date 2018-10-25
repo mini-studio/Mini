@@ -57,6 +57,13 @@
     self.multipleTouchEnabled = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBorderWillShow:)name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBorderWillHide:)name:UIKeyboardWillHideNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBorderWillShow:) name:MiniUIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBorderWillShow:) name:MiniUIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBorderWillHide:) name:MiniUIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBorderWillHide:) name:MiniUIKeyboardDidHideNotification object:nil];
+    
     self.delegate = textFieldDelegate = [[MiniUITextFieldDelegate alloc] init];
 }
 
@@ -91,8 +98,8 @@
 
 - (void)scrollToVisible
 {
-    UIWindow *window = ([UIApplication sharedApplication].delegate).window;
-    CGRect frame = [self.superview convertRect:self.frame toView:window];
+    UIView *rootView = [self rootView];
+    CGRect frame = [self.superview convertRect:self.frame toView:rootView];
     frame.origin.y += 10;
     CGFloat maxY = CGRectGetMaxY(frame);
     if( maxY > self.keyboardFrame.origin.y ) //below keyborder
@@ -113,6 +120,28 @@
         }completion:^(BOOL finished) {
         }];
     }
+}
+
+- (UIView *)rootView
+{
+    UIView *rootView = nil;
+    UIView *currentView = self;
+    while (rootView == nil){
+        UIView *v  = currentView.superview;
+        if (v == nil) {
+            break;
+        }
+        else {
+            if (v.tag == ROOT_VIEW_TAG) {
+                rootView = v;
+                break;
+            }
+            else {
+                currentView = v;
+            }
+        }
+    }
+    return rootView;
 }
 
 - (void)handleKeyBorderWillShow:(NSNotification *)noti

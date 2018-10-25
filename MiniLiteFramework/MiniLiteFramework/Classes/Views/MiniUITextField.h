@@ -7,7 +7,6 @@
 //
 @class MiniUITextFieldDelegate;
 
-
 @interface MiniUITextField : UITextField
 {
     id                      userInfo;

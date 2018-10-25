@@ -118,12 +118,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.tag = ROOT_VIEW_TAG;
     [self registerPopGestureRecognizer];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    [self resetContentView];
+    if (_naviTitleView != nil && !_naviTitleView.hidden) {
+        [self setNaviTitleViewShow:YES];
+    }
+    else {
+        [self resetContentView];
+    }
 }
 
 - (void)setNaviTitleViewShow:(BOOL)show
@@ -136,6 +142,9 @@
                 _statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, top)];
                 [self.view addSubview:_statusBarView];
             }
+            else {
+                _statusBarView.frame = CGRectMake(0, 0, self.view.width, top);
+            }
             if (_statusBarView.hidden) {
                 _statusBarView.hidden = NO;
             }
@@ -147,8 +156,9 @@
         else {
             _naviTitleView = [[MiniUINaviTitleView alloc] initWithFrame:CGRectMake(0, top, self.view.width, [self naviViewHeight])];
         }
-        [self.view addSubview:_naviTitleView];
-
+        if (_naviTitleView.superview == nil) {
+            [self.view addSubview:_naviTitleView];
+        }
         if (self.controllerDelegate != nil) {
             [self.controllerDelegate naviTileViewDidCreate:self];
         }
@@ -171,10 +181,19 @@
 
 - (NSInteger)statusBarHeight
 {
-    if ( [UIDevice iosMainVersion] >= 7 )
-        return 20;
+    if (IS_IPHONE_X) {
+        if (IS_LANDSCAPE) {
+            return 20;
+        }
+        else {
+            return 30;
+        }
+    }
     else {
-        return 0;
+        if ([UIDevice iosMainVersion] >= 7)
+            return 20;
+        else
+            return 0;    
     }
 }
 
@@ -200,11 +219,13 @@
 - (void)resetContentView
 {
     UIView *view = [self contentView];
+    
     if (self.view.height > self.view.width) {
         CGFloat top = (_naviTitleView == nil || _naviTitleView.hidden) ? 0 : _naviTitleView.bottom;
         CGFloat height = self.view.height - top;
         if (self.miniTabBar != nil) {
             height = height - self.miniTabBar.height;
+            self.miniTabBar.frame = CGRectMake(0, self.view.height - self.miniTabBar.height, self.view.width, self.miniTabBar.height);
         }
         view.frame = CGRectMake(0, top, self.view.width, height);
     }
@@ -219,6 +240,7 @@
             }
             else {
                 height = height - self.miniTabBar.height;
+                self.miniTabBar.frame = CGRectMake(0, self.view.height - self.miniTabBar.height, self.view.width, self.miniTabBar.height);
             }
         }
         view.frame = CGRectMake(left, top, self.view.width - left, height);
@@ -229,13 +251,16 @@
             _statusBarView.frame = CGRectMake(0, 0, self.view.width, _statusBarView.height);
         }
     }
+    if (IS_IPHONE_X && IS_LANDSCAPE) {
+        view.frame = CGRectMake(30, view.top, view.width - 30, view.height);
+    }
+    else {
+        view.frame = CGRectMake(0, view.top, view.width, view.height);
+    }
 }
 
 - (UIView*)contentView
 {
-//    if ( !_setupNaviTitleView ) {
-//        return self.view;
-//    }
     if ( _contentView == nil ) {
         _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, _naviTitleView.bottom, self.view.width, self.view.height-_naviTitleView.bottom)];
         _contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin  |

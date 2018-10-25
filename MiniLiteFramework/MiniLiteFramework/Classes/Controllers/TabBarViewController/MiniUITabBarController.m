@@ -136,8 +136,7 @@
 {
     [super loadView];
     self.view.backgroundColor = [UIColor grayColor];
-    self.contentView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.contentView = [[UIView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.contentView];
     CGRect tabBarFrame = CGRectMake(0, self.contentView.height-[self tabBarVisualHeight], self.view.width, [self tabBarVisualHeight]);
     [self tabBarView];
@@ -154,7 +153,9 @@
     else {
         self.tabBarView.frame = CGRectMake(0, self.contentView.height-[self portraitTabBarVisualHeight], self.view.width, [self portraitTabBarVisualHeight]);
     }
-
+    if (self.selectedViewController != nil) {
+        [self.selectedViewController viewDidLayoutSubviews];
+    }
 }
 
 - (MiniUITabBar *)tabBarView
@@ -178,7 +179,12 @@
 
 - (NSInteger)heightForTabBarView
 {
-    return 48;
+    if (IS_IPHONE_X) {
+        return 78;
+    }
+    else {
+        return 48;
+    }
 }
 
 - (void)setItems:(NSArray *)array
@@ -371,7 +377,6 @@
     {
         [controller performSelector:@selector(didTabBarItemSelected)];
     }
-
 }
 
 - (void)setSelectedIndex:(NSInteger)selectedIndex
@@ -379,7 +384,6 @@
     _selectedIndex = selectedIndex;
     currentSelectedIndex = selectedIndex;
     UIViewController *controller = [self.viewControllers objectAtIndex:selectedIndex];
-    controller.view.frame = self.contentView.bounds;
     if ([controller isKindOfClass:[UINavigationController class]]) {
         UIViewController *ctl = [[(UINavigationController*)controller viewControllers] objectAtIndex:0];
         if ([ctl respondsToSelector:@selector(addTabBarView:)]) {

@@ -2,10 +2,12 @@
 #import "MiniUITabBar.h"
 #import "MiniUITabBarItem.h"
 #import "UIDevice+Ext.h"
+#import "MiniDefine.h"
 
 #define KTabBagTag 0x110
 
 @interface MiniUITabBar (PrivateMethods)
+@property (nonatomic, strong) UIView *contentView;
 - (void)addShadowToBottomView;
 - (void)createTabItems;
 - (NSInteger)visibleTabCount;
@@ -27,23 +29,42 @@
         v.tag = KTabBagTag;
         [self addSubview:v];
         [v release];
-
         highLightImageView = [[UIImageView alloc]  initWithFrame:CGRectZero];
         highLightImageView.hidden = NO;
         [self addSubview:highLightImageView];
+        _contentView = [[UIView alloc] initWithFrame:CGRectZero];
+        _contentView.backgroundColor = [UIColor clearColor];
+        [self addSubview:_contentView];
     }
     return self;
 }
+
+- (void)dealloc
+{
+    [highLightImageView release];
+    [bgImage release];
+    [tabItemsArray release];
+    [_contentView release];
+    [super dealloc];
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-
+    
+    if (IS_IPHONE_X) {
+        self.contentView.frame = CGRectMake(0, 0, self.width, self.height-IPHONE_X_TABBAR_BOTTOM_EXT_HEIGHT);
+    }
+    else {
+        self.contentView.frame = CGRectMake(0, 0, self.width, self.height);
+    }
     NSInteger button_x = 0;
     if (self.height < self.width) {
         NSInteger buttonWidth = self.width / [self visibleTabCount];
         for (NSInteger i = 0; i < self.tabItemsArray.count; i++) {
             MiniUITabBarItem *item = [self.tabItemsArray objectAtIndex:i];
-            item.frame = CGRectMake(button_x, self.height - item.height, buttonWidth, item.height);
+            CGFloat itemHeight = MIN(item.height, self.contentView.height);
+            item.frame = CGRectMake(button_x, self.contentView.height - itemHeight , buttonWidth, itemHeight);
             //[self addSubview:item];
             button_x += buttonWidth;
             [item setNeedsDisplay];
@@ -61,7 +82,7 @@
         }
     }
     else {
-        NSInteger buttonWidth = self.width;
+        NSInteger buttonWidth = self.contentView.width;
         CGFloat gap = [UIDevice isPad]?50:20;
         CGFloat left = 0;
         CGFloat itemHeight = ((MiniUITabBarItem*)[self.tabItemsArray objectAtIndex:0]).height;
@@ -142,7 +163,7 @@
 
         [item addTarget:self action:@selector(touchDownAction:)forControlEvents:UIControlEventTouchDown];
         [item addTarget:self action:@selector(touchUpInsideAction:)forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:item];
+        [self.contentView addSubview:item];
     }
 }
 
@@ -162,7 +183,7 @@
         item.frame = CGRectMake(0.0, 0.0, width, height);
         [item addTarget:self action:@selector(touchDownAction:)forControlEvents:UIControlEventTouchDown];
         [item addTarget:self action:@selector(touchUpInsideAction:)forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:item];
+        [self.contentView addSubview:item];
         [self layoutSubviews];
     }
 }
@@ -334,14 +355,6 @@
 - (MiniUITabBarItem *)itemAtIndex:(NSInteger)index
 {
     return [tabItemsArray objectAtIndex:index];
-}
-
-- (void)dealloc
-{
-    [highLightImageView release];
-    [bgImage release];
-    [tabItemsArray release];
-    [super dealloc];
 }
 
 - (void)setShadowView:(UIView *)shadowView

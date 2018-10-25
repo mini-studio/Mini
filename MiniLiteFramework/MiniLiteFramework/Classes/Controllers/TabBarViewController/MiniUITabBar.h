@@ -27,6 +27,7 @@
 @property (nonatomic, assign) UIView *shadowView;
 @property (nonatomic, assign) UIView *shadowViewLandscape;
 @property (nonatomic, assign) BOOL enableAutoRotate;
+@property (nonatomic, readonly) UIView *contentView;
 
 - (id)initWithFrame:(CGRect)frame;
 - (CGFloat)bottomHighlightImageXAtIndex:(NSUInteger)tabIndex;

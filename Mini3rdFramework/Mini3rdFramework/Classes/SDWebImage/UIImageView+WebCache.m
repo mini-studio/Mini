@@ -47,7 +47,7 @@ static char userInfoKey;
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
-    [self setImageWithURL:url placeholderImage:placeholder options:0];
+    [self setImageWithURL:url placeholderImage:placeholder options:SDWebImageAutoSetImage|SDWebImageAsyncLoad];
 }
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options
