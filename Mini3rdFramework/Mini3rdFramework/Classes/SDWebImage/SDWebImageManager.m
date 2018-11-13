@@ -396,7 +396,8 @@ static SDWebImageManager *instance;
                 }
                 if ([delegate respondsToSelector:@selector(webImageManager:didFinishWithImage:forURL:)])
                 {
-                    objc_msgSend(delegate, @selector(webImageManager:didFinishWithImage:forURL:), self, image, downloader.url);
+                    //objc_msgSend(delegate, @selector(webImageManager:didFinishWithImage:forURL:), self, image, downloader.url);
+                    [delegate webImageManager:self didFinishWithImage:image forURL:downloader.url];
                 }
                 if ([delegate respondsToSelector:@selector(webImageManager:didFinishWithImage:forURL:userInfo:)])
                 {
@@ -405,7 +406,8 @@ static SDWebImageManager *instance;
                     {
                         userInfo = nil;
                     }
-                    objc_msgSend(delegate, @selector(webImageManager:didFinishWithImage:forURL:userInfo:), self, image, downloader.url, userInfo);
+                    //objc_msgSend(delegate, @selector(webImageManager:didFinishWithImage:forURL:userInfo:), self, image, downloader.url, userInfo);
+                    [delegate webImageManager:self didFinishWithImage:image forURL:downloader.url userInfo:userInfo];
                 }
 #if NS_BLOCKS_AVAILABLE
                 if ([[downloadInfo objectAtIndex:uidx] objectForKey:@"success"])
@@ -419,11 +421,13 @@ static SDWebImageManager *instance;
             {
                 if ([delegate respondsToSelector:@selector(webImageManager:didFailWithError:)])
                 {
-                    [delegate performSelector:@selector(webImageManager:didFailWithError:) withObject:self withObject:nil];
+                    //[delegate performSelector:@selector(webImageManager:didFailWithError:) withObject:self withObject:nil];
+                    [delegate webImageManager:self didFailWithError:nil];
                 }
                 if ([delegate respondsToSelector:@selector(webImageManager:didFailWithError:forURL:)])
                 {
-                    objc_msgSend(delegate, @selector(webImageManager:didFailWithError:forURL:), self, nil, downloader.url);
+                    //objc_msgSend(delegate, @selector(webImageManager:didFailWithError:forURL:), self, nil, downloader.url);
+                    [delegate webImageManager:self didFailWithError:nil forURL:downloader.url];
                 }
                 if ([delegate respondsToSelector:@selector(webImageManager:didFailWithError:forURL:userInfo:)])
                 {
@@ -432,7 +436,8 @@ static SDWebImageManager *instance;
                     {
                         userInfo = nil;
                     }
-                    objc_msgSend(delegate, @selector(webImageManager:didFailWithError:forURL:userInfo:), self, nil, downloader.url, userInfo);
+                    //objc_msgSend(delegate, @selector(webImageManager:didFailWithError:forURL:userInfo:), self, nil, downloader.url, userInfo);
+                    [delegate webImageManager:self didFailWithError:nil forURL: downloader.url userInfo:userInfo];
                 }
 #if NS_BLOCKS_AVAILABLE
                 if ([[downloadInfo objectAtIndex:uidx] objectForKey:@"failure"])

@@ -395,6 +395,7 @@ static char userInfoKey;
 - (void)webImageManager:(SDWebImageManager *)imageManager didFinishWithImage:(UIImage *)image forURL:(NSURL *)url
 {
     //__block typeof (self) itSelf = self;
+    CGSize size = [self requestSize];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         //typeof (self) iSelf = itSelf;
         NSURL *u = [self.webCacheUserInfo valueForKey:SDWebImageReqUrlKey];
@@ -406,7 +407,7 @@ static char userInfoKey;
                 NSString *key = nil;
                 UIImage *maskImage = [self.webCacheUserInfo valueForKey:SDWebImageMaskImageKey];
                 UIImage *mergeImage = [self.webCacheUserInfo valueForKey:SDWebImageMergeImageKey];
-                UIImage *img = [image imageSizeToFitsWithSize:[self requestSize] optionsKey:options.intValue url:u mask:maskImage mergeImage:mergeImage key:&key];
+                UIImage *img = [image imageSizeToFitsWithSize:size optionsKey:options.intValue url:u mask:maskImage mergeImage:mergeImage key:&key];
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [self didFinishWithImage:img url:url key:key];
                 });

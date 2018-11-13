@@ -130,6 +130,8 @@ extern NSString *SDWebImageKey;
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder placeholderKey:(NSString *)placeholderKey size:(CGSize)size options:(SDWebImageOptions)options success:(SDWebImageSuccessBlock)success failure:(SDWebImageFailureBlock)failure;
 
+- (void)webImageManager:(SDWebImageManager *)imageManager didFinishWithImage:(UIImage *)image forURL:(NSURL *)url;
+
 #endif
 
 - (void)hidDwnloadIndicator;
