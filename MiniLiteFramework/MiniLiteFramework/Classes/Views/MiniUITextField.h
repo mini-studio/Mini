@@ -24,6 +24,7 @@
 @property (nonatomic,assign) BOOL scrolled;
 @property (nonatomic,assign) CGRect keyboardBounds;
 @property (nonatomic,weak) UIScrollView *scrollView;
+@property (nonatomic, assign) UIEdgeInsets edgeInsets;
 
 - (id)initWithFrame:(CGRect)frame scrollView:(UIScrollView *)scrollView;
 

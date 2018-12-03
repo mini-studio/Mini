@@ -1,4 +1,4 @@
-project=Mini3rdFramework
+project=MiniLiteFramework
 sdk=$2
 if ( [ "$1" = "-c" ] );then
 xcodebuild clean -configuration Debug  -sdk iphoneos${sdk}

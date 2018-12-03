@@ -12,4 +12,6 @@
 +(UIColor*)colorWithRGB:(NSUInteger)color;
 +(UIColor*)colorWithRGBA:(NSUInteger)color;
 +(UIColor*)colorWithString:(NSString *)string;
++(UIColor*)colorWithIntRed:(int)red green:(int)green blue:(int)blue;
++(UIColor*)colorWithIntRed:(int)red green:(int)green blue:(int)blue alpha:(float)alpha;
 @end

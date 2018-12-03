@@ -36,6 +36,7 @@
     if ( self )
     {
         self.scrollView = scrollView;
+        
         [self initial];
     }
     return self;
@@ -50,9 +51,18 @@
     return self;
 }
 
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if(self){
+        [self initial];
+    }
+    return self;
+}
 
 - (void)initial
 {
+    self.edgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.multipleTouchEnabled = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBorderWillShow:)name:UIKeyboardWillShowNotification object:nil];
@@ -87,14 +97,16 @@
     [super dealloc];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (CGRect)textRectForBounds:(CGRect)bounds
 {
-    if ( self = [super initWithCoder:aDecoder] )
-    {
-       [self initial];
-    }
-    return self;
+    return [super textRectForBounds:UIEdgeInsetsInsetRect(bounds, self.edgeInsets)];
 }
+
+- (CGRect)editingRectForBounds:(CGRect)bounds
+{
+    return [super editingRectForBounds:UIEdgeInsetsInsetRect(bounds, self.edgeInsets)];
+}
+
 
 - (void)scrollToVisible
 {
@@ -258,4 +270,5 @@
     }
     return YES;
 }
+
 @end

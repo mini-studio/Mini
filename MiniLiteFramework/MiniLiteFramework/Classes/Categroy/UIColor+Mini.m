@@ -35,4 +35,14 @@
     sscanf([string UTF8String], "%x", &c);
     return [UIColor colorWithRGBA:c];
 }
+
++(UIColor*)colorWithIntRed:(int)red green:(int)green blue:(int)blue
+{
+    return [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1.0f];
+}
+
++(UIColor*)colorWithIntRed:(int)red green:(int)green blue:(int)blue alpha:(float)alpha
+{
+    return [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:alpha];
+}
 @end
