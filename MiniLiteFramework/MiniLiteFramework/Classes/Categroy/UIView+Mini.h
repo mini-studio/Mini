@@ -24,9 +24,16 @@
 
 - (void)removeAllSubviews;
 - (UIImage *)imageByRenderingView:(CGRect)frame;
+
 @end
 
 @interface UIView (ModalAnimationHelper)
 + (void) commitModalAnimations;
 @end
+
+@interface UIView (Parents)
+- (UIView*)rootView;
+- (UIView*)rootContentView;
+- (UIView*)parentViewWithTag:(NSInteger)tag;
+@end;
 

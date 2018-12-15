@@ -16,6 +16,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+
 @interface MiniControlView:UIView
 {
     void (^touchesBeganBlock)(UIView *view);
@@ -263,6 +264,7 @@
 {
     if ( _contentView == nil ) {
         _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, _naviTitleView.bottom, self.view.width, self.view.height-_naviTitleView.bottom)];
+        _contentView.tag = ROOT_CONTENT_VIEW_TAG;
         _contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin  |
         UIViewAutoresizingFlexibleTopMargin;
         if (_naviTitleView  != nil ) {

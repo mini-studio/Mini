@@ -317,3 +317,36 @@
 	[uivdelegate release];
 }
 @end
+
+
+@implementation UIView (Parents)
+- (UIView*)rootView
+{
+  return [self parentViewWithTag:ROOT_VIEW_TAG];
+}
+- (UIView*)rootContentView
+{
+  return [self parentViewWithTag:ROOT_CONTENT_VIEW_TAG];
+}
+- (UIView*)parentViewWithTag:(NSInteger)tag
+{
+  UIView *rootView = nil;
+  UIView *currentView = self;
+  while (rootView == nil){
+    UIView *v  = currentView.superview;
+    if (v == nil) {
+      break;
+    }
+    else {
+      if (v.tag == tag) {
+        rootView = v;
+        break;
+      }
+      else {
+        currentView = v;
+      }
+    }
+  }
+  return rootView;
+}
+@end;

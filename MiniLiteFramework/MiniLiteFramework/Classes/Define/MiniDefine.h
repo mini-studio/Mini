@@ -18,6 +18,7 @@
 #define IPHONE_X_TABBAR_BOTTOM_EXT_HEIGHT 20
 
 #define ROOT_VIEW_TAG 2000200420082012
+#define ROOT_CONTENT_VIEW_TAG 2000200420082013
 
 #define  MiniUIKeyboardWillShowNotification @"MiniUIKeyboardWillShowNotification"
 #define  MiniUIKeyboardDidShowNotification @"MiniUIKeyboardDidShowNotification"

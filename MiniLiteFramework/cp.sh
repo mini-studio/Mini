@@ -1,4 +1,4 @@
-target_dirs=(/Users/Wuquancheng/Documents/workspace/code/ChEdu/iOS/CHEdu-Reading/Frameworks/ /Users/Wuquancheng/Documents/workspace/code/scene/scene/Frameworks/)
+target_dirs=(/Users/Wuquancheng/Documents/workspace/code/ChEdu/iOS/CHEdu-Reading/Frameworks/ /Users/Wuquancheng/Documents/workspace/code/scene/filmcrew/Frameworks/)
 for target_dir in ${target_dirs[*]}
 do
 if [ -f './Build/libMiniLiteFramework.a' ]; then

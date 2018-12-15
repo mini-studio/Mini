@@ -110,7 +110,7 @@
 
 - (void)scrollToVisible
 {
-    UIView *rootView = [self rootView];
+    UIView *rootView = self.rootView;
     CGRect frame = [self.superview convertRect:self.frame toView:rootView];
     frame.origin.y += 10;
     CGFloat maxY = CGRectGetMaxY(frame);
@@ -132,28 +132,6 @@
         }completion:^(BOOL finished) {
         }];
     }
-}
-
-- (UIView *)rootView
-{
-    UIView *rootView = nil;
-    UIView *currentView = self;
-    while (rootView == nil){
-        UIView *v  = currentView.superview;
-        if (v == nil) {
-            break;
-        }
-        else {
-            if (v.tag == ROOT_VIEW_TAG) {
-                rootView = v;
-                break;
-            }
-            else {
-                currentView = v;
-            }
-        }
-    }
-    return rootView;
 }
 
 - (void)handleKeyBorderWillShow:(NSNotification *)noti
